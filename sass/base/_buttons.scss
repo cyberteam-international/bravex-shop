@@ -1,0 +1,47 @@
+@use '../abstract/index' as *;
+
+.icon-button {
+  width: 45px;
+  height: 45px;
+  padding: 0;
+  background: none;
+  border-radius: 4px;
+  &:hover {
+    background: $color-icon-button;
+    img {
+      filter: brightness(0) invert(1);
+    }
+  }
+  img {
+    filter: grayscale(100%) brightness(70%);
+  }
+
+  @include media-mobilesmall {
+    width: 26px;
+    height: 26px;
+    background: $color-icon-button;
+    img {
+      width: 10px;
+      height: 10px;
+      filter: brightness(0) invert(1);
+    }
+  }
+}
+
+.button {
+    width: 248px;
+    height: 65px;
+    display: flex;
+    gap: 2px;
+    padding: 25px;
+    align-items: center;
+    background: linear-gradient(93deg, #004DFF 2.52%, #002E99 318.84%);
+    border-radius: 15px;
+    text-align: center;
+    span {
+      flex-grow: 1;
+    }
+    img {
+      width: 15px;
+    }
+}

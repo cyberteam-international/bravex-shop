@@ -1,0 +1,20 @@
+@use 'base/normalize';
+
+// //Abstract
+// @use "abstract/constants";
+// @use "abstract/mixins" as mixins;
+// @use "abstract/placeholders" as p;
+
+//Base
+@use 'base/base';
+@use 'base/buttons';
+@use 'base/icons';
+
+// layouts
+@use 'layouts/header';
+@use 'layouts/columns';
+
+//explore
+@use 'components/explore';
+@use 'components/popular-categories';
+@use 'components/catalog-overview';
