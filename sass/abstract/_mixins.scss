@@ -22,6 +22,12 @@
   }
 }
 
+@mixin media-laptop-xl {
+  @media (max-width: $laptop-xl-width) {
+    @content;
+  }
+}
+
 @mixin media-laptop-lg {
   @media (max-width: $laptop-lg-width) {
     @content;

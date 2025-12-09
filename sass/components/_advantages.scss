@@ -16,8 +16,15 @@
       display: none;
     }
   }
+  @include media-laptop-lg {
+    @include font($size: 3.2rem, $height: 126%, $weight: 400);
+  }
+  @include media-tablet-lg {
+    @include font($size: 3rem, $height: 126%, $weight: 400);
+  }
   @include media-mobile {
     @include font($size: 2rem, $height: 2.6rem, $weight: 400);
+    padding: 35px 0 30px;
   }
 }
 
@@ -28,8 +35,7 @@
 }
 
 .advantages__content {
-  padding-left: 20px;
-  margin-bottom: 40px;
+  margin-bottom: 85px;
 
   display: grid;
   grid-template-columns: repeat(4, max-content);
@@ -39,6 +45,9 @@
   @include media-tablet {
     grid-template-columns: repeat(2, max-content);
     gap: 18px;
+  }
+  @include media-mobile {
+    row-gap: 50px;
   }
 }
 
@@ -71,6 +80,15 @@
   img {
     width: 40px;
     height: 40px;
+  }
+  @include media-laptop-xl {
+    width: 75px;
+    min-width: 75px;
+    height: 75px;
+    img {
+      width: 38px;
+      height: 38px;
+    }
   }
   @include media-laptop-lg {
     width: 70px;
@@ -114,6 +132,13 @@
     @include font($size: 1.4rem, $height: 1.9rem, $weight: 400);
     color: #858585;
   }
+  @include media-laptop-xl {
+    width: 200px;
+    @include font($size: 1.9rem, $height: 2.4rem, $weight: 500);
+    & :last-child {
+      @include font($size: 1.3rem, $height: 1.8rem, $weight: 400);
+    }
+  }
   @include media-laptop-lg {
     width: 180px;
     @include font($size: 1.8rem, $height: 2.3rem, $weight: 500);
@@ -126,6 +151,11 @@
     @include font($size: 1.6rem, $height: 2.1rem, $weight: 500);
     & :last-child {
       @include font($size: 1.1rem, $height: 1.6rem, $weight: 400);
+    }
+  }
+  @include media-mobile {
+    & :last-child {
+      width: 110px;
     }
   }
 }

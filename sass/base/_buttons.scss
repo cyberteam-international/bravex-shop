@@ -19,6 +19,15 @@
     filter: grayscale(100%) brightness(70%);
   }
 
+  @include media-laptop-xl {
+    width: 40px;
+    height: 40px;
+    img {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
   @include media-laptop {
     width: 30px;
     height: 30px;
@@ -81,6 +90,13 @@
   img {
     width: 15px;
   }
+  @include media-laptop-xl {
+    height: 60px;
+    @include font($size: 1.4rem, $height: 1.6rem, $weight: 400);
+    img {
+      width: 14px;
+    }
+  }
   @include media-tablet-sm {
     width: 320px;
   }
@@ -98,9 +114,15 @@
     background: #0840f4;
   }
   @include media-desktop {
-    max-width: 270px;
+    width: 310px;
+    flex: 1;
     padding: 20px;
     @include font($size: 2.6rem, $height: 2.7rem, $weight: 400);
+  }
+  @include media-laptop-xl {
+    max-width: 250px;
+    padding: 18px;
+    @include font($size: 2.3rem, $height: 2.4rem, $weight: 400);
   }
 
   @include media-laptop-lg {

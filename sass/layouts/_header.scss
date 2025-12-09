@@ -2,19 +2,29 @@
 
 .header {
   width: 100%;
-  padding: 35px;
-  padding-right: 20px;
+  padding: 20px;
+  padding-left: 25px;
   display: flex;
   gap: 20px;
   background-color: $color-black;
   align-items: center;
   justify-content: space-between;
   @include font($size: 1.4rem, $weight: 500);
+  @include media-laptop-xl {
+    @include font($size: 1.2rem, $weight: 500);
+    padding: 16px;
+    padding-left: 21px;
+  }
   @include media-laptop-lg {
-    padding: 25px 10px 25px 25px;
+    @include font($size: 1.1rem, $weight: 500);
+    padding: 15px;
+    padding-left: 20px;
   }
   @include media-laptop {
-    padding: 25px 10px 25px 25px;
+    @include font($size: 1rem, $weight: 500);
+    padding: 15px;
+    padding-left: 20px;
+    // padding: 25px 10px 25px 25px;
   }
   @include media-tablet-lg {
     gap: 19px;

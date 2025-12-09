@@ -2,6 +2,7 @@
 
 .new-items {
   color: $color-white;
+  margin-bottom: 25px;
 }
 
 .new-items__header {
@@ -11,18 +12,50 @@
   p {
     @include font($size: 3.5rem, $height: 126%, $weight: 400);
     letter-spacing: -1px;
-    @include media-tablet-lg {
+    @include media-laptop-xl {
+      @include font($size: 3.2rem, $height: 126%, $weight: 400);
+    }
+    @include media-laptop-lg {
       @include font($size: 3rem, $height: 126%, $weight: 400);
     }
     @include media-tablet-sm {
       @include font($size: 2rem, $height: 126%, $weight: 400);
     }
+    @include media-mobile {
+      @include font($size: 2.2rem, $height: 126%, $weight: 400);
+    }
+    @include media-mobile-sm {
+      @include font($size: 2rem, $height: 126%, $weight: 400);
+    }
+  }
+  @include media-mobile {
+    padding-bottom: 25px;
   }
 }
 
 .new-items__controls {
   display: flex;
   gap: 20px;
+  @include media-laptop-xl {
+    div {
+      width: 44px;
+      height: 44px;
+      img {
+        width: 13px;
+        height: 13px;
+      }
+    }
+  }
+  @include media-laptop-lg {
+    div {
+      width: 40px;
+      height: 40px;
+      img {
+        width: 12px;
+        height: 12px;
+      }
+    }
+  }
   @include media-tablet-lg {
     div {
       width: 37px;
@@ -42,6 +75,21 @@
 .new-items__swiper-slide {
   height: 750px !important;
   overflow: hidden;
+  cursor: pointer;
+  &:hover {
+    .new-items__button {
+      background: $color-icon-button;
+      span {
+        filter: brightness(0) invert(1);
+      }
+    }
+  }
+  @include media-laptop-xl {
+    height: 710px !important;
+  }
+  @include media-laptop-lg {
+    height: 650px !important;
+  }
   @include media-tablet-lg {
     height: 600px !important;
   }
@@ -69,6 +117,9 @@
 .new-items__info-title {
   @include font($size: 1.4rem, $height: 1.4rem, $weight: 500);
   color: #565656;
+  @include media-laptop-xl {
+    @include font($size: 1.3rem, $height: 1.3rem, $weight: 500);
+  }
 }
 
 .new-items__info-subtitle {
@@ -76,6 +127,9 @@
   justify-content: space-between;
   @include font($size: 1.8rem, $height: 1.8rem, $weight: 400);
   color: $color-black;
+  @include media-laptop-xl {
+    @include font($size: 1.6rem, $height: 1.6rem, $weight: 400);
+  }
 }
 
 .new-items__button {
@@ -88,19 +142,23 @@
   background: $color-white;
   border-radius: 50%;
   @extend %transition;
-  &:hover {
-    background: $color-icon-button;
-    img {
-      filter: brightness(0) invert(1);
+  span {
+    color: $color-black;
+    @include font($size: 2.7rem, $height: 2.7rem, $weight: 400);
+  }
+  @include media-laptop-xl {
+    width: 40px;
+    height: 40px;
+    span {
+      @include font($size: 2.4rem, $height: 2.4rem, $weight: 400);
     }
   }
-  img {
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  @include media-laptop-lg {
+    width: 35px;
+    height: 35px;
+    span {
+      @include font($size: 2.1rem, $height: 2.1rem, $weight: 400);
+    }
   }
   @include media-tablet-lg {
     display: none;

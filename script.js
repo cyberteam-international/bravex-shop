@@ -100,12 +100,16 @@ lenis.on('scroll', (e) => {
 const newItemsSlider = new Swiper('#new-items-slider', {
   direction: 'horizontal',
   initialSlide: 0,
+  slidesOffsetAfter: 40,
   navigation: {
     nextEl: '.new-items-button-next',
     prevEl: '.new-items-button-prev',
   },
 
   speed: 500,
+
+  slidesPerView: 3.4,
+  spaceBetween: 15,
 
   breakpoints: {
     1400: {
@@ -133,7 +137,7 @@ const newItemsSlider = new Swiper('#new-items-slider', {
     },
 
     0: {
-      slidesPerView: 1.2,
+      slidesPerView: 1.25,
       spaceBetween: 8,
     },
   },
@@ -145,21 +149,22 @@ const newItemsSlider = new Swiper('#new-items-slider', {
 const insightsSlider = new Swiper('#insights-slider', {
   direction: 'horizontal',
   initialSlide: 0,
-
+  slidesOffsetAfter: 40,
   navigation: {
     nextEl: '.insights-button-next',
     prevEl: '.insights-button-prev',
   },
 
   speed: 500,
-  simulateTouch: true,
-  allowTouchMove: true,
-  breakpointsBase: 'window',
 
   slidesPerView: 3.4,
   spaceBetween: 15,
 
   breakpoints: {
+    1400: {
+      slidesPerView: 3.4,
+      spaceBetween: 15,
+    },
     1200: {
       slidesPerView: 3,
       spaceBetween: 15,
@@ -181,7 +186,7 @@ const insightsSlider = new Swiper('#insights-slider', {
     },
 
     0: {
-      slidesPerView: 1.2,
+      slidesPerView: 1.25,
       spaceBetween: 8,
     },
   },

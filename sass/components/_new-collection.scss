@@ -7,6 +7,7 @@
   position: relative;
   overflow: hidden;
   color: $color-white;
+  margin-bottom: 65px;
   &::after {
     position: absolute;
     content: '';
@@ -17,6 +18,9 @@
     background: rgba(5, 4, 9, 0.6);
     filter: blur(500px);
   }
+  @include media-mobile {
+    margin-bottom: 20px;
+  }
 }
 
 .new-collection__background {
@@ -26,6 +30,11 @@
   position: absolute;
   bottom: 0;
   left: -3%;
+  @include media-mobile {
+    width: 200%;
+    left: -99%;
+    // right: 0;
+  }
 }
 
 .new-collection__content {
@@ -82,9 +91,9 @@
 
 .new-collection__title {
   letter-spacing: -3px;
-  @include font($size: 8rem, $height: 7.1rem, $weight: 400);
   width: 66%;
-  @include media-desktop {
+  @include font($size: 8rem, $height: 7.1rem, $weight: 400);
+  @include media-laptop-xl {
     @include font($size: 6rem, $height: 6.1rem, $weight: 400);
   }
   @include media-laptop-lg {
@@ -103,7 +112,13 @@
   @include media-tablet-sm {
     @include font($size: 5rem, $height: 5.1rem, $weight: 400);
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+  }
+  @include media-mobile {
+    @include font($size: 5.5rem, $height: 5.55rem, $weight: 400);
+  }
+  @include media-mobile-sm {
+    @include font($size: 5rem, $height: 5.1rem, $weight: 400);
   }
 }
 
@@ -129,6 +144,12 @@
   }
   @include media-tablet-sm {
     text-align: left;
+  }
+  @include media-mobile {
+    @include font($size: 1.1rem, $height: 1.7rem, $weight: 400);
+  }
+  @include media-mobile-sm {
+    @include font($size: 0.9rem, $height: 1.6rem, $weight: 400);
   }
 }
 
@@ -163,6 +184,18 @@
     top: 20px;
     left: 20px;
   }
+  @include media-mobile {
+    top: 20px;
+    left: 20px;
+    width: 125px;
+    min-width: 125px;
+  }
+  @include media-mobile-sm {
+    top: 20px;
+    left: 20px;
+    width: 105px;
+    min-width: 105px;
+  }
 }
 
 .new-collection__price {
@@ -186,6 +219,12 @@
   }
   @include media-tablet-sm {
     text-align: left;
+  }
+  @include media-mobile {
+    @include font($size: 2rem, $height: 2rem, $weight: 400);
+  }
+  @include media-mobile-sm {
+    @include font($size: 1.8rem, $height: 1.8rem, $weight: 400);
   }
 }
 
@@ -218,6 +257,7 @@
   display: flex;
   flex-direction: column;
   letter-spacing: -1px;
+  padding: 28px 45px;
   :first-child {
     @include font($size: 1.6rem, $height: 190%, $weight: 500);
   }
