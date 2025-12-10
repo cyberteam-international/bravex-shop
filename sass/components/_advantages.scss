@@ -2,7 +2,7 @@
 
 .advantages {
   color: $color-white;
-  padding: 30px 20px;
+  padding: 30px 25px;
   // margin: 30px 0;
 }
 
@@ -154,6 +154,21 @@
   max-width: 210px;
 }
 
-.advantages__card:nth-child(n + 3) .advantages__info :last-child {
+.advantages__card:nth-child(4n) .advantages__info {
   max-width: 185px;
+  @include media-laptop-xl {
+    max-width: 166px;
+  }
+  @include media-laptop-lg {
+    max-width: 150px;
+  }
+  @include media-tablet {
+    max-width: 160px;
+  }
+}
+
+@include media-mobile {
+  .advantages__card:nth-child(2n) .advantages__info {
+    max-width: 120px;
+  }
 }
