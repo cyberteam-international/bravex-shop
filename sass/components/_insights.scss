@@ -1,4 +1,4 @@
-@use '../abstract/index' as *;
+@use "../abstract/index" as *;
 
 .insights {
   color: $color-white;
@@ -101,7 +101,10 @@
   display: block;
   width: 100%;
   height: calc(100% - 85px);
-  object-fit: cover;
+  object-fit: contain;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
 }
 
 .insights__info {

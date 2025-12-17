@@ -1,9 +1,15 @@
 // preloader
 
-document.body.style.overflow = 'hidden';
+// Set viewport height for mobile
+document.documentElement.style.setProperty(
+  "--fixed-vh",
+  `${window.innerHeight}px`
+);
+
+document.body.style.overflow = "hidden";
 const loader = () => {
-  document.body.style.overflow = '';
-  const preloader = document.getElementById('preloader');
+  document.body.style.overflow = "";
+  const preloader = document.getElementById("preloader");
   if (!preloader) return;
   const fadeout = setInterval(() => {
     const opacity = getComputedStyle(preloader).opacity;
@@ -24,10 +30,10 @@ const classesToExclude = [];
 function getCurrentScale() {
   const body = document.body;
   const transform = window.getComputedStyle(body).transform;
-  if (transform && transform !== 'none') {
+  if (transform && transform !== "none") {
     const matrix = transform.match(/matrix\(([^)]+)\)/);
     if (matrix) {
-      const values = matrix[1].split(',');
+      const values = matrix[1].split(",");
       return parseFloat(values[0]) || 1;
     }
   }
@@ -41,7 +47,7 @@ let currentScale = getCurrentScale();
 const lenis = new Lenis({
   duration: 2,
   easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-  orientation: 'vertical',
+  orientation: "vertical",
   smoothWheel: true,
   wheelMultiplier: 1,
   touchMultiplier: 1.5,
@@ -53,7 +59,8 @@ const lenis = new Lenis({
   // Функция предотвращения скролла для определенных элементов
   prevent: (node) => {
     return classesToExclude.some(
-      (className) => node.classList.contains(className) || node.closest(`.${className}`),
+      (className) =>
+        node.classList.contains(className) || node.closest(`.${className}`)
     );
   },
 
@@ -75,7 +82,7 @@ const lenis = new Lenis({
 });
 
 let resizeTimeout;
-window.addEventListener('resize', () => {
+window.addEventListener("resize", () => {
   clearTimeout(resizeTimeout);
   resizeTimeout = setTimeout(() => {
     currentScale = getCurrentScale();
@@ -83,28 +90,28 @@ window.addEventListener('resize', () => {
   }, 100);
 });
 
-window.addEventListener('load', () => {
+window.addEventListener("load", () => {
   classesToExclude.forEach((className) => {
     document.querySelectorAll(`.${className}`).forEach((element) => {
-      element.setAttribute('data-lenis-prevent', '');
+      element.setAttribute("data-lenis-prevent", "");
     });
   });
 });
 
-lenis.on('scroll', (e) => {
+lenis.on("scroll", (e) => {
   // console.log('Scroll event:', e);
 });
 
 // popup
 
 // new-items slider
-const newItemsSlider = new Swiper('#new-items-slider', {
-  direction: 'horizontal',
+const newItemsSlider = new Swiper("#new-items-slider", {
+  direction: "horizontal",
   initialSlide: 0,
   slidesOffsetAfter: 40,
   navigation: {
-    nextEl: '.new-items-button-next',
-    prevEl: '.new-items-button-prev',
+    nextEl: ".new-items-button-next",
+    prevEl: ".new-items-button-prev",
   },
 
   speed: 500,
@@ -147,13 +154,13 @@ const newItemsSlider = new Swiper('#new-items-slider', {
   allowTouchMove: true,
 });
 
-const insightsSlider = new Swiper('#insights-slider', {
-  direction: 'horizontal',
+const insightsSlider = new Swiper("#insights-slider", {
+  direction: "horizontal",
   initialSlide: 0,
   slidesOffsetAfter: 40,
   navigation: {
-    nextEl: '.insights-button-next',
-    prevEl: '.insights-button-prev',
+    nextEl: ".insights-button-next",
+    prevEl: ".insights-button-prev",
   },
 
   speed: 500,
@@ -193,6 +200,18 @@ const insightsSlider = new Swiper('#insights-slider', {
   },
 });
 
+// Загружаем товары из API и обновляем слайдер
+async function initProducts() {
+  const container = document.querySelector("#insights-slider .swiper-wrapper");
+  if (container) {
+    await window.ProductCard.renderProducts("#insights-slider .swiper-wrapper");
+    // Обновляем Swiper после загрузки товаров
+    insightsSlider.update();
+  }
+}
+
+initProducts();
+
 // burger-menu
 
 // const burgerBtn = document.querySelector('.burger-btn');
@@ -220,29 +239,29 @@ const insightsSlider = new Swiper('#insights-slider', {
 
 //Fade-in
 
-gsap.utils.toArray('.fade-in').forEach((element) => {
+gsap.utils.toArray(".fade-in").forEach((element) => {
   gsap.from(element, {
     opacity: 0,
     y: 40,
     duration: 1,
     scrollTrigger: {
       trigger: element,
-      start: 'top 90%',
-      toggleActions: 'play none none none',
+      start: "top 90%",
+      toggleActions: "play none none none",
     },
   });
 });
 
-window.addEventListener('load', () => {
+window.addEventListener("load", () => {
   ScrollTrigger.refresh();
 });
 
 //costumers gallery
-const blocks = document.querySelectorAll('.costumers__block');
+const blocks = document.querySelectorAll(".costumers__block");
 
 blocks.forEach((block) => {
-  block.addEventListener('mouseenter', () => {
-    blocks.forEach((b) => b.classList.remove('active'));
-    block.classList.add('active');
+  block.addEventListener("mouseenter", () => {
+    blocks.forEach((b) => b.classList.remove("active"));
+    block.classList.add("active");
   });
 });
