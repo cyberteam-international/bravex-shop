@@ -1,0 +1,13 @@
+# Dependencies
+node_modules/
+
+# Parcel
+dist/
+.parcel-cache/
+
+# IDE
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

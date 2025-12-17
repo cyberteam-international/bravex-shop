@@ -1,0 +1,22 @@
+{
+  "name": "bravex",
+  "version": "1.0.0",
+  "source": [
+    "index.html",
+    "cart/index.html",
+    "checkout/index.html"
+  ],
+  "scripts": {
+    "dev": "parcel",
+    "build": "parcel build",
+    "clean": "rimraf dist .parcel-cache"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.16.3",
+    "parcel": "^2.16.3"
+  }
+}
