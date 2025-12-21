@@ -28,7 +28,9 @@
 @use 'components/new-collection';
 @use 'components/insights';
 @use 'components/summary';
+@use 'components/catalog-cards-section';
 
 //pages
 @use 'pages/cart';
 @use 'pages/checkout';
+@use 'pages/catalogCover';

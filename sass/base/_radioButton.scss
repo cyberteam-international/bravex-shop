@@ -39,10 +39,6 @@
   transition: transform 0.2s ease;
 }
 
-// .radio-button input[type='radio']:checked + .radio-button__custom {
-//   border-color: #0840f4;
-// }
-
 .radio-button input[type='radio']:checked + .radio-button__custom::after {
   transform: translate(-50%, -50%) scale(1);
 }
