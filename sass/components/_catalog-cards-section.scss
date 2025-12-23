@@ -135,29 +135,36 @@
   border-radius: 9px;
   opacity: 0;
   transition: opacity 0.3s ease, transform 0.3s ease;
+  img {
+    width: 12px;
+  }
   @include media-laptop-xl {
     width: 116px;
     height: 38px;
     @include font($size: 1.5rem, $height: 1.5rem, $weight: 400);
-    img {
-      width: 14px;
-    }
   }
-  @include media-laptop {
+  @include media-laptop-lg {
     width: 100px;
     height: 32px;
     right: 18px;
     bottom: 18px;
     @include font($size: 1.4rem, $height: 1.4rem, $weight: 400);
     img {
-      width: 14px;
+      width: 11px;
     }
   }
+
+  @include media-laptop {
+    img {
+      width: 10px;
+    }
+  }
+
   @include media-tablet {
     display: none;
   }
 }
 
-.catalog-section__card:hover .catalog-section__card-button {
+.catalog-section__card .catalog-section__card-button {
   opacity: 1;
 }
