@@ -13,6 +13,9 @@
 @use 'base/checkBox';
 @use 'base/icons';
 @use 'base/loader';
+@use 'base/rangeFilter';
+@use 'base/select';
+@use 'base/pagination';
 
 // layouts
 @use 'layouts/header';
@@ -29,8 +32,10 @@
 @use 'components/insights';
 @use 'components/summary';
 @use 'components/catalog-cards-section';
+@use 'components/filter';
 
 //pages
 @use 'pages/cart';
 @use 'pages/checkout';
 @use 'pages/catalogCover';
+@use 'pages/catalog';

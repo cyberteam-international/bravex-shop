@@ -1,0 +1,116 @@
+@use '../abstract/index' as *;
+
+.select {
+  position: relative;
+  width: 250px;
+  height: 50px;
+  cursor: pointer;
+  user-select: none;
+
+  .select-trigger {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 8px;
+    background: linear-gradient(93.04deg, #004dff 2.52%, #002e99 318.84%);
+
+    color: #fff;
+    @include font($size: 1.4rem, $height: 1.6rem, $weight: 500);
+    transition: background 0.3s, border-radius 0.3s;
+    @include media-laptop-xl {
+      padding: 8px 16px;
+      @include font($size: 1.3rem, $height: 1.5rem, $weight: 500);
+    }
+    @include media-laptop-lg {
+      padding: 7px 14px;
+      @include font($size: 1.2rem, $height: 1.4rem, $weight: 500);
+    }
+    @include media-laptop {
+      padding: 6px 12px;
+      @include font($size: 1.1rem, $height: 1.3rem, $weight: 500);
+    }
+    @include media-mobile {
+      padding: 6px 12px;
+      @include font($size: 1.2rem, $height: 1.3rem, $weight: 500);
+    }
+
+    img {
+      width: 14px;
+      transition: transform 0.3s ease;
+      @include media-laptop-xl {
+        width: 13px;
+      }
+      @include media-laptop-lg {
+        width: 12px;
+      }
+      @include media-laptop {
+        width: 11px;
+      }
+      @include media-mobile {
+        width: 10px;
+      }
+    }
+
+    &:hover {
+      opacity: 0.9;
+    }
+
+    &.active {
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+    }
+
+    &.active img {
+      transform: rotate(180deg);
+    }
+  }
+
+  .select-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    margin-top: 0px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background: linear-gradient(93.04deg, #004dff 2.52%, #002e99 318.84%);
+
+    border: none;
+    list-style: none;
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    z-index: 10;
+
+    li {
+      padding: 20px;
+      @include font($size: 1.2rem, $height: 1.2rem, $weight: 500);
+      transition: background 0.2s, color 0.2s;
+      &:hover {
+        background: #0840f4;
+        color: #fff;
+      }
+      @include media-laptop-xl {
+        padding: 16px;
+        @include font($size: 1.1rem, $height: 1.1rem, $weight: 500);
+      }
+      @include media-laptop-lg {
+        padding: 14px;
+        @include font($size: 1rem, $height: 1rem, $weight: 500);
+      }
+      @include media-laptop {
+        padding: 12px;
+        @include font($size: 0.9rem, $height: 0.9rem, $weight: 500);
+      }
+    }
+
+    &.open {
+      max-height: 200px;
+      opacity: 1;
+    }
+  }
+}
