@@ -1112,6 +1112,7 @@ body {
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   background: linear-gradient(93.04deg, #004dff 2.52%, #002e99 318.84%);
+  color: rgba(255, 255, 255, 0.7490196078);
   border: none;
   list-style: none;
   padding: 0;
