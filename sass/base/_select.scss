@@ -52,7 +52,7 @@
     &.has-value span {
       position: static;
       transform: none;
-      max-width: 100%;
+      max-width: calc(100% - 20px);
       text-align: left;
     }
 

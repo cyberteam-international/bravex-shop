@@ -67,3 +67,95 @@
     display: none;
   }
 }
+
+.radio-button_responsive {
+  @include media-laptop-xl {
+    gap: 13px;
+
+    .radio-button input[type='radio'] {
+      width: 14px;
+      height: 14px;
+    }
+
+    .radio-button__custom {
+      width: 14px;
+      height: 14px;
+    }
+
+    .radio-button__custom::after {
+      content: '';
+      width: 7px;
+      height: 7px;
+    }
+
+    .radio-button__info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .radio-button__title {
+      @include font($size: 1.3rem, $height: 1.3rem, $weight: 400);
+      color: $color-white;
+    }
+
+    .radio-button__description {
+      @include font($size: 1.1rem, $height: 124%, $weight: 400);
+      color: $color-white;
+      width: 270px;
+    }
+
+    .radio-button__price {
+      margin-left: auto;
+      @include font($size: 1.5rem, $height: 1.5rem, $weight: 400);
+      @include media-mobile {
+        display: flex;
+      }
+    }
+  }
+  @include media-laptop {
+    // changed just title
+    gap: 13px;
+
+    .radio-button input[type='radio'] {
+      width: 14px;
+      height: 14px;
+    }
+
+    .radio-button__custom {
+      width: 14px;
+      height: 14px;
+    }
+
+    .radio-button__custom::after {
+      content: '';
+      width: 7px;
+      height: 7px;
+    }
+
+    .radio-button__info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .radio-button__title {
+      @include font($size: 1.2rem, $height: 1.2rem, $weight: 400);
+      color: $color-white;
+    }
+
+    .radio-button__description {
+      @include font($size: 1.1rem, $height: 124%, $weight: 400);
+      color: $color-white;
+      width: 270px;
+    }
+
+    .radio-button__price {
+      margin-left: auto;
+      @include font($size: 1.5rem, $height: 1.5rem, $weight: 400);
+      @include media-mobile {
+        display: flex;
+      }
+    }
+  }
+}

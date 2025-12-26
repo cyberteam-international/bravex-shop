@@ -45,15 +45,15 @@
   color: #858585b2;
   @include media-laptop-xl {
     margin-bottom: 80px;
-    @include font($size: 1.9rem, $height: 1.9rem, $weight: 400);
+    @include font($size: 1.8rem, $height: 1.8rem, $weight: 400);
   }
   @include media-laptop-lg {
     margin-bottom: 64px;
-    @include font($size: 1.8rem, $height: 1.9rem, $weight: 400);
+    @include font($size: 1.6rem, $height: 1.6rem, $weight: 400);
   }
   @include media-laptop {
     margin-bottom: 46px;
-    @include font($size: 1.6rem, $height: 1.7rem, $weight: 400);
+    @include font($size: 1.5rem, $height: 1.5rem, $weight: 400);
   }
 }
 
@@ -118,16 +118,16 @@
   }
   @include font($size: 2.5rem, $height: 2.5rem, $weight: 400);
   @include media-laptop-xl {
-    @include font($size: 2.3rem, $height: 2.3rem, $weight: 400);
-    padding: 8px 26px;
+    @include font($size: 2.2rem, $height: 2.2rem, $weight: 400);
+    padding: 7px 18px;
   }
   @include media-laptop-lg {
-    @include font($size: 2rem, $height: 2rem, $weight: 400);
-    padding: 6px 22px;
+    @include font($size: 1.9rem, $height: 1.9rem, $weight: 400);
+    padding: 6px 16px;
   }
   @include media-laptop {
-    @include font($size: 1.8rem, $height: 1.8rem, $weight: 400);
-    padding: 4px 18px;
+    @include font($size: 1.7rem, $height: 1.7rem, $weight: 400);
+    padding: 4px 14px;
   }
   @include media-mobile {
     @include font($size: 1.5rem, $height: 1.5rem, $weight: 400);
@@ -192,13 +192,13 @@
 .catalog__title {
   @include font($size: 6rem, $height: 6rem, $weight: 400);
   @include media-laptop-xl {
-    @include font($size: 5.6rem, $height: 5.6rem, $weight: 400);
+    @include font($size: 5.4rem, $height: 5.4rem, $weight: 400);
   }
   @include media-laptop-lg {
-    @include font($size: 5rem, $height: 5rem, $weight: 400);
+    @include font($size: 4.7rem, $height: 4.7rem, $weight: 400);
   }
   @include media-laptop {
-    @include font($size: 4.2rem, $height: 4.2rem, $weight: 400);
+    @include font($size: 3.9rem, $height: 3.9rem, $weight: 400);
   }
   @include media-tablet {
     display: none;
@@ -208,16 +208,16 @@
 .catalog__select {
   max-width: 190px;
   @include media-laptop-xl {
-    max-width: 185px;
-    height: 47px;
-  }
-  @include media-laptop-lg {
-    max-width: 175px;
+    max-width: 170px;
     height: 44px;
   }
+  @include media-laptop-lg {
+    max-width: 145px;
+    height: 40px;
+  }
   @include media-laptop {
-    max-width: 160px;
-    height: 38px;
+    max-width: 130px;
+    height: 36px;
   }
   @include media-mobile {
     max-width: 133px;
@@ -239,7 +239,7 @@
     gap: 18px;
   }
   @include media-tablet-lg {
-    gap: 10px;
+    gap: 15px;
     grid-template-columns: repeat(2, minmax(160px, 1fr));
   }
   @include media-tablet-sm {
@@ -399,6 +399,9 @@
     right: 11px;
     border-radius: 5px;
   }
+  @include media-tablet-lg {
+    display: none;
+  }
 }
 
 .catalog-card:hover {
@@ -413,6 +416,9 @@
       width: 100%;
       height: 100%;
       background: #014cfc66;
+      @include media-tablet-lg {
+        display: none;
+      }
     }
   }
 
@@ -439,5 +445,54 @@
     // line-height: 50px;
     cursor: pointer;
     @include font($size: 1.5rem, $height: 1.5rem, $weight: 400);
+  }
+}
+
+//modal filters
+@include media-tablet-lg {
+  .catalog__filter {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-width: 420px;
+    height: 100vh;
+    background: #0f0f0f;
+    z-index: 1001;
+    overflow-y: auto;
+
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    padding: 30px 20px;
+    &:after {
+      content: '✕';
+      position: fixed;
+      top: 40px;
+      right: 30px;
+      font-size: 16px;
+      line-height: 1;
+      color: #ffffff26;
+      cursor: pointer;
+      z-index: 1002;
+      user-select: none;
+    }
+  }
+
+  body.filter-open .catalog__filter {
+    transform: translateX(0);
+    &::after {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+
+  /* overlay */
+  body.filter-open::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
   }
 }
