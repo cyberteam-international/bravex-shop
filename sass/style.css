@@ -6405,6 +6405,14 @@ body {
   overflow: hidden;
   cursor: pointer;
 }
+@media (max-width: 430px) {
+  .catalog-card {
+    aspect-ratio: auto;
+    max-height: 540px;
+    display: flex;
+    flex-direction: column;
+  }
+}
 
 .catalog-card__image {
   display: block;
@@ -6429,6 +6437,11 @@ body {
 .catalog-card__image img {
   height: 100%;
   width: 100%;
+}
+@media (max-width: 430px) {
+  .catalog-card__image {
+    flex: 1;
+  }
 }
 
 .catalog-card__info {
@@ -6464,6 +6477,12 @@ body {
     height: 44px;
     padding: 0px 16px 0 10px;
     font-size: 1.2rem;
+  }
+}
+@media (max-width: 430px) {
+  .catalog-card__info {
+    height: auto;
+    min-height: 62px;
   }
 }
 

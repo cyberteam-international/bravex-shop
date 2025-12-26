@@ -252,6 +252,12 @@
   aspect-ratio: 355 / 542;
   overflow: hidden;
   cursor: pointer;
+  @include media-mobile {
+    aspect-ratio: auto;
+    max-height: 540px;
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .catalog-card__image {
@@ -271,6 +277,9 @@
   img {
     height: 100%;
     width: 100%;
+  }
+  @include media-mobile {
+    flex: 1;
   }
 }
 
@@ -298,6 +307,10 @@
     height: 44px;
     padding: 0px 16px 0 10px;
     font-size: 1.2rem;
+  }
+  @include media-mobile {
+    height: auto;
+    min-height: 62px;
   }
 }
 
