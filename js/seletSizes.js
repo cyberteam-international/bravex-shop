@@ -103,16 +103,20 @@ const value = select.querySelector('.select-sizes2__value');
 const list = select.querySelector('.select-sizes2__list');
 const items = [...select.querySelectorAll('.select-sizes2__item')];
 
-const btnUpOption = select.querySelector('#btnUpOption');
-const btnDownOption = select.querySelector('#btnDownOption');
 const btnUp = select.querySelector('#btnUp');
 const btnDown = select.querySelector('#btnDown');
 
 let index = items.findIndex((i) => i.classList.contains('active'));
 
-const itemHeight = 52;
+const itemHeight = 36;
 const visibleItems = 5;
-const centerOffset = Math.floor(visibleItems / 2) * itemHeight;
+const hardcodedOffsetForCenteringList = 14;
+const centerOffset = Math.floor(visibleItems / 2) * itemHeight - hardcodedOffsetForCenteringList;
+console.log('centerOffset: ', centerOffset);
+
+let startY = 0;
+let startTranslate = 0;
+let isDragging = false;
 
 /* ---------- CORE ---------- */
 
@@ -124,29 +128,12 @@ function update() {
   const offset = index * itemHeight - centerOffset;
   console.log('offset: ', offset);
   list.style.transform = `translateY(${-offset}px)`;
-
-  // updateDropdownArrows();
 }
-
-/* ---------- ARROWS POSITION ---------- */
-
-// function updateDropdownArrows() {
-//   if (!select.classList.contains('open')) return;
-
-//   const dropdown = select.querySelector('.select-sizes__dropdown');
-//   const dropdownHeight = dropdown.clientHeight;
-
-//   const centerY = dropdownHeight / 2;
-
-//   btnUpOption.style.top = `${centerY - 40}px`;
-//   btnDownOption.style.top = `${centerY + 10}px`;
-// }
 
 /* ---------- OPEN / CLOSE ---------- */
 
 head.addEventListener('click', () => {
   select.classList.toggle('open');
-  // updateDropdownArrows();
 });
 
 /* ---------- HEAD ARROWS ---------- */
@@ -166,22 +153,6 @@ btnDown.addEventListener('click', (e) => {
     update();
   }
 });
-
-/* ---------- DROPDOWN ARROWS ---------- */
-
-// btnUpOption.addEventListener('click', () => {
-//   if (index > 0) {
-//     index--;
-//     update();
-//   }
-// });
-
-// btnDownOption.addEventListener('click', () => {
-//   if (index < items.length - 1) {
-//     index++;
-//     update();
-//   }
-// });
 
 /* ---------- ITEM CLICK ---------- */
 
@@ -206,5 +177,46 @@ document.addEventListener('click', (e) => {
 });
 
 /* ---------- INIT ---------- */
+
+list.addEventListener('touchstart', (e) => {
+  if (!select.classList.contains('open')) return;
+
+  isDragging = true;
+  startY = e.touches[0].clientY;
+
+  const matrix = new WebKitCSSMatrix(getComputedStyle(list).transform);
+  startTranslate = matrix.m42;
+});
+
+list.addEventListener('touchmove', (e) => {
+  if (!isDragging) return;
+
+  const delta = e.touches[0].clientY - startY;
+  list.style.transform = `translateY(${startTranslate + delta}px)`;
+});
+
+list.addEventListener('touchend', () => {
+  if (!isDragging) return;
+  isDragging = false;
+
+  snapToItem();
+});
+
+function snapToItem() {
+  const matrix = new WebKitCSSMatrix(getComputedStyle(list).transform);
+  const translateY = matrix.m42;
+
+  const rawIndex = (centerOffset - translateY) / itemHeight;
+  index = Math.round(rawIndex);
+
+  index = Math.max(0, Math.min(index, items.length - 1));
+
+  list.style.transition = 'transform 0.3s ease';
+  update();
+
+  setTimeout(() => {
+    list.style.transition = '';
+  }, 300);
+}
 
 update();

@@ -1291,7 +1291,7 @@ body {
 }
 .select-sizes2.open {
   height: auto;
-  max-height: 180px;
+  max-height: 190px;
   overflow: hidden;
 }
 .select-sizes2.open .select-sizes2__dropdown {
@@ -1323,17 +1323,6 @@ body {
 }
 
 /* DROPDOWN */
-.select-sizes2__dropdown {
-  position: relative;
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  margin-top: 0;
-  border-radius: 20px;
-  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.04), rgba(0, 0, 0, 0.8));
-  transition: max-height 0.35s ease, opacity 0.2s ease, margin-top 0.35s ease;
-}
-
 /* INNER WRAPPER — ВАЖНО */
 .select-sizes2__list {
   margin: 0;
@@ -1346,11 +1335,17 @@ body {
   transform: translateY(0) !important;
   transition: none !important;
 }
+@media (max-width: 768px) {
+  .select-sizes2__list {
+    touch-action: pan-y;
+    transition: none;
+  }
+}
 
 /* ITEM */
 .select-sizes2__item {
   font-size: 16px;
-  padding: 14px 0;
+  padding: 10px 0;
   opacity: 0.25;
   cursor: pointer;
   transition: 0.2s;
@@ -1414,6 +1409,10 @@ body {
 }
 .select-sizes2__controls .select-sizes2__arrow--down {
   bottom: 18px;
+}
+.select-sizes2.open .select-sizes2__controls {
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .accordion {
