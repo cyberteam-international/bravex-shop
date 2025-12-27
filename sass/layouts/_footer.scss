@@ -62,25 +62,25 @@
 }
 
 .footer__title {
-  @include font($size: 2.5rem, $height: 2.5rem, $weight: 400);
+  @include font($size: 2.4rem, $height: 2.4rem, $weight: 400);
   margin-bottom: 20px;
   @include media-laptop-xl {
-    @include font($size: 2.3rem, $height: 2.3rem, $weight: 400);
+    @include font($size: 2.2rem, $height: 2.2rem, $weight: 400);
   }
   @include media-tablet {
-    @include font($size: 2rem, $height: 2rem, $weight: 400);
+    @include font($size: 1.9rem, $height: 1.9rem, $weight: 400);
   }
 }
 
 .footer__link {
-  @include font($size: 1.8rem, $height: 2.4rem, $weight: 400);
+  @include font($size: 1.7rem, $height: 2.3rem, $weight: 400);
   letter-spacing: -1px;
   color: #858585;
   @include media-laptop-xl {
-    @include font($size: 1.7rem, $height: 2.2rem, $weight: 400);
+    @include font($size: 1.6rem, $height: 2.1rem, $weight: 400);
   }
   @include media-tablet {
-    @include font($size: 1.6rem, $height: 2rem, $weight: 400);
+    @include font($size: 1.5rem, $height: 1.9rem, $weight: 400);
   }
 }
 
@@ -109,9 +109,9 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  @include font($size: 1.8rem, $height: 1.8rem, $weight: 700);
+  @include font($size: 1.7rem, $height: 1.7rem, $weight: 700);
   :last-child {
-    @include font($size: 1.4rem, $height: 2.4rem, $weight: 400);
+    @include font($size: 1.3rem, $height: 2.2rem, $weight: 400);
     color: #696969;
   }
   @include media-tablet {

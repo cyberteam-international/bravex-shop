@@ -15,7 +15,10 @@
 @use 'base/loader';
 @use 'base/rangeFilter';
 @use 'base/select';
+@use 'base/select-sizes';
+@use 'base/accordion';
 @use 'base/pagination';
+@use 'base/inputNumber';
 
 // layouts
 @use 'layouts/header';
@@ -39,3 +42,4 @@
 @use 'pages/checkout';
 @use 'pages/catalogCover';
 @use 'pages/catalog';
+@use 'pages/product';
