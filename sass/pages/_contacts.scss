@@ -17,7 +17,7 @@
 }
 
 .contacts__breadcrumbs {
-  @include media-laptop-lg {
+  @include media-tablet-lg {
     display: none;
   }
 }
