@@ -8111,6 +8111,11 @@ body {
     padding: 40px 15px 60px 15px;
   }
 }
+@media (max-width: 992px) {
+  .returns {
+    padding: 5px 0;
+  }
+}
 
 @media (max-width: 992px) {
   .returns__breadcrumbs {
@@ -8154,6 +8159,11 @@ body {
     margin-top: 30px;
   }
 }
+@media (max-width: 992px) {
+  .returns__banner {
+    border-radius: 0;
+  }
+}
 
 .returns__image {
   width: 100%;
@@ -8161,6 +8171,27 @@ body {
   border-radius: 12px;
   -o-object-fit: cover;
      object-fit: cover;
+}
+@media (max-width: 992px) {
+  .returns__image {
+    border-radius: 0;
+    height: 407px;
+  }
+}
+@media (max-width: 430px) {
+  .returns__image {
+    display: none;
+  }
+}
+.returns__image-mobile {
+  display: none;
+}
+@media (max-width: 430px) {
+  .returns__image-mobile {
+    height: auto;
+    aspect-ratio: 360/407;
+    display: block;
+  }
 }
 
 .returns__banner-title {
@@ -8216,6 +8247,19 @@ body {
     margin-left: 235px;
   }
 }
+@media (max-width: 992px) {
+  .returns__banner-title {
+    left: 7%;
+    top: 15%;
+    font-size: 4.7rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 4.7rem;
+  }
+  .returns__banner-title p:last-child {
+    margin-left: 0;
+  }
+}
 
 .returns__info {
   display: flex;
@@ -8235,6 +8279,11 @@ body {
 @media (max-width: 1200px) {
   .returns__info {
     padding: 20px 20px 0 30px;
+  }
+}
+@media (max-width: 430px) {
+  .returns__info {
+    padding: 40px 18px 100px 18px;
   }
 }
 
@@ -8260,6 +8309,12 @@ body {
   .returns__info-block {
     padding: 60px 0 70px 0;
     gap: 40px;
+  }
+}
+@media (max-width: 430px) {
+  .returns__info-block {
+    padding: 20px 12px 70px 12px;
+    gap: 60px;
   }
 }
 
@@ -8292,6 +8347,15 @@ body {
     font-style: normal;
     font-weight: 400;
     line-height: 4rem;
+  }
+}
+@media (max-width: 992px) {
+  .returns__title {
+    font-size: 4rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 4rem;
+    margin-left: 2px;
   }
 }
 
@@ -8351,6 +8415,26 @@ body {
     width: 206px;
   }
 }
+@media (max-width: 992px) {
+  .returns__section {
+    grid-template-columns: 1fr;
+    gap: 110px;
+  }
+  .returns__section .returns__section-item {
+    justify-self: start !important;
+  }
+}
+@media (max-width: 430px) {
+  .returns__section .returns__section-item:nth-child(1) .returns__text {
+    width: 305px;
+  }
+  .returns__section .returns__section-item:nth-child(2) .returns__text {
+    width: 230px;
+  }
+  .returns__section .returns__section-item:nth-child(3) .returns__text {
+    width: 275px;
+  }
+}
 
 .returns__section-item {
   display: flex;
@@ -8389,6 +8473,14 @@ body {
     line-height: 170%;
   }
 }
+@media (max-width: 992px) {
+  .returns__subtitle {
+    font-size: 2.2rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 170%;
+  }
+}
 
 .returns__text {
   color: #9d9d9d;
@@ -8421,9 +8513,22 @@ body {
     line-height: 170%;
   }
 }
+@media (max-width: 992px) {
+  .returns__text {
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 170%;
+  }
+}
 
 .returns__info-block_2 {
   border-top: 1px solid rgba(255, 255, 255, 0.1490196078);
+}
+@media (max-width: 992px) {
+  .returns__info-block_2 {
+    border: none;
+  }
 }
 
 .returns__section_2 .returns__section-item:nth-child(1) .returns__text {
@@ -8480,6 +8585,20 @@ body {
     width: 170px;
   }
 }
+@media (max-width: 430px) {
+  .returns__section_2 .returns__section-item:nth-child(1) .returns__text {
+    width: 250px;
+  }
+  .returns__section_2 .returns__section-item:nth-child(2) .returns__text {
+    width: 260px;
+  }
+  .returns__section_2 .returns__section-item:nth-child(3) {
+    width: 100%;
+  }
+  .returns__section_2 .returns__section-item:nth-child(3) .returns__text {
+    width: 260px;
+  }
+}
 
 .returns__button {
   padding: 0;
@@ -8512,5 +8631,13 @@ body {
     width: 240px;
     height: 38px;
     font-size: 1.2rem;
+  }
+}
+@media (max-width: 430px) {
+  .returns__button {
+    width: 100%;
+    height: 44px;
+    font-size: 1.4rem;
+    border-radius: 10px;
   }
 }/*# sourceMappingURL=style.css.map */
