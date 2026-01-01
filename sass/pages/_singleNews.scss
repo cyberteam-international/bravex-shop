@@ -104,6 +104,7 @@
 }
 
 .single-news__image_mobile {
+  display: none;
   @include media-mobile {
     display: block !important;
   }

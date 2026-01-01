@@ -8794,6 +8794,9 @@ body {
   border-radius: 12px;
 }
 
+.single-news__image_mobile {
+  display: none;
+}
 @media (max-width: 430px) {
   .single-news__image_mobile {
     display: block !important;
