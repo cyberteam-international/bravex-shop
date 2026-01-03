@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./../sass/style.css" />
+    <link rel="stylesheet" href="./../fonts/stylesheet.css" />
+    <link rel="stylesheet" href="./../libs/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.4/dist/lenis.css" />
+    <link rel="icon" href="./../assets/icons/favicon.png" />
+    <title>BRAVEX</title>
+    <script>
+      document.documentElement.style.setProperty('--fixed-vh', `${window.innerHeight}px`);
+    </script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__controls header__controls_mobile">
+        <button class="icon-button burger-button">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <button class="icon-button">
+          <img src="./../assets/icons/heart.svg" alt="favorite" />
+        </button>
+      </div>
+      <a href="./index.html">
+        <img src="./../assets/icons/logo.svg" alt="logo" class="header__logo" />
+      </a>
+
+      <ul class="header__navigation">
+        <li><a href="">SHOWROOM</a></li>
+        <li><a href="">ENTREGA Y PAGO </a></li>
+        <li><a href="">CONTACTOS</a></li>
+        <li><a href="">CONSEJOS</a></li>
+        <li><a href="">VISUALIZACIÓN 3D</a></li>
+        <li><a href="">BLOG</a></li>
+        <li><a href="">CATÁLOGO</a></li>
+      </ul>
+
+      <div class="header__controls">
+        <button class="icon-button">
+          <img src="./../assets/icons/lens.svg" alt="search" />
+        </button>
+        <button class="icon-button">
+          <img src="./../assets/icons/heart.svg" alt="favorite" />
+        </button>
+        <a href="./pages/cart.html" class="icon-button icon-button_filled">
+          <img src="./../assets/icons/cart.svg" alt="cart" />
+        </a>
+      </div>
+    </header>
+
+    <main class="news">
+      <div class="news__header">
+        <p class="news__title">Noticias <span>y Análisis</span></p>
+        <div class="news__controls">
+          <div class="select news__select">
+            <div class="select-trigger">
+              <span>Categorías</span>
+              <img src="./../assets/icons/selectArrow.svg" alt="arrow" />
+            </div>
+            <ul class="select-options">
+              <li data-value="option1">Popularidad</li>
+              <li data-value="option2">Precio: de menor a mayor</li>
+              <li data-value="option3">Precio: de mayor a menor</li>
+            </ul>
+          </div>
+          <div class="select select_black news__select">
+            <div class="select-trigger select-trigger">
+              <span>Por fecha</span>
+              <img src="./../assets/icons/selectArrow.svg" alt="arrow" />
+            </div>
+            <ul class="select-options">
+              <li data-value="option1">Popularidad</li>
+              <li data-value="option2">Precio: de menor a mayor</li>
+              <li data-value="option3">Precio: de mayor a menor</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="news__main-section">
+        <div class="news__card">
+          <img src="./../assets/img/news/newsMain1.webp" alt="news-image" class="news__image" />
+          <p>Nueva colección <span> de sofás de una marca global </span></p>
+          <button class="news__card-button">
+            <img src="./../assets/icons/blackArrow.svg" alt="" />
+          </button>
+        </div>
+        <div class="news__card">
+          <img src="./../assets/img/news/newsMain2.webp" alt="news-image" class="news__image" />
+          <p>Nueva colección <span> de sofás de una marca global </span></p>
+          <button class="news__card-button">
+            <img src="./../assets/icons/blackArrow.svg" alt="" />
+          </button>
+        </div>
+      </div>
+      <div class="all-news">
+        <div class="all-news__wrapper">
+          <div class="news__card">
+            <img src="./../assets/img/news/news1.webp" alt="news-image" class="news__image" />
+            <p>Nueva colección <span> de sofás de una marca global </span></p>
+            <button class="news__card-button">
+              <img src="./../assets/icons/blackArrow.svg" alt="" />
+            </button>
+          </div>
+          <div class="news__card">
+            <img src="./../assets/img/news/news2.webp" alt="news-image" class="news__image" />
+            <p>Nueva colección <span> de sofás de una marca global </span></p>
+            <button class="news__card-button">
+              <img src="./../assets/icons/blackArrow.svg" alt="" />
+            </button>
+          </div>
+          <div class="news__card">
+            <img src="./../assets/img/news/news3.webp" alt="news-image" class="news__image" />
+            <p>Nueva colección <span> de sofás de una marca global </span></p>
+            <button class="news__card-button">
+              <img src="./../assets/icons/blackArrow.svg" alt="" />
+            </button>
+          </div>
+          <div class="news__card">
+            <img src="./../assets/img/news/news4.webp" alt="news-image" class="news__image" />
+            <p>Nueva colección <span> de sofás de una marca global </span></p>
+            <button class="news__card-button">
+              <img src="./../assets/icons/blackArrow.svg" alt="" />
+            </button>
+          </div>
+          <div class="news__card">
+            <img src="./../assets/img/news/news1.webp" alt="news-image" class="news__image" />
+            <p>Nueva colección <span> de sofás de una marca global </span></p>
+            <button class="news__card-button">
+              <img src="./../assets/icons/blackArrow.svg" alt="" />
+            </button>
+          </div>
+          <div class="news__card">
+            <img src="./../assets/img/news/news2.webp" alt="news-image" class="news__image" />
+            <p>Nueva colección <span> de sofás de una marca global </span></p>
+            <button class="news__card-button">
+              <img src="./../assets/icons/blackArrow.svg" alt="" />
+            </button>
+          </div>
+          <div class="news__card">
+            <img src="./../assets/img/news/news3.webp" alt="news-image" class="news__image" />
+            <p>Nueva colección <span> de sofás de una marca global </span></p>
+            <button class="news__card-button">
+              <img src="./../assets/icons/blackArrow.svg" alt="" />
+            </button>
+          </div>
+          <div class="news__card">
+            <img src="./../assets/img/news/news4.webp" alt="news-image" class="news__image" />
+            <p>Nueva colección <span> de sofás de una marca global </span></p>
+            <button class="news__card-button">
+              <img src="./../assets/icons/blackArrow.svg" alt="" />
+            </button>
+          </div>
+        </div>
+        <div class="pagination news__pagination">
+          <div class="pagination__item pagination__item_active">1</div>
+          <div class="pagination__item">2</div>
+          <div class="pagination__item">3</div>
+          <div class="pagination__item">4</div>
+          <div class="pagination__item pagination__item_active pagination__item_next">
+            <img src="./../assets/icons/selectArrow.svg" alt="" />
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="new-collection">
+      <img
+        class="new-collection__background"
+        src="/assets/img/newCollection.webp"
+        alt="new collection" />
+
+      <div class="new-collection__content">
+        <div class="new-collection__header">
+          <p class="new-collection__label">Nueva colección</p>
+          <img src="./../assets/icons/logo.svg" alt="" class="new-collection__logo" />
+        </div>
+        <div class="new-collection__footer">
+          <div class="new-collection__info">
+            <p class="new-collection__title">Sofa Boco Room</p>
+            <div class="new-collection__description">
+              <p class="new-collection__price">1 700€</p>
+              <p class="new-collection__subtitle">El precio incluye entrega, instalación e IVA</p>
+            </div>
+          </div>
+          <div class="new-collection__controls">
+            <button class="button new-collection__button">
+              <span>Aprender más</span>
+              <img src="./../assets/icons/right-arrow.svg" alt="arrow" />
+            </button>
+            <div class="new-collection__cards">
+              <button class="button-card new-collection__card">
+                <span>Tamaño</span>
+                <span>100x150cm</span>
+              </button>
+              <button class="button-card new-collection__card">
+                <span>Colección</span>
+                <span>Dragon</span>
+              </button>
+              <button class="button-card new-collection__card">
+                <span>Categoría</span>
+                <span>Furniture</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer__layout">
+        <div class="footer__navigation">
+          <div class="footer__nav-section footer__s1">
+            <p class="footer__title">Catalog</p>
+            <div class="footer__links">
+              <a class="footer__link" href="">Catálogo</a>
+              <a class="footer__link" href="">Escaleras</a>
+              <a class="footer__link" href="">Muebles</a>
+              <a class="footer__link" href="">Materiales de decoración</a>
+              <a class="footer__link" href="">Stretch ceilings</a>
+              <a class="footer__link" href="">Puertas</a>
+              <a class="footer__link" href="">Mobiliario infantil</a>
+              <a class="footer__link" href="">Muebles de baño</a>
+              <a class="footer__link" href="">Cocinas</a>
+              <a class="footer__link" href="">Luminarias</a>
+              <a class="footer__link" href="">Espejos</a>
+              <a class="footer__link" href="">Pinturas</a>
+              <a class="footer__link" href="">Paneles murales</a>
+              <a class="footer__link" href="">Armario</a>
+              <a class="footer__link" href="">Mobiliario de oficina</a>
+              <a class="footer__link" href="">Arquitectura paramétrica</a>
+              <a class="footer__link" href="">Vidrio</a>
+              <a class="footer__link" href="">Pistikupesad</a>
+            </div>
+          </div>
+
+          <div class="footer__nav-section footer__s2">
+            <p class="footer__title">Nuestros servicios</p>
+            <div class="footer__links">
+              <a class="footer__link" href="">Servicios de diseño</a>
+              <a class="footer__link" href="">Servicios de cálculo de materiales</a>
+              <a class="footer__link" href="">Servicios de instalación</a>
+              <a class="footer__link" href="">EasySteps</a>
+            </div>
+          </div>
+
+          <div class="footer__nav-section footer__s3">
+            <p class="footer__title">Policy</p>
+            <div class="footer__links">
+              <a class="footer__link" href="">Términos y Condiciones</a>
+              <a class="footer__link" href="">Privacidad</a>
+              <a class="footer__link" href="">Catálogos</a>
+            </div>
+          </div>
+
+          <div class="footer__nav-section footer__s4">
+            <p class="footer__title">Sobre nosotros</p>
+            <div class="footer__links">
+              <a class="footer__link" href="">Escaleras</a>
+              <a class="footer__link" href="">Muebles</a>
+              <a class="footer__link" href="">Materiales de decoración</a>
+              <a class="footer__link" href="">Cielos tensados</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer__contact-us">
+          <div class="footer__socials">
+            <p class="footer__title">Contáctanos</p>
+            <div class="footer__contacts">
+              <img src="./../assets/icons/whatsapp.svg" alt="whatsapp" />
+              <img src="./../assets/icons/tg.svg" alt="tg" />
+              <img src="./../assets/icons/x.svg" alt="x" />
+              <img src="./../assets/icons/in.svg" alt="linkedin" />
+            </div>
+          </div>
+          <div class="footer__address">
+            <p>BRAVEX LLC</p>
+            <p>Al. Bolesława Krzywoustego 40-870 Katowice</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__logos">
+        <img src="./../assets/icons/logo.svg" alt="" class="footer__logo" />
+        <div class="footer__payments">
+          <img src="./../assets/icons/visa.svg" alt="visa" />
+          <img src="./../assets/icons/mastercard.svg" alt="mastercard" />
+          <img src="./../assets/icons/swift.svg" alt="swift" />
+          <img src="./../assets/icons/sepa.svg" alt="sepa" />
+        </div>
+        <div></div>
+      </div>
+    </footer>
+
+    <script src="./../libs/swiper/swiper-bundle.min.js" defer></script>
+    <script src="https://unpkg.com/lenis@1.3.4/dist/lenis.min.js" defer></script>
+    <script src="./../libs/gsap/gsap.min.js" defer></script>
+    <script src="./../libs/gsap/ScrollTrigger.min.js" defer></script>
+    <script src="./../script.js" defer></script>
+    <script src="./../js/select.js" defer></script>
+  </body>
+</html>

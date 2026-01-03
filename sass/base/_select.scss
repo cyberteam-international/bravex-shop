@@ -137,3 +137,19 @@
     }
   }
 }
+
+.select_black {
+  .select-trigger {
+    background: transparent;
+    // height: calc(100% - 2px);
+    width: calc(100% - 2px);
+    border: 1px solid #ffffff66;
+  }
+
+  .select-options {
+    background: #000;
+    border: 1px solid #ffffff66;
+    border-top: none;
+    width: calc(100% - 2px);
+  }
+}
