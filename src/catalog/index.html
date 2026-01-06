@@ -216,66 +216,10 @@
             </div>
           </div>
 
-          <div class="catalog__content">
-            <div class="catalog-card">
-              <div class="catalog-card__image">
-                <img src="/assets/img/itemsSlider1.webp" alt="" />
-              </div>
-              <div class="catalog-card__info">
-                <p class="catalog-card__info-title">Sofa Boco 2025</p>
-                <span>1 700€</span>
-                <button class="button catalog-card__button">
-                  <span>Más detalles</span>
-                </button>
-              </div>
-              <button class="catalog-card__plus-button">
-                <img src="/assets/icons/plus.svg" alt="" />
-              </button>
-            </div>
-            <div class="catalog-card">
-              <div class="catalog-card__image">
-                <img src="/assets/img/itemsSlider2.webp" alt="" />
-              </div>
-              <div class="catalog-card__info">
-                <p class="catalog-card__info-title">Sofa Boco 2025</p>
-                <span>1 700€</span>
-                <button class="button catalog-card__button">
-                  <span>Más detalles</span>
-                </button>
-              </div>
-              <button class="catalog-card__plus-button">
-                <img src="/assets/icons/plus.svg" alt="" />
-              </button>
-            </div>
-            <div class="catalog-card">
-              <div class="catalog-card__image">
-                <img src="/assets/img/catalogCards/co-4-1.webp" alt="" />
-              </div>
-              <div class="catalog-card__info">
-                <p class="catalog-card__info-title">Sofa Boco 2025</p>
-                <span>1 700€</span>
-                <button class="button catalog-card__button">
-                  <span>Más detalles</span>
-                </button>
-              </div>
-              <button class="catalog-card__plus-button">
-                <img src="/assets/icons/plus.svg" alt="" />
-              </button>
-            </div>
-            <div class="catalog-card">
-              <div class="catalog-card__image">
-                <img src="/assets/img/itemsSlider4.webp" alt="" />
-              </div>
-              <div class="catalog-card__info">
-                <p class="catalog-card__info-title">Sofa Boco 2025</p>
-                <span>1 700€</span>
-                <button class="button catalog-card__button">
-                  <span>Más detalles</span>
-                </button>
-              </div>
-              <button class="catalog-card__plus-button">
-                <img src="/assets/icons/plus.svg" alt="" />
-              </button>
+          <div class="catalog__content" id="catalog-products">
+            <!-- Товары загружаются динамически -->
+            <div class="catalog__loader">
+              <span class="loader"></span>
             </div>
           </div>
 
@@ -374,6 +318,6 @@
     <script src="/script.js" defer></script>
     <script src="/js/rangeFilter.js" defer></script>
     <script src="/js/select.js" defer></script>
-    <script src="/js/catalog.js" defer></script>
+    <script type="module" src="/js/catalog.js" defer></script>
   </body>
 </html>
