@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <link rel="stylesheet" href="/sass/style.scss" />
+    <link rel="stylesheet" href="/fonts/stylesheet.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/lenis@1.3.4/dist/lenis.css"
+    />
+    <link rel="icon" href="/assets/icons/favicon.png" />
+    <title>BRAVEX - Contacts</title>
+  </head>
+  <body>
+    {{> header }}
+
+    <main class="contacts">
+      <div class="breadcrumbs contacts__breadcrumbs">
+        <a href="/" class="breadcrumbs__link">Inicio</a>
+        <span class="breadcrumbs__separator">/</span>
+        <a href="" class="breadcrumbs__link breadcrumbs__link_active"
+          >Contáctanos</a
+        >
+      </div>
+
+      <div class="contacts__layout">
+        <form action="" class="contacts__form">
+          <p class="contacts__title">
+            <span>¿Tienes alguna</span>
+            <span>&nbsp;pregunta?</span>
+          </p>
+          <p class="contacts__subtitle">
+            Deja una solicitud y nos pondremos en contacto contigo lo antes
+            posible
+          </p>
+          <div class="contacts__form-block">
+            <input
+              type="text"
+              class="input contacts__input"
+              placeholder="Teléfono"
+              name="phone"
+            />
+            <input
+              type="text"
+              class="input contacts__input"
+              placeholder="Nombre"
+              name="name"
+            />
+            <input
+              type="text"
+              class="input contacts__input"
+              placeholder="País"
+              name="country"
+            />
+          </div>
+          <button type="submit" class="button contacts__button">
+            Dejar una solicitud
+          </button>
+          <p class="contacts__form-notification">
+            <span>Al hacer clic en el botón, aceptas</span>
+            <span>&nbsp;la Política de Privacidad</span>
+          </p>
+        </form>
+
+        <div class="contacts__departments">
+          <div class="contacts__department">
+            <p class="contacts__department-title">soporte:</p>
+            <p class="contacts__department-mail">info@bravex-group.en</p>
+          </div>
+          <div class="contacts__department">
+            <p class="contacts__department-title">colaboración:</p>
+            <p class="contacts__department-mail">partner@bravex-group.en</p>
+          </div>
+          <div class="contacts__department">
+            <p class="contacts__department-title">carrera:</p>
+            <p class="contacts__department-mail">hr@bravex-group.en</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="contacts__location">
+      <p>+353 87 605-24-11</p>
+      <p>georgia, tbilisi, saburtalo district, bakhtrioni street, N 22, N75</p>
+    </div>
+
+    {{> footer }}
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"
+      defer
+    ></script>
+    <script
+      src="https://unpkg.com/lenis@1.3.4/dist/lenis.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+      defer
+    ></script>
+  </body>
+</html>

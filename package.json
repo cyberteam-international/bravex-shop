@@ -1,22 +1,19 @@
 {
   "name": "bravex",
   "version": "1.0.0",
-  "source": [
-    "index.html",
-    "cart/index.html",
-    "checkout/index.html"
-  ],
+  "type": "module",
   "scripts": {
-    "dev": "parcel",
-    "build": "parcel build",
-    "clean": "rimraf dist .parcel-cache"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.16.3",
-    "parcel": "^2.16.3"
+    "sass": "^1.97.1",
+    "vite": "^7.3.0",
+    "vite-plugin-handlebars": "^2.0.0"
   }
 }

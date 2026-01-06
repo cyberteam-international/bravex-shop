@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/sass/style.scss" />
+    <link rel="stylesheet" href="/fonts/stylesheet.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/lenis@1.3.4/dist/lenis.css"
+    />
+    <link rel="icon" href="/assets/icons/favicon.png" />
+    <title>BRAVEX</title>
+  </head>
+  <body>
+    <div id="preloader">
+      <img src="/assets/icons/logo.svg" alt="" />
+      <span class="loader"></span>
+    </div>
+
+    {{> header }}
+
+    <main>
+      <div class="explore">
+        <video
+          class="explore__video-block"
+          muted=""
+          loop=""
+          playsinline=""
+          preload="auto"
+          autoplay=""
+        >
+          <source
+            src="/assets/explore.mp4"
+            type="video/mp4"
+            media="(min-width: 1000px)"
+          />
+          <source
+            src="/assets/explore-mobile.mp4"
+            type="video/mp4"
+            media="(max-width: 999px)"
+          />
+        </video>
+        <div class="explore__content">
+          <p class="explore__title">Explora Nuestra Colección de Muebles</p>
+          <p class="explore__description">
+            Creamos soluciones de muebles a medida que combinan perfectamente
+            diseño, funcionalidad y artesanía. Cada pieza está adaptada a las
+            necesidades únicas del espacio, ya sea residencial, comercial o un
+            proyecto único.
+          </p>
+          <a href="/catalog" class="button explore__button">
+            <span>Ver catálogo</span>
+            <img src="/assets/icons/right-arrow.svg" alt="arrow" />
+          </a>
+        </div>
+      </div>
+
+      <div class="popular-categories">
+        <div class="popular-categories__header">
+          <p class="popular-categories__title">
+            <span>Categorías</span>
+            <span>populares</span>
+          </p>
+          <img
+            src="/assets/icons/logo.svg"
+            alt=""
+            class="popular-categories__logo"
+          />
+        </div>
+        <div class="layout-4-column popular-categories__content">
+          <div class="popular-categories__card">
+            <img
+              src="/assets/img/categories1.webp"
+              alt=""
+              class="popular-categories__image"
+            />
+            <p class="popular-categories__subtitle">Furniture & Sofas</p>
+          </div>
+
+          <div class="popular-categories__card">
+            <img
+              src="/assets/img/categories2.webp"
+              alt=""
+              class="popular-categories__image"
+            />
+            <p class="popular-categories__subtitle">Muebles para Niños</p>
+          </div>
+
+          <div class="popular-categories__card">
+            <img
+              src="/assets/img/categories3.webp"
+              alt=""
+              class="popular-categories__image"
+            />
+            <p class="popular-categories__subtitle">
+              Bathroom & Sanitary Furniture
+            </p>
+          </div>
+
+          <div class="popular-categories__card">
+            <img
+              src="/assets/img/categories4.webp"
+              alt=""
+              class="popular-categories__image"
+            />
+            <p class="popular-categories__subtitle">Kitchens</p>
+          </div>
+
+          <div class="popular-categories__card">
+            <img
+              src="/assets/img/categories5.webp"
+              alt=""
+              class="popular-categories__image"
+            />
+            <p class="popular-categories__subtitle">Lighting & Mirrors</p>
+          </div>
+
+          <div class="popular-categories__card">
+            <img
+              src="/assets/img/categories6.webp"
+              alt=""
+              class="popular-categories__image"
+            />
+            <p class="popular-categories__subtitle">
+              Doors, Glass & Partitions
+            </p>
+          </div>
+
+          <div class="popular-categories__card">
+            <img
+              src="/assets/img/categories7.webp"
+              alt=""
+              class="popular-categories__image"
+            />
+            <p class="popular-categories__subtitle">
+              Decor & Finishing Materials
+            </p>
+          </div>
+
+          <div class="popular-categories__card">
+            <img
+              src="/assets/img/categories8.webp"
+              alt=""
+              class="popular-categories__image"
+            />
+            <p class="popular-categories__subtitle">Architecture & Stairs</p>
+          </div>
+        </div>
+
+        <button class="button popular-categories__button">
+          <span>Ver todas las categorías</span>
+          <img src="/assets/icons/right-arrow.svg" alt="arrow" />
+        </button>
+      </div>
+
+      <div class="catalog-overview">
+        <video
+          class="catalog-overview__video-block"
+          muted=""
+          loop=""
+          playsinline=""
+          preload="auto"
+          autoplay=""
+        >
+          <source
+            src="/assets/catalog.mp4"
+            type="video/mp4"
+            media="(min-width: 1000px)"
+          />
+
+          <source
+            src="/assets/catalog-mobile.mp4"
+            type="video/mp4"
+            media="(max-width: 999px)"
+          />
+        </video>
+        <div class="catalog-overview__content">
+          <div class="catalog-overview__header">
+            <p class="catalog-overview__title">
+              Descubre tu próxima pieza favorita — Explora el catálogo
+            </p>
+            <div class="catalog-overview__description">
+              <img
+                src="/assets/icons/logo.svg"
+                alt=""
+                class="catalog-overview__logo"
+              />
+              <p class="catalog-overview__subtitle">
+                Explore our curated collections and discover furniture that
+                defines modern living
+              </p>
+            </div>
+          </div>
+          <div class="catalog-overview__controls">
+            <button class="button catalog-overview__button">
+              <span>Ver catálogo</span>
+              <img src="/assets/icons/right-arrow.svg" alt="arrow" />
+            </button>
+            <div class="catalog-overview__cards">
+              <button class="button-card catalog-overview__card">
+                Living Room Collections
+              </button>
+              <button class="button-card catalog-overview__card">
+                Bedroom Inspirations
+              </button>
+              <button class="button-card catalog-overview__card">
+                Dining & Kitchen Spaces
+              </button>
+              <button class="button-card catalog-overview__card">
+                Complete Interior Packages
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="layout-2-column catalog-overview__mobile">
+        <div class="catalog-overview__mobile-item">
+          <p>Colecciones de sala de estar</p>
+        </div>
+        <div class="catalog-overview__mobile-item">
+          <p>Inspiraciones para dormitorios</p>
+        </div>
+        <div class="catalog-overview__mobile-item">
+          <p>Espacios de comedor y cocina</p>
+        </div>
+        <div class="catalog-overview__mobile-item">
+          <p>Paquetes completos de interiores</p>
+        </div>
+      </div>
+
+      <div class="new-items">
+        <div class="swiper fade-in" id="new-items-slider">
+          <div class="new-items__header">
+            <p>Novedades</p>
+
+            <div class="new-items__controls fade-in">
+              <div class="slider-button new-items-button-prev">
+                <img
+                  src="/assets/icons/right-arrow.svg"
+                  alt=""
+                  class="slider-button-left"
+                />
+              </div>
+
+              <div class="slider-button new-items-button-next">
+                <img
+                  src="/assets/icons/right-arrow.svg"
+                  alt=""
+                  class="slider-button-right"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-wrapper new-items__swiper-wrapper fade-in">
+            <div class="swiper-slide new-items__swiper-slide">
+              <img
+                src="/assets/img/itemsSlider1.webp"
+                alt=""
+                class="new-items__image"
+              />
+              <div class="new-items__info">
+                <p class="new-items__info-title">XL 110x150</p>
+                <p class="new-items__info-subtitle">
+                  <span>Sofa Boco 2025</span>
+                  <span>1 700€</span>
+                </p>
+              </div>
+              <button class="new-items__button">
+                <img src="/assets/icons/plus.svg" alt="" />
+              </button>
+            </div>
+
+            <div class="swiper-slide new-items__swiper-slide">
+              <img
+                src="/assets/img/itemsSlider2.webp"
+                alt=""
+                class="new-items__image"
+              />
+              <div class="new-items__info">
+                <p class="new-items__info-title">XL 110x150</p>
+                <p class="new-items__info-subtitle">
+                  <span>Sofa Boco 2025</span>
+                  <span>1 700€</span>
+                </p>
+              </div>
+              <button class="new-items__button">
+                <img src="/assets/icons/plus.svg" alt="" />
+              </button>
+            </div>
+
+            <div class="swiper-slide new-items__swiper-slide">
+              <img
+                src="/assets/img/itemsSlider3.webp"
+                alt=""
+                class="new-items__image"
+              />
+              <div class="new-items__info">
+                <p class="new-items__info-title">XL 110x150</p>
+                <p class="new-items__info-subtitle">
+                  <span>Sofa Boco 2025</span>
+                  <span>1 700€</span>
+                </p>
+              </div>
+              <button class="new-items__button">
+                <img src="/assets/icons/plus.svg" alt="" />
+              </button>
+            </div>
+
+            <div class="swiper-slide new-items__swiper-slide">
+              <img
+                src="/assets/img/itemsSlider4.webp"
+                alt=""
+                class="new-items__image"
+              />
+              <div class="new-items__info">
+                <p class="new-items__info-title">XL 110x150</p>
+                <p class="new-items__info-subtitle">
+                  <span>Sofa Boco 2025</span>
+                  <span>1 700€</span>
+                </p>
+              </div>
+              <button class="new-items__button">
+                <img src="/assets/icons/plus.svg" alt="" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="advantages">
+        <div class="advantages__header">
+          <p class="advantages__title">
+            <span>Nuestras</span>
+            <span>Ventajas</span>
+          </p>
+          <img src="/assets/icons/logo.svg" alt="" class="advantages__logo" />
+        </div>
+        <div class="advantages__content">
+          <div class="advantages__card">
+            <div class="advantages__image">
+              <img src="/assets/icons/advantage1.png" alt="advantage" />
+            </div>
+            <div class="advantages__info">
+              <span>Trusted materials</span>
+              <span
+                >We use premium European materials for lasting quality and
+                style</span
+              >
+            </div>
+          </div>
+          <div class="advantages__card">
+            <div class="advantages__image">
+              <img src="/assets/icons/advantage2.png" alt="advantage" />
+            </div>
+            <div class="advantages__info">
+              <span>Skilled craftsmen</span>
+              <span
+                >Our experts craft furniture with precision and attention to
+                detail</span
+              >
+            </div>
+          </div>
+          <div class="advantages__card">
+            <div class="advantages__image">
+              <img src="/assets/icons/advantage3.png" alt="advantage" />
+            </div>
+            <div class="advantages__info">
+              <span>Quality assurance</span>
+              <span
+                >Every project includes an official warranty and service
+                support</span
+              >
+            </div>
+          </div>
+          <div class="advantages__card">
+            <div class="advantages__image">
+              <img src="/assets/icons/advantage4.png" alt="advantage" />
+            </div>
+            <div class="advantages__info">
+              <span>Precios transparentes</span>
+              <span
+                >Precios claros, sin costos ocultos ni cargos inesperados</span
+              >
+            </div>
+          </div>
+          <div class="advantages__card">
+            <div class="advantages__image">
+              <img src="/assets/icons/advantage5.png" alt="advantage" />
+            </div>
+            <div class="advantages__info">
+              <span>Diseño innovador</span>
+              <span
+                >Diseñamos utilizando herramientas avanzadas y visualización
+                3D</span
+              >
+            </div>
+          </div>
+          <div class="advantages__card">
+            <div class="advantages__image">
+              <img src="/assets/icons/advantage6.png" alt="advantage" />
+            </div>
+            <div class="advantages__info">
+              <span>On-time delivery</span>
+              <span
+                >We deliver and install your furniture right on schedule</span
+              >
+            </div>
+          </div>
+          <div class="advantages__card">
+            <div class="advantages__image">
+              <img src="/assets/icons/advantage7.png" alt="advantage" />
+            </div>
+            <div class="advantages__info">
+              <span>Personalized solutions</span>
+              <span
+                >Each project is tailored to your taste, budget, and
+                lifestyle</span
+              >
+            </div>
+          </div>
+          <div class="advantages__card">
+            <div class="advantages__image">
+              <img src="/assets/icons/advantage8.png" alt="advantage" />
+            </div>
+            <div class="advantages__info">
+              <span>Consulta gratuita</span>
+              <span
+                >Obtenga asesoramiento experto sobre planificación y selección
+                de muebles</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="new-collection">
+        <img
+          class="new-collection__background"
+          src="/assets/img/newCollection.webp"
+          alt="new collection"
+        />
+
+        <div class="new-collection__content">
+          <div class="new-collection__header">
+            <p class="new-collection__label">New Collection</p>
+            <img
+              src="/assets/icons/logo.svg"
+              alt=""
+              class="new-collection__logo"
+            />
+          </div>
+          <div class="new-collection__footer">
+            <div class="new-collection__info">
+              <p class="new-collection__title">Sofa Boco Room</p>
+              <div class="new-collection__description">
+                <p class="new-collection__price">1 700€</p>
+                <p class="new-collection__subtitle">
+                  El precio incluye entrega, instalación e IVA
+                </p>
+              </div>
+            </div>
+            <div class="new-collection__controls">
+              <button class="button new-collection__button">
+                <span>Más información</span>
+                <img src="/assets/icons/right-arrow.svg" alt="arrow" />
+              </button>
+              <div class="new-collection__cards">
+                <button class="button-card new-collection__card">
+                  <span>Tamaño</span>
+                  <span>100x150cm</span>
+                </button>
+                <button class="button-card new-collection__card">
+                  <span>Colección</span>
+                  <span>Dragon</span>
+                </button>
+                <button class="button-card new-collection__card">
+                  <span>Categoría</span>
+                  <span>Furniture</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="insights">
+        <div class="swiper fade-in" id="insights-slider">
+          <div class="insights__header">
+            <p class="insights__title">
+              <span>Explora nuestras</span>
+              <span>novedades recientes</span>
+            </p>
+
+            <div class="insights__controls fade-in">
+              <div class="slider-button insights-button-prev">
+                <img
+                  src="/assets/icons/right-arrow.svg"
+                  alt=""
+                  class="slider-button-left"
+                />
+              </div>
+
+              <div class="slider-button insights-button-next">
+                <img
+                  src="/assets/icons/right-arrow.svg"
+                  alt=""
+                  class="slider-button-right"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-wrapper insights__swiper-wrapper fade-in">
+            <div class="swiper-slide insights__swiper-slide">
+              <img
+                src="/assets/img/insights1.webp"
+                alt=""
+                class="insights__image"
+              />
+              <div class="insights__info">
+                <p>New collection <span> of sofas from </span></p>
+                <span>a global brand</span>
+              </div>
+              <button class="insights__button">
+                <img
+                  src="/assets/icons/blackArrow.svg"
+                  alt=""
+                  class="insights__image"
+                />
+              </button>
+            </div>
+
+            <div class="swiper-slide insights__swiper-slide">
+              <img
+                src="/assets/img/insights2.webp"
+                alt=""
+                class="insights__image"
+              />
+              <div class="insights__info">
+                <p>New collection <span> of sofas from </span></p>
+                <span>a global brand</span>
+              </div>
+              <button class="insights__button">
+                <img
+                  src="/assets/icons/blackArrow.svg"
+                  alt=""
+                  class="insights__image"
+                />
+              </button>
+            </div>
+
+            <div class="swiper-slide insights__swiper-slide">
+              <img
+                src="/assets/img/insights3.webp"
+                alt=""
+                class="insights__image"
+              />
+              <div class="insights__info">
+                <p>New collection <span> of sofas from </span></p>
+                <span>a global brand</span>
+              </div>
+              <button class="insights__button">
+                <img
+                  src="/assets/icons/blackArrow.svg"
+                  alt=""
+                  class="insights__image"
+                />
+              </button>
+            </div>
+
+            <div class="swiper-slide insights__swiper-slide">
+              <img
+                src="/assets/img/insights4.webp"
+                alt=""
+                class="insights__image"
+              />
+              <div class="insights__info">
+                <p>New collection <span> of sofas from </span></p>
+                <span>a global brand</span>
+              </div>
+              <button class="insights__button">
+                <img
+                  src="/assets/icons/blackArrow.svg"
+                  alt=""
+                  class="insights__image"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    {{> footer }}
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.3.4/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/sass/style.scss" />
+    <link rel="stylesheet" href="/fonts/stylesheet.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/lenis@1.3.4/dist/lenis.css"
+    />
+    <link rel="icon" href="/assets/icons/favicon.png" />
+    <title>BRAVEX - Cart</title>
+  </head>
+  <body>
+    {{> header }}
+
+    <main class="cart">
+      <p class="cart__title">Bolsa de compras</p>
+      <div class="cart__layout">
+        <div class="cart__items">
+          <div class="cart-item">
+            <img
+              src="/assets/img/itemsSlider1.webp"
+              alt="cart-item"
+              class="cart-item__image"
+            />
+            <div class="cart-item__info">
+              <div class="cart-item__header">
+                <p class="cart-item__title">Sofa Boco 2025</p>
+                <button class="cart-item__button">
+                  <img src="/assets/icons/circleCross.svg" alt="remove" />
+                </button>
+              </div>
+              <p class="cart-item__details">
+                Es un hecho ampliamente conocido que un lector se distraerá con
+                el contenido legible de una página al observar su maquetación.
+              </p>
+              <div class="cart-item__footer">
+                <span class="cart-item__subtitle">XL 110x150</span>
+                <p class="cart-item__price">1 700€</p>
+              </div>
+            </div>
+          </div>
+          <div class="cart-item">
+            <img
+              src="/assets/img/itemsSlider1.webp"
+              alt="cart-item"
+              class="cart-item__image"
+            />
+            <div class="cart-item__info">
+              <div class="cart-item__header">
+                <p class="cart-item__title">Sofa Boco 2025</p>
+                <button class="cart-item__button">
+                  <img src="/assets/icons/circleCross.svg" alt="remove" />
+                </button>
+              </div>
+              <p class="cart-item__details">
+                It is a long established fact that a reader will be distracted
+                by the readable content of a page when looking at its layout.
+              </p>
+              <div class="cart-item__footer">
+                <span class="cart-item__subtitle">XL 110x150</span>
+                <p class="cart-item__price">1 700€</p>
+              </div>
+            </div>
+          </div>
+          <div class="cart-item">
+            <img
+              src="/assets/img/itemsSlider1.webp"
+              alt="cart-item"
+              class="cart-item__image"
+            />
+            <div class="cart-item__info">
+              <div class="cart-item__header">
+                <p class="cart-item__title">Sofa Boco 2025</p>
+                <button class="cart-item__button">
+                  <img src="/assets/icons/circleCross.svg" alt="remove" />
+                </button>
+              </div>
+              <p class="cart-item__details">
+                It is a long established fact that a reader will be distracted
+                by the readable content of a page when looking at its layout.
+              </p>
+              <div class="cart-item__footer">
+                <span class="cart-item__subtitle">XL 110x150</span>
+                <p class="cart-item__price">1 700€</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="summary">
+          <div class="summary__content">
+            <p class="summary__title">Resumen del pedido</p>
+            <div class="summary__info">
+              <div class="summary__row">
+                <div class="summary__position">
+                  <p class="summary__subtitle">Total parcial</p>
+                </div>
+                <span class="summary__price">$44,704 USD</span>
+              </div>
+              <div class="summary__row">
+                <div class="summary__position">
+                  <p class="summary__subtitle">Entrega exprés</p>
+                  <p class="summary__description">
+                    Entrega para el lunes 14/07
+                  </p>
+                </div>
+                <span class="summary__price">$0 USD</span>
+              </div>
+            </div>
+            <div class="summary__row">
+              <div class="summary__position">
+                <p class="summary__subtitle">Total</p>
+              </div>
+              <span class="summary__price">$44,704 USD</span>
+            </div>
+          </div>
+          <a class="summary__button" href="/checkout">
+            <span>Checkout</span>
+            <img src="/assets/icons/blueArrow.svg" alt="arrow" />
+          </a>
+        </div>
+      </div>
+    </main>
+
+    {{> footer }}
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"
+      defer
+    ></script>
+    <script
+      src="https://unpkg.com/lenis@1.3.4/dist/lenis.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+      defer
+    ></script>
+    <script src="/script.js" defer></script>
+  </body>
+</html>

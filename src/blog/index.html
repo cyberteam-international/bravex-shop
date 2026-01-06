@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/sass/style.scss" />
+    <link rel="stylesheet" href="/fonts/stylesheet.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/lenis@1.3.4/dist/lenis.css"
+    />
+    <link rel="icon" href="/assets/icons/favicon.png" />
+    <title>BRAVEX</title>
+    <script>
+      document.documentElement.style.setProperty(
+        "--fixed-vh",
+        `${window.innerHeight}px`
+      );
+    </script>
+  </head>
+  <body>
+    {{> header }}
+
+    <main class="news">
+      <div class="news__header fade-in">
+        <p class="news__title">Noticias <span>y Análisis</span></p>
+        <div class="news__controls">
+          <div class="select news__select">
+            <div class="select-trigger">
+              <span>Categorías</span>
+              <img src="/assets/icons/selectArrow.svg" alt="arrow" />
+            </div>
+            <ul class="select-options">
+              <li data-value="option1">Popularidad</li>
+              <li data-value="option2">Precio: de menor a mayor</li>
+              <li data-value="option3">Precio: de mayor a menor</li>
+            </ul>
+          </div>
+          <div class="select select_black news__select">
+            <div class="select-trigger select-trigger">
+              <span>Por fecha</span>
+              <img src="/assets/icons/selectArrow.svg" alt="arrow" />
+            </div>
+            <ul class="select-options">
+              <li data-value="option1">Popularidad</li>
+              <li data-value="option2">Precio: de menor a mayor</li>
+              <li data-value="option3">Precio: de mayor a menor</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="news__main-section fade-in">
+        <a class="news__card">
+          <img
+            src="/assets/img/news/newsMain1.webp"
+            alt="news-image"
+            class="news__image"
+          />
+          <p>Nueva colección <span> de sofás de una marca global </span></p>
+          <button class="news__card-button">
+            <img src="/assets/icons/blackArrow.svg" alt="" />
+          </button>
+        </a>
+        <a class="news__card">
+          <img
+            src="/assets/img/news/newsMain2.webp"
+            alt="news-image"
+            class="news__image"
+          />
+          <p>Nueva colección <span> de sofás de una marca global </span></p>
+          <button class="news__card-button">
+            <img src="/assets/icons/blackArrow.svg" alt="" />
+          </button>
+        </a>
+      </div>
+      <div class="all-news fade-in">
+        <div class="all-news__wrapper">
+          <a class="news__card">
+            <img
+              src="/assets/img/news/news1.webp"
+              alt="news-image"
+              class="news__image"
+            />
+            <p>Nueva colección <span> de sofás de una marca global </span></p>
+            <button class="news__card-button">
+              <img src="/assets/icons/blackArrow.svg" alt="" />
+            </button>
+          </a>
+          <a class="news__card">
+            <img
+              src="/assets/img/news/news2.webp"
+              alt="news-image"
+              class="news__image"
+            />
+            <p>Nueva colección <span> de sofás de una marca global </span></p>
+            <button class="news__card-button">
+              <img src="/assets/icons/blackArrow.svg" alt="" />
+            </button>
+          </a>
+          <a class="news__card">
+            <img
+              src="/assets/img/news/news3.webp"
+              alt="news-image"
+              class="news__image"
+            />
+            <p>Nueva colección <span> de sofás de una marca global </span></p>
+            <button class="news__card-button">
+              <img src="/assets/icons/blackArrow.svg" alt="" />
+            </button>
+          </a>
+          <a class="news__card">
+            <img
+              src="/assets/img/news/news4.webp"
+              alt="news-image"
+              class="news__image"
+            />
+            <p>Nueva colección <span> de sofás de una marca global </span></p>
+            <button class="news__card-button">
+              <img src="/assets/icons/blackArrow.svg" alt="" />
+            </button>
+          </a>
+          <a class="news__card">
+            <img
+              src="/assets/img/news/news1.webp"
+              alt="news-image"
+              class="news__image"
+            />
+            <p>Nueva colección <span> de sofás de una marca global </span></p>
+            <button class="news__card-button">
+              <img src="/assets/icons/blackArrow.svg" alt="" />
+            </button>
+          </a>
+          <a class="news__card">
+            <img
+              src="/assets/img/news/news2.webp"
+              alt="news-image"
+              class="news__image"
+            />
+            <p>Nueva colección <span> de sofás de una marca global </span></p>
+            <button class="news__card-button">
+              <img src="/assets/icons/blackArrow.svg" alt="" />
+            </button>
+          </a>
+          <a class="news__card">
+            <img
+              src="/assets/img/news/news3.webp"
+              alt="news-image"
+              class="news__image"
+            />
+            <p>Nueva colección <span> de sofás de una marca global </span></p>
+            <button class="news__card-button">
+              <img src="/assets/icons/blackArrow.svg" alt="" />
+            </button>
+          </a>
+          <a class="news__card">
+            <img
+              src="/assets/img/news/news4.webp"
+              alt="news-image"
+              class="news__image"
+            />
+            <p>Nueva colección <span> de sofás de una marca global </span></p>
+            <button class="news__card-button">
+              <img src="/assets/icons/blackArrow.svg" alt="" />
+            </button>
+          </a>
+        </div>
+        <div class="pagination news__pagination">
+          <div class="pagination__item pagination__item_active">1</div>
+          <div class="pagination__item">2</div>
+          <div class="pagination__item">3</div>
+          <div class="pagination__item">4</div>
+          <div
+            class="pagination__item pagination__item_active pagination__item_next"
+          >
+            <img src="/assets/icons/selectArrow.svg" alt="" />
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="new-collection fade-in">
+      <img
+        class="new-collection__background"
+        src="/assets/img/newCollection.webp"
+        alt="new collection"
+      />
+
+      <div class="new-collection__content">
+        <div class="new-collection__header">
+          <p class="new-collection__label">Nueva colección</p>
+          <img
+            src="/assets/icons/logo.svg"
+            alt=""
+            class="new-collection__logo"
+          />
+        </div>
+        <div class="new-collection__footer">
+          <div class="new-collection__info">
+            <p class="new-collection__title">Sofa Boco Room</p>
+            <div class="new-collection__description">
+              <p class="new-collection__price">1 700€</p>
+              <p class="new-collection__subtitle">
+                El precio incluye entrega, instalación e IVA
+              </p>
+            </div>
+          </div>
+          <div class="new-collection__controls">
+            <button class="button new-collection__button">
+              <span>Aprender más</span>
+              <img src="/assets/icons/right-arrow.svg" alt="arrow" />
+            </button>
+            <div class="new-collection__cards">
+              <button class="button-card new-collection__card">
+                <span>Tamaño</span>
+                <span>100x150cm</span>
+              </button>
+              <button class="button-card new-collection__card">
+                <span>Colección</span>
+                <span>Dragon</span>
+              </button>
+              <button class="button-card new-collection__card">
+                <span>Categoría</span>
+                <span>Furniture</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{> footer }}
+
+    <script src="./../libs/swiper/swiper-bundle.min.js" defer></script>
+    <script
+      src="https://unpkg.com/lenis@1.3.4/dist/lenis.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+      defer
+    ></script>
+    <script src="/script.js" defer></script>
+    <script src="/js/select.js" defer></script>
+  </body>
+</html>

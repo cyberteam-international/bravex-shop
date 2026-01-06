@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/sass/style.scss" />
+    <link rel="stylesheet" href="/fonts/stylesheet.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/lenis@1.3.4/dist/lenis.css"
+    />
+    <link rel="icon" href="/assets/icons/favicon.png" />
+    <title>BRAVEX - Checkout</title>
+  </head>
+  <body>
+    {{> header }}
+
+    <main class="checkout">
+      <p class="checkout__title">Verificar</p>
+      <div class="checkout__wrapper">
+        <div class="checkout__layout">
+          <div class="checkout__tabs">
+            <a href="/checkout" class="checkout__tab_active"
+              >ENVÍO Y FACTURACIÓN</a
+            >
+            <a href="/checkout2" class="checkout__tab">PAGO</a>
+          </div>
+
+          <form action="" class="checkout__form">
+            <p class="checkout__subtitle">INFORMACIÓN DE CONTACTO</p>
+            <div class="checkout__form-block">
+              <input
+                type="text"
+                class="input"
+                placeholder="Email"
+                name="email"
+              />
+              <input
+                type="text"
+                class="input"
+                placeholder="Teléfono"
+                name="phone"
+              />
+            </div>
+            <p class="checkout__subtitle">DIRECCIÓN DE ENVÍO</p>
+            <div class="checkout__form-block">
+              <div class="checkout__double-row">
+                <input
+                  type="text"
+                  class="input"
+                  placeholder="Nombre"
+                  name="firstName"
+                />
+                <input
+                  type="text"
+                  class="input"
+                  placeholder="Apellido"
+                  name="lastName"
+                />
+              </div>
+              <input
+                type="text"
+                class="input"
+                placeholder="País"
+                name="country"
+              />
+              <input
+                type="text"
+                class="input"
+                placeholder="Estado/Región"
+                name="state"
+              />
+              <input
+                type="text"
+                class="input"
+                placeholder="Dirección"
+                name="address"
+              />
+              <div class="checkout__double-row">
+                <input
+                  type="text"
+                  class="input"
+                  placeholder="Ciudad"
+                  name="city"
+                />
+                <input
+                  type="text"
+                  class="input"
+                  placeholder="Código postal"
+                  name="postalCode"
+                />
+              </div>
+            </div>
+            <p class="checkout__subtitle">MÉTODO DE ENVÍO</p>
+            <div class="checkout__shipping">
+              <label class="radio-button">
+                <input type="radio" name="shipping" checked />
+                <span class="radio-button__custom"></span>
+                <div class="radio-button__info">
+                  <p class="radio-button__title">Entrega exprés con firma</p>
+                  <p class="radio-button__description">
+                    Entrega para el lunes 14/07
+                  </p>
+                </div>
+                <span class="radio-button__price">$ 0.00</span>
+              </label>
+              <label class="radio-button">
+                <input type="radio" name="shipping" />
+                <span class="radio-button__custom"></span>
+                <div class="radio-button__info">
+                  <p class="radio-button__title">
+                    Entrega al día siguiente con firma
+                  </p>
+                  <p class="radio-button__description">
+                    Ordene antes de las 3 PM ET el viernes 11 de julio de 2025 y
+                    recíbalo el sábado 12 de julio de 2025
+                  </p>
+                </div>
+                <span class="radio-button__price">$ 0.00</span>
+              </label>
+              <label class="radio-button">
+                <input type="radio" name="shipping" />
+                <span class="radio-button__custom"></span>
+                <div class="radio-button__info">
+                  <p class="radio-button__title">Recoger en la tienda</p>
+                </div>
+              </label>
+            </div>
+            <button class="button checkout__button">Continuar</button>
+          </form>
+        </div>
+
+        <div class="summary checkout__summary">
+          <div class="summary__content">
+            <p class="summary__title">Resumen del pedido</p>
+            <div class="summary__info">
+              <div class="summary__row">
+                <div class="summary__position">
+                  <p class="summary__subtitle">Subtotal</p>
+                </div>
+                <span class="summary__price">$44,704 USD</span>
+              </div>
+              <div class="summary__row">
+                <div class="summary__position">
+                  <p class="summary__subtitle">Entrega exprés</p>
+                  <p class="summary__description">
+                    Entrega para el lunes 14/07
+                  </p>
+                </div>
+                <span class="summary__price">$0 USD</span>
+              </div>
+            </div>
+            <div class="summary__row">
+              <div class="summary__position">
+                <p class="summary__subtitle">Total</p>
+              </div>
+              <span class="summary__price">$44,704 USD</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    {{> footer }}
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"
+      defer
+    ></script>
+    <script
+      src="https://unpkg.com/lenis@1.3.4/dist/lenis.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+      defer
+    ></script>
+  </body>
+</html>

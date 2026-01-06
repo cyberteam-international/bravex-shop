@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/sass/style.scss" />
+    <link rel="stylesheet" href="/fonts/stylesheet.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/lenis@1.3.4/dist/lenis.css"
+    />
+    <link rel="icon" href="/assets/icons/favicon.png" />
+    <title>BRAVEX - Thank You</title>
+  </head>
+  <body>
+    {{> header }}
+
+    <main class="checkout">
+      <div class="checkout__wrapper thanks__wrapper">
+        <div class="thanks">
+          <h1 class="thanks__title">Gracias por su pedido</h1>
+          <p class="thanks__subtitle">
+            Hemos enviado los detalles de su pedido a su
+            <span>dirección de correo electrónico. </span>
+          </p>
+          <a href="/" class="button thanks__button">Continuar comprando</a>
+        </div>
+
+        <div class="summary-receipt">
+          <p class="summary-receipt__title">Resumen del pedido</p>
+          <div class="summary-receipt__info">
+            <div class="summary-receipt__row">
+              <p class="summary-receipt__label">Número de pedido</p>
+              <span class="summary-receipt__description">#12345</span>
+            </div>
+            <div class="summary-receipt__row">
+              <p class="summary-receipt__label">Fecha de entrega</p>
+              <span class="summary-receipt__description">14.07.2025</span>
+            </div>
+            <div class="summary-receipt__row">
+              <p class="summary-receipt__label">Detalles de envío</p>
+              <span class="summary-receipt__description"
+                >Nombre/Apellido dirección</span
+              >
+            </div>
+          </div>
+          <div class="summary-receipt__cards">
+            <div class="summary-receipt__card">
+              <div class="summary-receipt__card-wrapper">
+                <img
+                  src="/assets/img/itemsSlider1.webp"
+                  alt=""
+                  class="summary-receipt__card-image"
+                />
+                <div class="summary-receipt__card-info">
+                  <p class="summary-receipt__card-title">
+                    Anillo de dragón con diamante redondo brillante
+                  </p>
+                  <div class="summary-receipt__card-description">
+                    <div>
+                      <p>Tamaño</p>
+                      <p>180x160</p>
+                    </div>
+                    <div>
+                      <p>Cantidad</p>
+                      <p>1</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p class="summary-receipt__price">$44,704 USD</p>
+            </div>
+          </div>
+          <div class="summary-receipt__info">
+            <div class="summary-receipt__row">
+              <p class="summary-receipt__label">Subtotal</p>
+              <span class="summary-receipt__price">$44,704 USD</span>
+            </div>
+            <div class="summary-receipt__row">
+              <p class="summary-receipt__label">Entrega exprés</p>
+              <span class="summary-receipt__price">$0,00 USD</span>
+            </div>
+            <div class="summary-receipt__row">
+              <p class="summary-receipt__label">Impuesto estimado</p>
+              <span class="summary-receipt__price">$1000,73 USD</span>
+            </div>
+          </div>
+          <div class="summary-receipt__row summary-receipt__total">
+            <p class="summary-receipt__label">Total</p>
+            <span class="summary-receipt__price_strong">$45,777 USD</span>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    {{> footer }}
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"
+      defer
+    ></script>
+    <script
+      src="https://unpkg.com/lenis@1.3.4/dist/lenis.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+      defer
+    ></script>
+  </body>
+</html>

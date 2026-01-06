@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <link rel="stylesheet" href="/sass/style.scss" />
+    <link rel="stylesheet" href="/fonts/stylesheet.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/lenis@1.3.4/dist/lenis.css"
+    />
+    <link rel="icon" href="/assets/icons/favicon.png" />
+    <title>BRAVEX - Returns</title>
+  </head>
+  <body>
+    {{> header }}
+
+    <main class="returns">
+      <div class="breadcrumbs returns__breadcrumbs">
+        <a href="/" class="breadcrumbs__link">Inicio</a>
+        <span class="breadcrumbs__separator">/</span>
+        <a href="" class="breadcrumbs__link breadcrumbs__link_active"
+          >Entrega y devoluciones</a
+        >
+      </div>
+
+      <div class="returns__layout">
+        <div class="returns__banner">
+          <img
+            src="/assets/img/returns.webp"
+            alt="returns-image"
+            class="returns__image"
+          />
+          <img
+            src="/assets/img/returns-mobile.webp"
+            alt="returns-image"
+            class="returns__image returns__image-mobile"
+          />
+          <div class="returns__banner-title">
+            <p>Entrega</p>
+            <p>& Devoluciones</p>
+          </div>
+        </div>
+
+        <div class="returns__info">
+          <div class="returns__info-block">
+            <p class="returns__title">Entrega</p>
+            <div class="returns__section">
+              <div class="returns__section-item">
+                <p class="returns__subtitle">Opciones de envío:</p>
+                <p class="returns__text">
+                  — Entrega estándar (gratis) — 3–7 días hábiles<br />
+                  — Entrega exprés — 1–3 días hábiles (el precio se calcula al
+                  finalizar la compra)<br />
+                  — Envíos a todo el mundo disponibles
+                </p>
+              </div>
+              <div class="returns__section-item">
+                <p class="returns__subtitle">Seguimiento:</p>
+                <p class="returns__text">
+                  Una vez que tu pedido haya sido enviado, recibirás un número
+                  de seguimiento por correo electrónico.
+                </p>
+              </div>
+              <div class="returns__section-item">
+                <p class="returns__subtitle">Embalaje:</p>
+                <p class="returns__text">
+                  Todos los muebles se entregan en embalaje protector con la
+                  marca Bravex, ideal para un transporte y almacenamiento
+                  seguros.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="returns__info-block returns__info-block_2">
+            <p class="returns__title">Devoluciones</p>
+            <div class="returns__section returns__section_2">
+              <div class="returns__section-item">
+                <p class="returns__subtitle">Devoluciones:</p>
+                <p class="returns__text">
+                  Puedes devolver tu compra dentro de los 14 días posteriores a
+                  la entrega, siempre que el producto esté sin usar y en su
+                  embalaje original.
+                </p>
+              </div>
+              <div class="returns__section-item">
+                <p class="returns__subtitle">Proceso de devolución:</p>
+                <p class="returns__text">
+                  Contáctanos para iniciar la devolución y te enviaremos las
+                  instrucciones paso a paso para realizarla de forma rápida y
+                  sencilla.
+                </p>
+              </div>
+              <div class="returns__section-item">
+                <p class="returns__subtitle">Reembolsos:</p>
+                <p class="returns__text">
+                  Una vez recibamos y revisemos el producto, el reembolso se
+                  procesará al método de pago original en un plazo de 5–7 días
+                  hábiles
+                </p>
+              </div>
+            </div>
+          </div>
+          <a href="/contacts" class="button returns__button">Contáctanos</a>
+        </div>
+      </div>
+    </main>
+
+    {{> footer }}
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"
+      defer
+    ></script>
+    <script
+      src="https://unpkg.com/lenis@1.3.4/dist/lenis.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+      defer
+    ></script>
+  </body>
+</html>
