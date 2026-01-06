@@ -1,0 +1,303 @@
+@use '../abstract/index' as *;
+
+.contacts {
+  padding: 80px 100px 60px 20px;
+  @include media-laptop-xl {
+    padding: 60px 80px 45px 20px;
+  }
+  @include media-laptop-lg {
+    padding: 50px 60px 40px 20px;
+  }
+  @include media-laptop {
+    padding: 40px 40px 30px 20px;
+  }
+  @include media-mobile {
+    padding: 30px 10px 20px 10px;
+  }
+}
+
+.contacts__breadcrumbs {
+  @include media-tablet-lg {
+    display: none;
+  }
+}
+
+.contacts__layout {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 200px;
+  margin-bottom: 260px;
+  @include media-laptop-xl {
+    margin-top: 170px;
+    margin-bottom: 200px;
+  }
+  @include media-laptop-lg {
+    margin-top: 140px;
+    margin-bottom: 160px;
+    gap: 15px;
+  }
+  @include media-laptop {
+    margin-top: 110px;
+    margin-bottom: 130px;
+  }
+  @include media-tablet-lg {
+    flex-direction: column;
+    flex: 1;
+  }
+}
+
+.contacts__form {
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+  color: $color-white;
+  @include media-laptop-xl {
+    max-width: 510px;
+  }
+  @include media-laptop-lg {
+    max-width: 454px;
+  }
+  @include media-laptop {
+    max-width: 394px;
+  }
+  @include media-tablet-lg {
+    max-width: 100%;
+  }
+}
+
+.contacts__title {
+  display: flex;
+  @include font($size: 5rem, $height: 5rem, $weight: 400);
+  margin-bottom: 24px;
+  letter-spacing: -1px;
+  text-wrap: wrap;
+  span:last-child {
+    color: #a0a0a0;
+  }
+  @include media-laptop-xl {
+    @include font($size: 4.5rem, $height: 4.5rem, $weight: 400);
+    margin-bottom: 18px;
+  }
+  @include media-laptop-lg {
+    @include font($size: 4rem, $height: 4rem, $weight: 400);
+    margin-bottom: 16px;
+  }
+  @include media-laptop {
+    @include font($size: 3.5rem, $height: 3.5rem, $weight: 400);
+    margin-bottom: 14px;
+  }
+  @include media-mobile {
+    @include font($size: 3rem, $height: 3rem, $weight: 400);
+    margin-bottom: 12px;
+  }
+}
+
+.contacts__subtitle {
+  @include font($size: 1.7rem, $height: 100%, $weight: 400);
+  letter-spacing: -0.4px;
+  color: #868686;
+  @include media-laptop-xl {
+    @include font($size: 1.5rem, $height: 100%, $weight: 400);
+  }
+  @include media-laptop-lg {
+    @include font($size: 1.4rem, $height: 100%, $weight: 400);
+  }
+  @include media-laptop {
+    @include font($size: 1.2rem, $height: 100%, $weight: 400);
+  }
+  @include media-mobile {
+    @include font($size: 1.6rem, $height: 140%, $weight: 400);
+    max-width: 270px;
+  }
+}
+
+.contacts__form-block {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 45px;
+  @include media-laptop-xl {
+    margin-top: 35px;
+  }
+  @include media-laptop-lg {
+    margin-top: 30px;
+    gap: 12px;
+  }
+  @include media-mobile {
+    margin-top: 40px;
+    gap: 16px;
+  }
+}
+
+.contacts__input {
+  padding-left: 45px;
+  @include media-laptop-xl {
+    height: 42px;
+    padding-left: 40px;
+  }
+  @include media-laptop-lg {
+    height: 40px;
+    padding-left: 35px;
+  }
+  @include media-laptop {
+    height: 38px;
+    padding-left: 30px;
+  }
+  @include media-tablet-lg {
+    height: 44px;
+    padding-left: 45px;
+  }
+}
+
+.contacts__button {
+  width: 100%;
+  height: 44px;
+  padding: 0;
+  @include font($size: 1.6rem, $height: 1.6rem, $weight: 500);
+  justify-content: center;
+  margin-top: 8px;
+  border-radius: 12px;
+  @include media-laptop-xl {
+    height: 42px;
+    font-size: 1.5rem;
+  }
+  @include media-laptop-lg {
+    height: 40px;
+    font-size: 1.4rem;
+  }
+  @include media-laptop {
+    height: 38px;
+    font-size: 1.2rem;
+  }
+  @include media-tablet-lg {
+    margin-top: 15px;
+    height: 44px;
+    font-size: 1.4rem;
+    border-radius: 10px;
+  }
+}
+
+.contacts__form-notification {
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+  @include font($size: 1.2rem, $height: 1.2rem, $weight: 400);
+  span:first-child {
+    color: #818181;
+  }
+  @include media-laptop-lg {
+    font-size: 1.1rem;
+  }
+  @include media-laptop {
+    font-size: 1rem;
+  }
+  @include media-tablet-lg {
+    font-size: 1.2rem;
+  }
+}
+
+.contacts__departments {
+  display: flex;
+  flex-direction: column;
+  gap: 45px;
+  @include font($size: 4.5rem, $height: 4.5rem, $weight: 400);
+  color: $color-white;
+  @include media-laptop-xl {
+    @include font($size: 3.8rem, $height: 3.8rem, $weight: 400);
+    gap: 42px;
+  }
+  @include media-laptop-lg {
+    @include font($size: 3.3rem, $height: 3.3rem, $weight: 400);
+    gap: 38px;
+  }
+  @include media-laptop {
+    @include font($size: 2.8rem, $height: 2.8rem, $weight: 400);
+    gap: 34px;
+  }
+  @include media-tablet-lg {
+    margin-top: 70px;
+    @include font($size: 2.7rem, $height: 2.7rem, $weight: 400);
+  }
+}
+
+.contacts__department {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-decoration: none;
+}
+
+.contacts__department-title {
+  color: #95979f;
+}
+
+.contacts__location {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 120px 60px;
+  color: $color-white;
+  @include font($size: 5.5rem, $height: 5.5rem, $weight: 400);
+  p:last-child {
+    @include font($size: 2.5rem, $height: 3rem, $weight: 400);
+    color: #95979f;
+    width: 370px;
+  }
+  @include media-laptop-xl {
+    padding: 100px 50px;
+    p {
+      font-size: 3.5rem;
+      line-height: 4rem;
+    }
+    p:last-child {
+      font-size: 2rem;
+      line-height: 2.5rem;
+      width: 300px;
+    }
+  }
+  @include media-laptop-lg {
+    padding: 80px 40px;
+    p {
+      font-size: 3rem;
+      line-height: 3.5rem;
+    }
+    p:last-child {
+      font-size: 1.8rem;
+      line-height: 2.2rem;
+      width: 270px;
+    }
+  }
+  @include media-laptop {
+    padding: 60px 30px;
+    p {
+      font-size: 2.5rem;
+      line-height: 3rem;
+    }
+    p:last-child {
+      font-size: 1.6rem;
+      line-height: 2rem;
+    }
+  }
+  @include media-tablet-lg {
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
+    padding: 70px 10px;
+    margin-bottom: 80px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    width: 100%;
+    p {
+      font-size: 3.2rem;
+      line-height: 3.2rem;
+      width: 290px;
+    }
+    p:last-child {
+      font-size: 2rem;
+      line-height: 2.2rem;
+      width: 290px;
+    }
+  }
+}

@@ -19,25 +19,25 @@
 
 .checkout__title {
   @include font($size: 6rem, $height: 7.5rem, $weight: 400);
-  margin-bottom: 110px;
+  margin-bottom: 20px;
   @include media-laptop-xl {
-    margin-bottom: 90px;
+    margin-bottom: 18px;
     @include font($size: 5rem, $height: 6.2rem, $weight: 400);
   }
   @include media-laptop-lg {
-    margin-bottom: 80px;
+    margin-bottom: 16px;
     @include font($size: 4.8rem, $height: 126%, $weight: 400);
   }
   @include media-laptop {
-    margin-bottom: 70px;
+    margin-bottom: 14px;
     @include font($size: 4.2rem, $height: 126%, $weight: 400);
   }
   @include media-mobile {
-    margin-bottom: 30px;
+    margin-bottom: 24px;
     @include font($size: 3.2rem, $height: 4rem, $weight: 400);
   }
   @include media-mobile-sm {
-    margin-bottom: 25px;
+    margin-bottom: 22px;
     @include font($size: 3rem, $height: 126%, $weight: 400);
   }
 }
@@ -107,6 +107,11 @@
     flex: 1;
     min-width: 0;
   }
+  @include media-tablet {
+    > input:first-child {
+      flex-basis: 38%;
+    }
+  }
 }
 
 .checkout__subtitle {
@@ -130,6 +135,13 @@
   padding: 0;
   justify-content: center;
   background-color: #0840f4;
+  border-radius: 12px;
+  @include media-laptop-lg {
+    border-radius: 10px;
+  }
+  @include media-tablet {
+    border-radius: 12px;
+  }
 }
 
 .checkout__summary {
@@ -142,6 +154,143 @@
     gap: 112px;
   }
   @include media-tablet {
+    margin-top: 50px;
+  }
+}
+
+.checkout__radio-button {
+  width: fit-content;
+  align-items: center;
+}
+
+.checkout__payment {
+  display: flex;
+  flex-direction: column;
+  gap: 45px;
+  margin-bottom: 25px;
+  margin-top: 70px;
+  @include media-laptop-xl {
     margin-top: 60px;
+  }
+  @include media-laptop-lg {
+    margin-top: 50px;
+  }
+  @include media-laptop {
+    margin-top: 40px;
+  }
+  @include media-tablet {
+    margin-top: 30px;
+  }
+}
+
+.checkout__payment-type {
+  display: flex;
+  justify-content: space-between;
+}
+
+.checkout__payment-icons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.checkout__checkbox {
+  margin: 28px 0 10px;
+}
+
+.thanks {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  text-align: center;
+  gap: 45px;
+  margin-top: auto;
+  margin-bottom: auto;
+  @include media-mobile {
+    gap: 20px;
+  }
+}
+
+.thanks__wrapper {
+  margin-right: 50px;
+  @include media-laptop-xl {
+    margin-right: 65px;
+  }
+  @include media-laptop {
+    margin-right: 5px;
+  }
+  @include media-tablet-lg {
+    margin-right: 0;
+  }
+  @include media-mobile {
+    margin-bottom: 50px;
+  }
+}
+
+.thanks__title {
+  margin: 0;
+  @include font($size: 8rem, $height: 8rem, $weight: 400);
+  @include media-laptop-xl {
+    @include font($size: 6.7rem, $height: 6.7rem, $weight: 400);
+  }
+  @include media-laptop-lg {
+    @include font($size: 6rem, $height: 6rem, $weight: 400);
+  }
+  @include media-laptop {
+    @include font($size: 5.1rem, $height: 5.1rem, $weight: 400);
+  }
+  @include media-mobile {
+    @include font($size: 4rem, $height: 4.1rem, $weight: 400);
+    letter-spacing: -1px;
+    width: 310px;
+  }
+}
+
+.thanks__subtitle {
+  @include font($size: 2.5rem, $height: 2.5rem, $weight: 400);
+  color: #666666;
+  span {
+    color: #888787;
+    text-decoration: underline;
+    font-weight: 500;
+  }
+  @include media-laptop-xl {
+    @include font($size: 2.2rem, $height: 2.2rem, $weight: 400);
+  }
+  @include media-laptop-lg {
+    @include font($size: 2rem, $height: 2rem, $weight: 400);
+  }
+
+  @include media-laptop {
+    @include font($size: 1.6rem, $height: 2.4rem, $weight: 400);
+  }
+  @include media-mobile {
+    @include font($size: 1.4rem, $height: 2rem, $weight: 400);
+    width: 275px;
+    margin-bottom: 50px;
+  }
+}
+
+.thanks__button {
+  width: 230px;
+  height: 44px;
+  padding: 0;
+  justify-content: center;
+  border-radius: 12px;
+  @include font($size: 1.5rem, $height: 100%, $weight: 500);
+  @include media-laptop-xl {
+    @include font($size: 1.4rem, $height: 100%, $weight: 500);
+  }
+  @include media-laptop-lg {
+    @include font($size: 1.3rem, $height: 100%, $weight: 500);
+    border-radius: 10px;
+  }
+  @include media-laptop {
+    @include font($size: 1.2rem, $height: 100%, $weight: 500);
+  }
+  @include media-tablet {
+    @include font($size: 1.5rem, $height: 100%, $weight: 500);
+    display: none;
   }
 }

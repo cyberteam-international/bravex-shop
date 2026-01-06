@@ -48,6 +48,9 @@
     height: 35%;
     background: rgba(30, 29, 28, 0.7);
     filter: blur(100px);
+    @include media-mobile {
+      filter: blur(60px);
+    }
   }
 }
 

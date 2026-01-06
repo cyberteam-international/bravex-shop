@@ -333,12 +333,6 @@
   }
   @include media-laptop {
     min-width: 210px;
-    // :first-child {
-    //   @include font($size: 1.2rem, $height: 190%, $weight: 500);
-    // }
-    // :last-child {
-    //   @include font($size: 2.5rem, $height: 2.5rem, $weight: 400);
-    // }
   }
   @include media-tablet-lg {
     min-width: 180px;
@@ -371,7 +365,7 @@
     @include font($size: 1.2rem, $height: 1.5rem, $weight: 400);
   }
   @include media-laptop {
-    width: 140px;
+    width: 170px;
     height: 45px;
     padding: 15px 25px;
     @include font($size: 1.2rem, $height: 1.5rem, $weight: 400);

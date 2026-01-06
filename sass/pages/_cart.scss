@@ -23,17 +23,17 @@
 
 .cart__title {
   @include font($size: 6rem, $height: 7.5rem, $weight: 400);
-  margin-bottom: 110px;
+  margin-bottom: 100px;
   @include media-laptop-xl {
-    margin-bottom: 90px;
+    margin-bottom: 80px;
     @include font($size: 5rem, $height: 6.2rem, $weight: 400);
   }
   @include media-laptop-lg {
-    margin-bottom: 80px;
+    margin-bottom: 70px;
     @include font($size: 4.8rem, $height: 126%, $weight: 400);
   }
   @include media-laptop {
-    margin-bottom: 70px;
+    margin-bottom: 60px;
     @include font($size: 4.2rem, $height: 126%, $weight: 400);
   }
   @include media-mobile {

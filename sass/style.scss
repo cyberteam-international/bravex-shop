@@ -10,8 +10,16 @@
 @use 'base/buttons';
 @use 'base/input';
 @use 'base/radioButton';
+@use 'base/checkBox';
 @use 'base/icons';
 @use 'base/loader';
+@use 'base/rangeFilter';
+@use 'base/select';
+@use 'base/select-sizes';
+@use 'base/accordion';
+@use 'base/pagination';
+@use 'base/inputNumber';
+@use 'base/breadcrumbs';
 
 // layouts
 @use 'layouts/header';
@@ -27,7 +35,16 @@
 @use 'components/new-collection';
 @use 'components/insights';
 @use 'components/summary';
+@use 'components/catalog-cards-section';
+@use 'components/filter';
 
 //pages
 @use 'pages/cart';
 @use 'pages/checkout';
+@use 'pages/catalogCover';
+@use 'pages/catalog';
+@use 'pages/product';
+@use 'pages/contacts';
+@use 'pages/returns';
+@use 'pages/singleNews';
+@use 'pages/news';

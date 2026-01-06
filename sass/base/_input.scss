@@ -5,16 +5,17 @@
   border-radius: 8px;
   height: 44px;
   padding: 0 22px;
-  border: 1px solid transparent;
+  border: 1px solid #393939;
   @include font($size: 1.4rem, $height: 100%, $weight: 400);
   overflow: hidden;
   text-overflow: ellipsis;
   &:focus {
     outline: none;
     border: 1px solid $color-white;
+    background: #000;
   }
   &::placeholder {
     @include font($size: 1.2rem, $height: 140%, $weight: 400);
-    color: $color-white;
+    color: #b9b9b9;
   }
 }

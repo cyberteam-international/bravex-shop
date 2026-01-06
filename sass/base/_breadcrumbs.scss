@@ -1,0 +1,30 @@
+@use '../abstract/index' as *;
+
+.breadcrumbs {
+  @include font($size: 1.4rem, $height: 1.4rem, $weight: 500);
+  color: $color-white;
+  display: flex;
+  align-items: center;
+  @include media-laptop-xl {
+    font-size: 1.3rem;
+  }
+  @include media-laptop-lg {
+    font-size: 1.2rem;
+  }
+  @include media-laptop {
+    font-size: 1.1rem;
+  }
+}
+
+.breadcrumbs__link {
+  text-decoration: none;
+
+  &.breadcrumbs__link_active {
+    color: #787575;
+  }
+}
+
+.breadcrumbs__separator {
+  color: $color-white;
+  margin: 0 8px;
+}

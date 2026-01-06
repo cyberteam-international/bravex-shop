@@ -146,7 +146,7 @@
     color: #0840f4;
   }
   img {
-    width: 15px;
+    width: 16px;
   }
 
   @include media-laptop-xl {
@@ -193,4 +193,193 @@
       width: 15px;
     }
   }
+}
+
+//summary-receipt
+
+.summary-receipt {
+  color: $color-white;
+  background-color: #0840f4;
+  padding: 18px 20px 25px;
+  width: 370px;
+  min-width: 370px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  @include media-laptop-xl {
+    width: 560px;
+  }
+  @include media-laptop-lg {
+    width: 500px;
+  }
+  @include media-laptop {
+    width: 380px;
+  }
+  @include media-tablet-lg {
+    width: 100%;
+    padding: 18px 11px 27px;
+  }
+  @include media-tablet {
+    min-width: 100%;
+  }
+  @include media-mobile {
+    // min-height: 366px;
+  }
+  @include media-mobile-sm {
+    // min-height: 346px;
+  }
+}
+
+.summary-receipt__title {
+  @include font($size: 2rem, $height: 124%, $weight: 500);
+  width: 100%;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #eae4e026;
+  @include media-laptop-xl {
+    @include font($size: 1.9rem, $height: 124%, $weight: 500);
+  }
+  @include media-laptop {
+    @include font($size: 1.6rem, $height: 124%, $weight: 500);
+  }
+  @include media-mobile {
+    @include font($size: 2rem, $height: 124%, $weight: 500);
+  }
+}
+
+.summary-receipt__info {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px 0;
+  border-bottom: 1px solid #eae4e026;
+  @include media-laptop-xl {
+    gap: 22px;
+  }
+  @include media-laptop {
+    gap: 18px;
+  }
+  @include media-mobile {
+    gap: 24px;
+  }
+}
+
+.summary-receipt__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.summary-receipt__cards {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #eae4e026;
+  padding: 30px 0 24px;
+  gap: 35px;
+}
+
+.summary-receipt__card {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  > :last-child {
+    margin-left: auto;
+  }
+}
+
+.summary-receipt__card-wrapper {
+  display: flex;
+  gap: 35px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eae4e026;
+}
+
+.summary-receipt__card-image {
+  width: 100px;
+  min-width: 100px;
+  height: 100px;
+}
+
+.summary-receipt__card-title {
+  @include font($size: 1.4rem, $height: 124%, $weight: 500);
+}
+
+.summary-receipt__card-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.summary-receipt__card-description {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  @include font($size: 1.4rem, $height: 124%, $weight: 400);
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  p:first-child {
+    @include font($size: 1.2rem, $height: 124%, $weight: 400);
+  }
+}
+
+.summary-receipt__label {
+  @include font($size: 1.4rem, $height: 124%, $weight: 400);
+  @include media-laptop-xl {
+    @include font($size: 1.3rem, $height: 124%, $weight: 400);
+  }
+  @include media-laptop {
+    @include font($size: 1.3rem, $height: 124%, $weight: 400);
+  }
+  @include media-mobile {
+    @include font($size: 1.4rem, $height: 124%, $weight: 400);
+  }
+}
+
+.summary-receipt__description {
+  display: inline-block;
+  width: 130px;
+  text-align: right;
+  @include font($size: 1.2rem, $height: 124%, $weight: 400);
+  @include media-laptop-xl {
+    width: 120px;
+    @include font($size: 1.1rem, $height: 124%, $weight: 400);
+  }
+  @include media-laptop {
+    width: 100px;
+    @include font($size: 1rem, $height: 124%, $weight: 400);
+  }
+  @include media-mobile {
+    width: 120px;
+    @include font($size: 1.2rem, $height: 124%, $weight: 400);
+  }
+}
+
+.summary-receipt__price {
+  @include font($size: 1.4rem, $height: 100%, $weight: 400);
+  @include media-laptop-xl {
+    @include font($size: 1.2rem, $height: 100%, $weight: 400);
+  }
+  @include media-laptop {
+    @include font($size: 1.1rem, $height: 100%, $weight: 400);
+  }
+  @include media-mobile {
+    @include font($size: 1.4rem, $height: 100%, $weight: 400);
+  }
+  &_strong {
+    @include font($size: 1.4rem, $height: 100%, $weight: 700);
+    @include media-laptop-xl {
+      @include font($size: 1.2rem, $height: 100%, $weight: 700);
+    }
+    @include media-laptop {
+      @include font($size: 1.1rem, $height: 100%, $weight: 700);
+    }
+    @include media-mobile {
+      @include font($size: 1.4rem, $height: 100%, $weight: 700);
+    }
+  }
+}
+
+.summary-receipt__total {
+  padding-top: 20px;
 }

@@ -1,0 +1,149 @@
+@use '../abstract/index' as *;
+
+.select-sizes-wrapper {
+  position: relative;
+  width: 270px;
+  height: 56px;
+  @include media-mobile {
+    display: flex;
+    flex: 1;
+  }
+}
+
+.select-sizes {
+  position: absolute;
+  width: 270px;
+  height: 56px;
+  background: #1a1a1a;
+  border-radius: 12px;
+  @include media-mobile {
+    width: 100%;
+  }
+
+  &.open {
+    height: auto;
+    max-height: 190px;
+    overflow: hidden;
+    .select-sizes__dropdown {
+      max-height: 280px;
+      opacity: 1;
+      margin-top: 24px;
+    }
+  }
+}
+
+.select-sizes__head {
+  width: 100%;
+  padding: 20px 15px;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: $color-white;
+  cursor: pointer;
+  .select-sizes:not(.open) & {
+    .select-sizes__item:not(.active) {
+      display: none;
+    }
+  }
+}
+
+.select-sizes__label {
+  position: absolute;
+  left: 30px;
+  top: 20px;
+}
+
+.select-sizes__list {
+  margin: 0;
+  margin-left: 80px;
+  list-style: none;
+  width: 56%;
+
+  text-align: center;
+  transition: transform 0.3s ease;
+  .select-sizes:not(.open) & {
+    transform: translateY(0) !important;
+    transition: none !important;
+  }
+  @include media-tablet {
+    touch-action: pan-y;
+    transition: none;
+  }
+}
+
+.select-sizes__item {
+  font-size: 16px;
+  padding: 10px 0;
+  opacity: 0.25;
+  cursor: pointer;
+  transition: 0.2s;
+
+  &.active {
+    opacity: 1;
+  }
+
+  .select-sizes:not(.open) & {
+    padding: 0;
+    color: #595959;
+  }
+}
+
+.select-sizes__arrow {
+  position: absolute;
+  right: 24px;
+  background: none;
+  border: none;
+  color: $color-white;
+  cursor: pointer;
+  opacity: 0.7;
+  z-index: 3;
+  @include font($size: 0.8rem, $height: 0.8rem, $weight: 400);
+  &:hover {
+    opacity: 1;
+  }
+
+  &--up {
+    top: 18px;
+  }
+
+  &--down {
+    bottom: 18px;
+  }
+}
+
+.select-sizes__controls {
+  position: absolute;
+  right: 15px;
+  top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  .select-sizes__arrow {
+    position: static;
+    right: 24px;
+    background: none;
+    border: none;
+    color: $color-white;
+    cursor: pointer;
+    opacity: 0.7;
+    z-index: 3;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &--up {
+      top: 18px;
+    }
+
+    &--down {
+      bottom: 18px;
+    }
+  }
+  .select-sizes.open & {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}

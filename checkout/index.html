@@ -34,12 +34,12 @@
 
       <ul class="header__navigation">
         <li><a href="">SHOWROOM</a></li>
-        <li><a href="">DELIVERY AND PAYMENT </a></li>
-        <li><a href="">CONTACTS</a></li>
-        <li><a href="">TIPS</a></li>
-        <li><a href="">3D VISUALISATION</a></li>
+        <li><a href="">ENTREGA Y PAGO </a></li>
+        <li><a href="">CONTACTOS</a></li>
+        <li><a href="">CONSEJOS</a></li>
+        <li><a href="">VISUALIZACIÓN 3D</a></li>
         <li><a href="">BLOG</a></li>
-        <li><a href="">CATALOG</a></li>
+        <li><a href="">CATÁLOGO</a></li>
       </ul>
 
       <div class="header__controls">
@@ -56,16 +56,18 @@
     </header>
 
     <main class="checkout">
-      <p class="checkout__title">Checkout</p>
+      <p class="checkout__title">Verificar</p>
       <div class="checkout__wrapper">
         <div class="checkout__layout">
           <div class="checkout__tabs">
-            <div class="checkout__tab_active">SHIPPING & BILLING</div>
-            <div class="checkout__tab">PAYMENT</div>
+            <a href="./checkout.html" class="checkout__tab_active"
+              >ENVÍO Y FACTURACIÓN</a
+            >
+            <a href="./checkout2.html" class="checkout__tab">PAGO</a>
           </div>
 
           <form action="" class="checkout__form">
-            <p class="checkout__subtitle">CONTACT INFO</p>
+            <p class="checkout__subtitle">INFORMACIÓN DE CONTACTO</p>
             <div class="checkout__form-block">
               <input
                 type="text"
@@ -76,70 +78,82 @@
               <input
                 type="text"
                 class="input"
-                placeholder="Phone"
+                placeholder="Teléfono"
                 name="phone"
               />
             </div>
-            <p class="checkout__subtitle">SHIPPING ADDRESS</p>
+            <p class="checkout__subtitle">DIRECCIÓN DE ENVÍO</p>
             <div class="checkout__form-block">
               <div class="checkout__double-row">
                 <input
                   type="text"
                   class="input"
-                  placeholder="First Name"
+                  placeholder="Nombre"
                   name="firstName"
                 />
                 <input
                   type="text"
                   class="input"
-                  placeholder="Last Name"
+                  placeholder="Apellido"
                   name="lastName"
                 />
               </div>
               <input
                 type="text"
                 class="input"
-                placeholder="Country"
+                placeholder="País"
                 name="country"
               />
               <input
                 type="text"
                 class="input"
-                placeholder="State/Region"
+                placeholder="Estado/Región"
                 name="state"
               />
               <input
                 type="text"
                 class="input"
-                placeholder="Address"
+                placeholder="Dirección"
                 name="address"
               />
               <div class="checkout__double-row">
                 <input
                   type="text"
                   class="input"
-                  placeholder="City"
+                  placeholder="Ciudad"
                   name="city"
                 />
                 <input
                   type="text"
                   class="input"
-                  placeholder="Postal Code"
+                  placeholder="Código postal"
                   name="postalCode"
                 />
               </div>
             </div>
-            <p class="checkout__subtitle">SHIPPING METHOD</p>
+            <p class="checkout__subtitle">MÉTODO DE ENVÍO</p>
             <div class="checkout__shipping">
               <label class="radio-button">
                 <input type="radio" name="shipping" checked />
                 <span class="radio-button__custom"></span>
                 <div class="radio-button__info">
+                  <p class="radio-button__title">Entrega exprés con firma</p>
+                  <p class="radio-button__description">
+                    Entrega para el lunes 14/07
+                  </p>
+                </div>
+                <span class="radio-button__price">$ 0.00</span>
+              </label>
+              <label class="radio-button">
+                <input type="radio" name="shipping" />
+                <span class="radio-button__custom"></span>
+                <div class="radio-button__info">
                   <p class="radio-button__title">
-                    Express Delivery with Signature
+                    Entrega al día siguiente con firma
                   </p>
                   <p class="radio-button__description">
-                    Delivery by Monday 14/07
+                    Ordene antes de las 3 PM ET el viernes 11 de julio de 2025 y
+                    recíbalo el sábado 12 de julio de 2025
                   </p>
                 </div>
                 <span class="radio-button__price">$ 0.00</span>
@@ -148,29 +162,17 @@
                 <input type="radio" name="shipping" />
                 <span class="radio-button__custom"></span>
                 <div class="radio-button__info">
-                  <p class="radio-button__title">Next Day with Signature</p>
-                  <p class="radio-button__description">
-                    Order before 3 PM ET on Friday, July 11, 2025, and receive
-                    it on Saturday, July 12, 2025
-                  </p>
-                </div>
-                <span class="radio-button__price">$ 0.00</span>
-              </label>
-              <label class="radio-button">
-                <input type="radio" name="shipping" />
-                <span class="radio-button__custom"></span>
-                <div class="radio-button__info">
-                  <p class="radio-button__title">Pick up In-Store</p>
+                  <p class="radio-button__title">Recoger en la tienda</p>
                 </div>
               </label>
             </div>
-            <button class="button checkout__button">Continue</button>
+            <button class="button checkout__button">Continuar</button>
           </form>
         </div>
 
         <div class="summary checkout__summary">
           <div class="summary__content">
-            <p class="summary__title">Order Summary</p>
+            <p class="summary__title">Resumen del pedido</p>
             <div class="summary__info">
               <div class="summary__row">
                 <div class="summary__position">
@@ -180,8 +182,10 @@
               </div>
               <div class="summary__row">
                 <div class="summary__position">
-                  <p class="summary__subtitle">Express Delivery</p>
-                  <p class="summary__description">Delivery by Monday 14/07</p>
+                  <p class="summary__subtitle">Entrega exprés</p>
+                  <p class="summary__description">
+                    Entrega para el lunes 14/07
+                  </p>
                 </div>
                 <span class="summary__price">$0 USD</span>
               </div>
@@ -197,12 +201,12 @@
       </div>
     </main>
 
+    <script src="./../libs/swiper/swiper-bundle.min.js" defer></script>
     <script
       src="https://unpkg.com/lenis@1.3.4/dist/lenis.min.js"
       defer
     ></script>
-    <script src="../libs/gsap/gsap.min.js" defer></script>
-    <script src="../libs/gsap/ScrollTrigger.min.js" defer></script>
-    <script src="../script.js" defer></script>
+    <script src="./../libs/gsap/gsap.min.js" defer></script>
+    <script src="./../libs/gsap/ScrollTrigger.min.js" defer></script>
   </body>
 </html>

@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./../sass/style.css" />
+    <link rel="stylesheet" href="./../fonts/stylesheet.css" />
+    <link rel="stylesheet" href="./../libs/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.4/dist/lenis.css" />
+    <link rel="icon" href="./../assets/icons/favicon.png" />
+    <title>BRAVEX</title>
+    <script>
+      document.documentElement.style.setProperty('--fixed-vh', `${window.innerHeight}px`);
+    </script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__controls header__controls_mobile">
+        <button class="icon-button burger-button">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <button class="icon-button">
+          <img src="./../assets/icons/heart.svg" alt="favorite" />
+        </button>
+      </div>
+      <a href="./index.html">
+        <img src="./../assets/icons/logo.svg" alt="logo" class="header__logo" />
+      </a>
+
+      <ul class="header__navigation">
+        <li><a href="">SHOWROOM</a></li>
+        <li><a href="">ENTREGA Y PAGO </a></li>
+        <li><a href="">CONTACTOS</a></li>
+        <li><a href="">CONSEJOS</a></li>
+        <li><a href="">VISUALIZACIÓN 3D</a></li>
+        <li><a href="">BLOG</a></li>
+        <li><a href="">CATÁLOGO</a></li>
+      </ul>
+
+      <div class="header__controls">
+        <button class="icon-button">
+          <img src="./../assets/icons/lens.svg" alt="search" />
+        </button>
+        <button class="icon-button">
+          <img src="./../assets/icons/heart.svg" alt="favorite" />
+        </button>
+        <a href="./pages/cart.html" class="icon-button icon-button_filled">
+          <img src="./../assets/icons/cart.svg" alt="cart" />
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <div class="catalog-cover__banner">
+        <img
+          class="catalog-cover__image"
+          src="./../assets/img/catalogCoverBanner.webp"
+          alt="Furniture&Sofas" />
+
+        <div class="catalog-cover__content">
+          <p class="catalog-cover__title">Furniture & Sofas</p>
+
+          <button class="button catalog-cover__button">
+            <span>Más detalles</span>
+            <img src="./../assets/icons/right-arrow.svg" alt="arrow" />
+          </button>
+        </div>
+      </div>
+
+      <div class="catalog-section">
+        <div class="catalog-section__header">
+          <p class="catalog-section__title">
+            <span>Elementos </span>
+            <span> Estructurales y Arquitectónicos</span>
+          </p>
+        </div>
+        <div class="catalog-section__content">
+          <a class="catalog-section__card">
+            <img
+              src="./../assets/img/catalogCards/co-1-1.webp"
+              alt=""
+              class="catalog-section__image" />
+            <p class="catalog-section__subtitle">Stairs</p>
+            <button class="button catalog-section__card-button">
+              <span>Ver</span>
+              <img src="./../assets/icons/right-arrow.svg" alt="arrow" />
+            </button>
+          </a>
+
+          <a class="catalog-section__card">
+            <img
+              src="./../assets/img/catalogCards/co-1-2.webp"
+              alt=""
+              class="catalog-section__image" />
+            <p class="catalog-section__subtitle">Doors</p>
+            <button class="button catalog-section__card-button">
+              <span>Ver</span>
+              <img src="./../assets/icons/right-arrow.svg" alt="arrow" />
+            </button>
+          </a>
+
+          <a class="catalog-section__card">
+            <img
+              src="./../assets/img/catalogCards/co-1-3.webp"
+              alt=""
+              class="catalog-section__image" />
+            <p class="catalog-section__subtitle">Cielos tensados</p>
+            <button class="button catalog-section__card-button">
+              <span>Ver</span>
+              <img src="./../assets/icons/right-arrow.svg" alt="arrow" />
+            </button>
+          </a>
+
+          <a class="catalog-section__card">
+            <img
+              src="./../assets/img/catalogCards/co-1-4.webp"
+              alt=""
+              class="catalog-section__image" />
+            <p class="catalog-section__subtitle">Vidrio</p>
+            <button class="button catalog-section__card-button">
+              <span>Ver</span>
+              <img src="./../assets/icons/right-arrow.svg" alt="arrow" />
+            </button>
+          </a>
+        </div>
+      </div>
+
+      <div class="catalog-section">
+        <div class="catalog-section__header">
+          <p class="catalog-section__title">
+            <span>Hogar </span>
+            <span> Muebles</span>
+          </p>
+        </div>
+        <div class="catalog-section__content">
+          <a class="catalog-section__card">
+            <img
+              src="./../assets/img/catalogCards/co-2-1.webp"
+              alt=""
+              class="catalog-section__image" />
+            <p class="catalog-section__subtitle">Muebles</p>
+            <button class="button catalog-section__card-button">
+              <span>Ver</span>
+              <img src="./../assets/icons/right-arrow.svg" alt="arrow" />
+            </button>
+          </a>
+
+          <a class="catalog-section__card">
+            <img
+              src="./../assets/img/catalogCards/co-2-2.webp"
+              alt=""
+              class="catalog-section__image" />
+            <p class="catalog-section__subtitle">Muebles para niños</p>
+            <button class="button catalog-section__card-button">
+              <span>Ver</span>
+              <img src="./../assets/icons/right-arrow.svg" alt="arrow" />
+            </button>
+          </a>
+
+          <a class="catalog-section__card">
+            <img
+              src="./../assets/img/catalogCards/co-2-3.webp"
+              alt=""
+              class="catalog-section__image" />
+            <p class="catalog-section__subtitle">Muebles de baño</p>
+            <button class="button catalog-section__card-button">
+              <span>Ver</span>
+              <img src="./../assets/icons/right-arrow.svg" alt="arrow" />
+            </button>
+          </a>
+
+          <a class="catalog-section__card">
+            <img
+              src="./../assets/img/catalogCards/co-2-4.webp"
+              alt=""
+              class="catalog-section__image" />
+            <p class="catalog-section__subtitle">Armario</p>
+            <button class="button catalog-section__card-button">
+              <span>Ver</span>
+              <img src="./../assets/icons/right-arrow.svg" alt="arrow" />
+            </button>
+          </a>
+        </div>
+      </div>
+
+      <div class="catalog-section">
+        <div class="catalog-section__header">
+          <p class="catalog-section__title">
+            <span>Espacios funcionales & </span>
+            <span> Áreas de trabajo</span>
+          </p>
+        </div>
+        <div class="catalog-section__content">
+          <a class="catalog-section__card">
+            <img
+              src="./../assets/img/catalogCards/co-3-1.webp"
+              alt=""
+              class="catalog-section__image" />
+            <p class="catalog-section__subtitle">Cocinas</p>
+            <button class="button catalog-section__card-button">
+              <span>Ver</span>
+              <img src="./../assets/icons/right-arrow.svg" alt="arrow" />
+            </button>
+          </a>
+
+          <a class="catalog-section__card">
+            <img
+              src="./../assets/img/catalogCards/co-3-2.webp"
+              alt=""
+              class="catalog-section__image" />
+            <p class="catalog-section__subtitle">Muebles de oficina</p>
+            <button class="button catalog-section__card-button">
+              <span>Ver</span>
+              <img src="./../assets/icons/right-arrow.svg" alt="arrow" />
+            </button>
+          </a>
+
+          <a class="catalog-section__card">
+            <img
+              src="./../assets/img/catalogCards/co-3-3.webp"
+              alt=""
+              class="catalog-section__image" />
+            <p class="catalog-section__subtitle">Materiales de decoración</p>
+            <button class="button catalog-section__card-button">
+              <span>Ver</span>
+              <img src="./../assets/icons/right-arrow.svg" alt="arrow" />
+            </button>
+          </a>
+
+          <a class="catalog-section__card">
+            <img
+              src="./../assets/img/catalogCards/co-3-4.webp"
+              alt=""
+              class="catalog-section__image" />
+            <p class="catalog-section__subtitle">Paneles de pared</p>
+            <button class="button catalog-section__card-button">
+              <span>Ver</span>
+              <img src="./../assets/icons/right-arrow.svg" alt="arrow" />
+            </button>
+          </a>
+        </div>
+      </div>
+
+      <div class="catalog-section">
+        <div class="catalog-section__header">
+          <p class="catalog-section__title">
+            <span>Iluminación, </span>
+            <span> Decoración y Arte</span>
+          </p>
+        </div>
+        <div class="catalog-section__content">
+          <a class="catalog-section__card">
+            <img
+              src="./../assets/img/catalogCards/co-4-1.webp"
+              alt=""
+              class="catalog-section__image" />
+            <p class="catalog-section__subtitle">Luminarias</p>
+            <button class="button catalog-section__card-button">
+              <span>Ver</span>
+              <img src="./../assets/icons/right-arrow.svg" alt="arrow" />
+            </button>
+          </a>
+
+          <a class="catalog-section__card">
+            <img
+              src="./../assets/img/catalogCards/co-4-2.webp"
+              alt=""
+              class="catalog-section__image" />
+            <p class="catalog-section__subtitle">Espejos</p>
+            <button class="button catalog-section__card-button">
+              <span>Ver</span>
+              <img src="./../assets/icons/right-arrow.svg" alt="arrow" />
+            </button>
+          </a>
+
+          <a class="catalog-section__card">
+            <img
+              src="./../assets/img/catalogCards/co-4-3.webp"
+              alt=""
+              class="catalog-section__image" />
+            <p class="catalog-section__subtitle">Cuadros</p>
+            <button class="button catalog-section__card-button">
+              <span>Ver</span>
+              <img src="./../assets/icons/right-arrow.svg" alt="arrow" />
+            </button>
+          </a>
+
+          <a class="catalog-section__card">
+            <img
+              src="./../assets/img/catalogCards/co-4-4.webp"
+              alt=""
+              class="catalog-section__image" />
+            <p class="catalog-section__subtitle">Arquitectura Paramétrica</p>
+            <button class="button catalog-section__card-button">
+              <span>Ver</span>
+              <img src="./../assets/icons/right-arrow.svg" alt="arrow" />
+            </button>
+          </a>
+        </div>
+      </div>
+
+      <div class="advantages">
+        <div class="advantages__header">
+          <p class="advantages__title">
+            <span>Nuestras</span>
+            <span>Ventajas</span>
+          </p>
+          <img src="./../assets/icons/logo.svg" alt="" class="advantages__logo" />
+        </div>
+        <div class="advantages__content">
+          <div class="advantages__card">
+            <div class="advantages__image">
+              <img src="./../assets/icons/advantage1.png" alt="advantage" />
+            </div>
+            <div class="advantages__info">
+              <span>Materiales de confianza</span>
+              <span
+                >Utilizamos materiales europeos de primera calidad para una calidad y un estilo
+                duraderos</span
+              >
+            </div>
+          </div>
+          <div class="advantages__card">
+            <div class="advantages__image">
+              <img src="./../assets/icons/advantage2.png" alt="advantage" />
+            </div>
+            <div class="advantages__info">
+              <span>Artesanos expertos</span>
+              <span
+                >Nuestros especialistas fabrican muebles con precisión y atención al detalle</span
+              >
+            </div>
+          </div>
+          <div class="advantages__card">
+            <div class="advantages__image">
+              <img src="./../assets/icons/advantage3.png" alt="advantage" />
+            </div>
+            <div class="advantages__info">
+              <span>Garantía de calidad</span>
+              <span>Cada proyecto incluye garantía oficial y soporte de servicio</span>
+            </div>
+          </div>
+          <div class="advantages__card">
+            <div class="advantages__image">
+              <img src="./../assets/icons/advantage4.png" alt="advantage" />
+            </div>
+            <div class="advantages__info">
+              <span>Precios transparentes</span>
+              <span>Precios claros, sin costos ocultos ni cargos inesperados</span>
+            </div>
+          </div>
+          <div class="advantages__card">
+            <div class="advantages__image">
+              <img src="./../assets/icons/advantage5.png" alt="advantage" />
+            </div>
+            <div class="advantages__info">
+              <span>Diseño innovador</span>
+              <span>Diseñamos utilizando herramientas avanzadas y visualización 3D</span>
+            </div>
+          </div>
+          <div class="advantages__card">
+            <div class="advantages__image">
+              <img src="./../assets/icons/advantage6.png" alt="advantage" />
+            </div>
+            <div class="advantages__info">
+              <span>Entrega puntual</span>
+              <span>Entregamos e instalamos sus muebles puntualmente</span>
+            </div>
+          </div>
+          <div class="advantages__card">
+            <div class="advantages__image">
+              <img src="./../assets/icons/advantage7.png" alt="advantage" />
+            </div>
+            <div class="advantages__info">
+              <span>Soluciones personalizadas</span>
+              <span>Cada proyecto se adapta a su gusto, presupuesto y estilo de vida</span>
+            </div>
+          </div>
+          <div class="advantages__card">
+            <div class="advantages__image">
+              <img src="./../assets/icons/advantage8.png" alt="advantage" />
+            </div>
+            <div class="advantages__info">
+              <span>Consulta gratuita</span>
+              <span>Obtenga asesoramiento experto sobre planificación y selección de muebles</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="new-collection">
+        <img
+          class="new-collection__background"
+          src="/assets/img/newCollection.webp"
+          alt="new collection" />
+
+        <div class="new-collection__content">
+          <div class="new-collection__header">
+            <p class="new-collection__label">Nueva colección</p>
+            <img src="./../assets/icons/logo.svg" alt="" class="new-collection__logo" />
+          </div>
+          <div class="new-collection__footer">
+            <div class="new-collection__info">
+              <p class="new-collection__title">Sofa Boco Room</p>
+              <div class="new-collection__description">
+                <p class="new-collection__price">1 700€</p>
+                <p class="new-collection__subtitle">El precio incluye entrega, instalación e IVA</p>
+              </div>
+            </div>
+            <div class="new-collection__controls">
+              <button class="button new-collection__button">
+                <span>Aprender más</span>
+                <img src="./../assets/icons/right-arrow.svg" alt="arrow" />
+              </button>
+              <div class="new-collection__cards">
+                <button class="button-card new-collection__card">
+                  <span>Tamaño</span>
+                  <span>100x150cm</span>
+                </button>
+                <button class="button-card new-collection__card">
+                  <span>Colección</span>
+                  <span>Dragon</span>
+                </button>
+                <button class="button-card new-collection__card">
+                  <span>Categoría</span>
+                  <span>Furniture</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="insights">
+        <div class="swiper fade-in" id="insights-slider">
+          <div class="insights__header">
+            <p class="insights__title">
+              <span>Explora nuestras</span>
+              <span>novedades recientes</span>
+            </p>
+
+            <div class="insights__controls fade-in">
+              <div class="slider-button insights-button-prev">
+                <img src="./../assets/icons/right-arrow.svg" alt="" class="slider-button-left" />
+              </div>
+
+              <div class="slider-button insights-button-next">
+                <img src="./../assets/icons/right-arrow.svg" alt="" class="slider-button-right" />
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-wrapper insights__swiper-wrapper fade-in">
+            <div class="swiper-slide insights__swiper-slide">
+              <img src="./../assets/img/insights1.webp" alt="" class="insights__image" />
+              <div class="insights__info">
+                <p>New collection <span> of sofas from </span></p>
+                <span>a global brand</span>
+              </div>
+              <button class="insights__button">
+                <img src="./../assets/icons/blackArrow.svg" alt="" class="insights__image" />
+              </button>
+            </div>
+
+            <div class="swiper-slide insights__swiper-slide">
+              <img src="./../assets/img/insights2.webp" alt="" class="insights__image" />
+              <div class="insights__info">
+                <p>New collection <span> of sofas from </span></p>
+                <span>a global brand</span>
+              </div>
+              <button class="insights__button">
+                <img src="./../assets/icons/blackArrow.svg" alt="" class="insights__image" />
+              </button>
+            </div>
+
+            <div class="swiper-slide insights__swiper-slide">
+              <img src="./../assets/img/insights3.webp" alt="" class="insights__image" />
+              <div class="insights__info">
+                <p>New collection <span> of sofas from </span></p>
+                <span>a global brand</span>
+              </div>
+              <button class="insights__button">
+                <img src="./../assets/icons/blackArrow.svg" alt="" class="insights__image" />
+              </button>
+            </div>
+
+            <div class="swiper-slide insights__swiper-slide">
+              <img src="./../assets/img/insights4.webp" alt="" class="insights__image" />
+              <div class="insights__info">
+                <p>New collection <span> of sofas from </span></p>
+                <span>a global brand</span>
+              </div>
+              <button class="insights__button">
+                <img src="./../assets/icons/blackArrow.svg" alt="" class="insights__image" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__layout">
+        <div class="footer__navigation">
+          <div class="footer__nav-section footer__s1">
+            <p class="footer__title">Catalog</p>
+            <div class="footer__links">
+              <a class="footer__link" href="">Catálogo</a>
+              <a class="footer__link" href="">Escaleras</a>
+              <a class="footer__link" href="">Muebles</a>
+              <a class="footer__link" href="">Materiales de decoración</a>
+              <a class="footer__link" href="">Stretch ceilings</a>
+              <a class="footer__link" href="">Puertas</a>
+              <a class="footer__link" href="">Mobiliario infantil</a>
+              <a class="footer__link" href="">Muebles de baño</a>
+              <a class="footer__link" href="">Cocinas</a>
+              <a class="footer__link" href="">Luminarias</a>
+              <a class="footer__link" href="">Espejos</a>
+              <a class="footer__link" href="">Pinturas</a>
+              <a class="footer__link" href="">Paneles murales</a>
+              <a class="footer__link" href="">Armario</a>
+              <a class="footer__link" href="">Mobiliario de oficina</a>
+              <a class="footer__link" href="">Arquitectura paramétrica</a>
+              <a class="footer__link" href="">Vidrio</a>
+              <a class="footer__link" href="">Pistikupesad</a>
+            </div>
+          </div>
+
+          <div class="footer__nav-section footer__s2">
+            <p class="footer__title">Nuestros servicios</p>
+            <div class="footer__links">
+              <a class="footer__link" href="">Servicios de diseño</a>
+              <a class="footer__link" href="">Servicios de cálculo de materiales</a>
+              <a class="footer__link" href="">Servicios de instalación</a>
+              <a class="footer__link" href="">EasySteps</a>
+            </div>
+          </div>
+
+          <div class="footer__nav-section footer__s3">
+            <p class="footer__title">Policy</p>
+            <div class="footer__links">
+              <a class="footer__link" href="">Términos y Condiciones</a>
+              <a class="footer__link" href="">Privacidad</a>
+              <a class="footer__link" href="">Catálogos</a>
+            </div>
+          </div>
+
+          <div class="footer__nav-section footer__s4">
+            <p class="footer__title">Sobre nosotros</p>
+            <div class="footer__links">
+              <a class="footer__link" href="">Escaleras</a>
+              <a class="footer__link" href="">Muebles</a>
+              <a class="footer__link" href="">Materiales de decoración</a>
+              <a class="footer__link" href="">Cielos tensados</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer__contact-us">
+          <div class="footer__socials">
+            <p class="footer__title">Contáctanos</p>
+            <div class="footer__contacts">
+              <img src="./../assets/icons/whatsapp.svg" alt="whatsapp" />
+              <img src="./../assets/icons/tg.svg" alt="tg" />
+              <img src="./../assets/icons/x.svg" alt="x" />
+              <img src="./../assets/icons/in.svg" alt="linkedin" />
+            </div>
+          </div>
+          <div class="footer__address">
+            <p>BRAVEX LLC</p>
+            <p>Al. Bolesława Krzywoustego 40-870 Katowice</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__logos">
+        <img src="./../assets/icons/logo.svg" alt="" class="footer__logo" />
+        <div class="footer__payments">
+          <img src="./../assets/icons/visa.svg" alt="visa" />
+          <img src="./../assets/icons/mastercard.svg" alt="mastercard" />
+          <img src="./../assets/icons/swift.svg" alt="swift" />
+          <img src="./../assets/icons/sepa.svg" alt="sepa" />
+        </div>
+        <div></div>
+      </div>
+    </footer>
+
+    <script src="./../libs/swiper/swiper-bundle.min.js" defer></script>
+    <script src="https://unpkg.com/lenis@1.3.4/dist/lenis.min.js" defer></script>
+    <script src="./../libs/gsap/gsap.min.js" defer></script>
+    <script src="./../libs/gsap/ScrollTrigger.min.js" defer></script>
+    <script src="./../script.js" defer></script>
+  </body>
+</html>

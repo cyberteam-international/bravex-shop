@@ -1,0 +1,54 @@
+@use '../abstract/index' as *;
+
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination__item {
+  @include font($size: 1.8rem, $height: 1.8, $weight: 400);
+  color: #ffffffb2;
+  width: 47px;
+  height: 47px;
+  border: 1px solid #444444;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  @extend %transition;
+  &:not(:last-child) {
+    border-right: none;
+  }
+
+  &_active {
+    color: $color-white;
+    background-color: #0840f4;
+    border: 1px solid #0840f4;
+
+    & + .pagination__item {
+      border-left: 1px solid #0840f4;
+    }
+  }
+
+  &_next {
+    transform: rotate(-90deg);
+  }
+  &_prev {
+    transform: rotate(90deg);
+  }
+  @include media-laptop-xl {
+    @include font($size: 1.7rem, $height: 1.7rem, $weight: 400);
+    width: 42px;
+    height: 42px;
+  }
+  @include media-laptop-lg {
+    @include font($size: 1.4rem, $height: 1.4rem, $weight: 400);
+    width: 38px;
+    height: 38px;
+  }
+  @include media-mobile {
+    @include font($size: 1.8rem, $height: 1.8rem, $weight: 400);
+    width: 47px;
+    height: 47px;
+  }
+}

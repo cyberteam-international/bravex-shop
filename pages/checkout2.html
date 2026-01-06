@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./../sass/style.css" />
+    <link rel="stylesheet" href="./../fonts/stylesheet.css" />
+    <link rel="stylesheet" href="./../libs/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.4/dist/lenis.css" />
+    <link rel="icon" href="./../assets/icons/favicon.png" />
+    <title>BRAVEX</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__controls header__controls_mobile">
+        <button class="icon-button burger-button">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <button class="icon-button">
+          <img src="./../assets/icons/heart.svg" alt="favorite" />
+        </button>
+      </div>
+      <a href="./../index.html">
+        <img src="./../assets/icons/logo.svg" alt="logo" class="header__logo" />
+      </a>
+
+      <ul class="header__navigation">
+        <li><a href="">SHOWROOM</a></li>
+        <li><a href="">ENTREGA Y PAGO </a></li>
+        <li><a href="">CONTACTOS</a></li>
+        <li><a href="">CONSEJOS</a></li>
+        <li><a href="">VISUALIZACIÓN 3D</a></li>
+        <li><a href="">BLOG</a></li>
+        <li><a href="">CATÁLOGO</a></li>
+      </ul>
+
+      <div class="header__controls">
+        <button class="icon-button">
+          <img src="./../assets/icons/lens.svg" alt="search" />
+        </button>
+        <button class="icon-button">
+          <img src="./../assets/icons/heart.svg" alt="favorite" />
+        </button>
+        <a href="./cart.html" class="icon-button icon-button_filled">
+          <img src="./../assets/icons/cart.svg" alt="cart" />
+        </a>
+      </div>
+    </header>
+
+    <main class="checkout">
+      <p class="checkout__title">Verificar</p>
+      <div class="checkout__wrapper">
+        <div class="checkout__layout">
+          <div class="checkout__tabs">
+            <a href="./checkout.html" class="checkout__tab">ENVÍO Y FACTURACIÓN</a>
+            <a href="./checkout2.html" class="checkout__tab_active">PAGO</a>
+          </div>
+
+          <form action="" class="checkout__form">
+            <div class="checkout__payment">
+              <label class="radio-button checkout__radio-button">
+                <input type="radio" name="shipping" checked />
+                <span class="radio-button__custom"></span>
+                <div class="radio-button__info">
+                  <p class="radio-button__title">PayPal</p>
+                </div>
+              </label>
+              <div class="checkout__payment-type">
+                <label class="radio-button checkout__radio-button">
+                  <input type="radio" name="shipping" />
+                  <span class="radio-button__custom"></span>
+                  <div class="radio-button__info">
+                    <p class="radio-button__title">Tarjeta de crédito</p>
+                  </div>
+                </label>
+
+                <div class="checkout__payment-icons">
+                  <img src="./../assets/icons/VisaColor.svg" alt="visa" />
+                  <img src="./../assets/icons/MasterCardColor.svg" alt="mastercard" />
+                  <img src="./../assets/icons/MaestroColor.svg" alt="maestro" />
+                </div>
+              </div>
+            </div>
+
+            <div class="checkout__form-block">
+              <input type="text" class="input" placeholder="Número de tarjeta" name="cardNumber" />
+              <div class="checkout__double-row">
+                <input
+                  type="text"
+                  class="input"
+                  placeholder="Fecha de expiración (MM/AA)"
+                  name="firstName" />
+                <input
+                  type="text"
+                  class="input"
+                  placeholder="Código de seguridad"
+                  name="securityCode" />
+              </div>
+              <input
+                type="text"
+                class="input"
+                placeholder="Nombre en la tarjeta"
+                name="nameOnCard" />
+            </div>
+
+            <label class="checkbox checkout__checkbox">
+              <input type="checkbox" name="shipping" />
+              <span class="checkbox__custom"></span>
+              <div class="checkbox__info">
+                <p class="checkbox__title">
+                  Usar la dirección de envío como dirección de facturación
+                </p>
+              </div>
+            </label>
+
+            <a href="./checkoutThanks.html" class="button checkout__button">Continuar</a>
+          </form>
+        </div>
+
+        <div class="summary checkout__summary">
+          <div class="summary__content">
+            <p class="summary__title">Resumen del pedido</p>
+            <div class="summary__info">
+              <div class="summary__row">
+                <div class="summary__position">
+                  <p class="summary__subtitle">Subtotal</p>
+                </div>
+                <span class="summary__price">$44,704 USD</span>
+              </div>
+              <div class="summary__row">
+                <div class="summary__position">
+                  <p class="summary__subtitle">Entrega exprés</p>
+                  <p class="summary__description">Entrega para el lunes 14/07</p>
+                </div>
+                <span class="summary__price">$0 USD</span>
+              </div>
+            </div>
+            <div class="summary__row">
+              <div class="summary__position">
+                <p class="summary__subtitle">Total</p>
+              </div>
+              <span class="summary__price">$44,704 USD</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="./../libs/swiper/swiper-bundle.min.js" defer></script>
+    <script src="https://unpkg.com/lenis@1.3.4/dist/lenis.min.js" defer></script>
+    <script src="./../libs/gsap/gsap.min.js" defer></script>
+    <script src="./../libs/gsap/ScrollTrigger.min.js" defer></script>
+  </body>
+</html>
