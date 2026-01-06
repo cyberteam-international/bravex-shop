@@ -105,7 +105,7 @@ lenis.on("scroll", (e) => {
 // popup
 
 // new-items slider
-const newItemsSlider = new Swiper("#new-items-slider", {
+window.newItemsSwiper = new Swiper("#new-items-slider", {
   direction: "horizontal",
   initialSlide: 0,
   slidesOffsetAfter: 40,
