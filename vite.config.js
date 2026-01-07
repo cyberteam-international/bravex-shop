@@ -23,6 +23,10 @@ export default defineConfig({
       name: 'html-fallback',
       configureServer(server) {
         server.middlewares.use((req, res, next) => {
+          // Fallback для динамических маршрутов товаров: /catalog/product/{slug}
+          if (req.url && req.url.match(/^\/catalog\/product\/[\w-]+\/?$/)) {
+            req.url = '/catalog/product/';
+          }
           // Redirect /path to /path/ for directory URLs
           if (req.url && !req.url.includes('.') && !req.url.endsWith('/')) {
             const dirPath = resolve(__dirname, 'src', req.url.slice(1));

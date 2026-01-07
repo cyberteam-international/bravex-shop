@@ -27,7 +27,24 @@ export const getProductById = async (id) => {
   return response.data;
 };
 
+/**
+ * Получение одного товара по slug
+ * @param {string} slug - Slug товара
+ * @returns {Promise} - Промис с данными товара
+ */
+export const getProductBySlug = async (slug) => {
+  const response = await api.get('/api/products', {
+    params: {
+      'filters[slug][$eq]': slug,
+      'populate': '*',
+    },
+  });
+  const products = response.data?.data || [];
+  return products.length > 0 ? products[0] : null;
+};
+
 export default {
   getProducts,
   getProductById,
+  getProductBySlug,
 };

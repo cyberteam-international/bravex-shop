@@ -51,12 +51,13 @@ function getProductSize(sizes) {
  * @returns {string} - HTML-разметка карточки
  */
 export function createNewItemCard(product) {
-  const { id, documentId, Title, Price, Media, Sizes } = product;
+  const { id, documentId, Title, Price, Media, Sizes, slug } = product;
   const image = getProductImage(Media);
   const size = getProductSize(Sizes);
+  const productUrl = `/catalog/product/${slug || documentId}`;
 
   return `
-    <div class="swiper-slide new-items__swiper-slide" data-product-id="${id}" data-document-id="${documentId}">
+    <a href="${productUrl}" class="swiper-slide new-items__swiper-slide" data-product-id="${id}" data-document-id="${documentId}">
       <img
         src="${image}"
         alt="${Title}"
@@ -72,7 +73,7 @@ export function createNewItemCard(product) {
       <button class="new-items__button">
         <img src="/assets/icons/plus.svg" alt="" />
       </button>
-    </div>
+    </a>
   `;
 }
 

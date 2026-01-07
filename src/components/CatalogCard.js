@@ -29,11 +29,12 @@ function getProductImage(media) {
  * @returns {string} - HTML-разметка карточки
  */
 export function createCatalogCard(product) {
-  const { id, documentId, Title, Price, Media } = product;
+  const { id, documentId, Title, Price, Media, slug } = product;
   const image = getProductImage(Media);
+  const productUrl = `/catalog/product/${slug || documentId}`;
 
   return `
-    <div class="catalog-card" data-product-id="${id}" data-document-id="${documentId}">
+    <a href="${productUrl}" class="catalog-card" data-product-id="${id}" data-document-id="${documentId}">
       <div class="catalog-card__image">
         <img src="${image}" alt="${Title}" />
       </div>
@@ -47,7 +48,7 @@ export function createCatalogCard(product) {
       <button class="catalog-card__plus-button">
         <img src="/assets/icons/plus.svg" alt="" />
       </button>
-    </div>
+    </a>
   `;
 }
 
