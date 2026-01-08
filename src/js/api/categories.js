@@ -27,7 +27,23 @@ export const getCategoryById = async (id) => {
   return response.data;
 };
 
+/**
+ * Получение одной категории по slug
+ * @param {string} slug - Slug категории
+ * @returns {Promise} - Промис с данными категории
+ */
+export const getCategoryBySlug = async (slug) => {
+  const response = await api.get('/api/categories', {
+    params: {
+      'filters[slug][$eq]': slug,
+    },
+  });
+  const categories = response.data?.data || [];
+  return categories.length > 0 ? categories[0] : null;
+};
+
 export default {
   getCategories,
   getCategoryById,
+  getCategoryBySlug,
 };

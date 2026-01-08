@@ -27,6 +27,10 @@ export default defineConfig({
           if (req.url && req.url.match(/^\/catalog\/product\/[\w-]+\/?$/)) {
             req.url = '/catalog/product/';
           }
+          // Fallback для динамических маршрутов категорий: /catalog/{category-slug}
+          if (req.url && req.url.match(/^\/catalog\/[\w-]+\/?$/) && !req.url.startsWith('/catalog/product')) {
+            req.url = '/catalog/';
+          }
           // Redirect /path to /path/ for directory URLs
           if (req.url && !req.url.includes('.') && !req.url.endsWith('/')) {
             const dirPath = resolve(__dirname, 'src', req.url.slice(1));

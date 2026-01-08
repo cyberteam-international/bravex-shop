@@ -59,12 +59,17 @@
 
 .catalog__wrapper {
   flex: 1;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .catalog__navigation {
   padding-bottom: 32px;
   border-bottom: 1px solid #ffffff26;
   display: flex;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
   @include media-laptop-xl {
     padding-bottom: 28px;
   }
@@ -74,11 +79,64 @@
   @include media-laptop {
     padding-bottom: 16px;
   }
-  @include media-tablet {
-    max-width: calc(100vw - 34px);
+}
+
+.catalog__tabs {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  width: 100%;
+  max-width: 100%;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+  &::-webkit-scrollbar {
+    display: none; /* Chrome/Safari/Opera */
+  }
+}
+
+.catalog__tab {
+  flex-shrink: 0;
+  padding: 8px 30px;
+  color: #aaa;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.3s;
+  text-decoration: none;
+  @include font($size: 2.5rem, $height: 2.5rem, $weight: 400);
+  
+  &:first-child {
+    padding-left: 0;
+  }
+  &:last-child {
+    padding-right: 0;
+  }
+  &:hover {
+    color: #fff;
+  }
+  &.active {
+    color: #fff;
+  }
+  
+  @include media-laptop-xl {
+    @include font($size: 2.2rem, $height: 2.2rem, $weight: 400);
+    padding: 7px 18px;
+  }
+  @include media-laptop-lg {
+    @include font($size: 1.9rem, $height: 1.9rem, $weight: 400);
+    padding: 6px 16px;
+  }
+  @include media-laptop {
+    @include font($size: 1.7rem, $height: 1.7rem, $weight: 400);
+    padding: 4px 14px;
   }
   @include media-mobile {
-    max-width: calc(100vw - 60px);
+    @include font($size: 1.5rem, $height: 1.5rem, $weight: 400);
+    padding: 4px 10px;
+  }
+  @include media-mobile-sm {
+    @include font($size: 1.4rem, $height: 1.4rem, $weight: 400);
+    padding: 4px 8px;
   }
 }
 

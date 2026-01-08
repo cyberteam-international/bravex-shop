@@ -1,4 +1,5 @@
-import { getProducts } from "./api/products.js";
+import { getProducts, getProductsByCategory } from "./api/products.js";
+import { getCategories, getCategoryBySlug } from "./api/categories.js";
 import { renderCatalogCards } from "../components/CatalogCard.js";
 
 // Состояние каталога
@@ -6,7 +7,58 @@ const catalogState = {
   page: 1,
   pageSize: 20,
   isLoading: false,
+  categorySlug: null,
+  categoryTitle: null,
 };
+
+/**
+ * Получение slug категории из URL
+ * @returns {string|null} - slug категории или null
+ */
+function getCategorySlugFromUrl() {
+  const pathParts = window.location.pathname.split('/').filter(Boolean);
+  // URL: /catalog/{category-slug} → ["catalog", "{category-slug}"]
+  // Исключаем /catalog/product/{slug}
+  if (pathParts.length === 2 && pathParts[0] === 'catalog' && pathParts[1] !== 'product') {
+    return pathParts[1];
+  }
+  return null;
+}
+
+/**
+ * Загрузка и рендер категорий в навигацию
+ */
+async function loadCategoryTabs() {
+  const tabsContainer = document.querySelector('.catalog__tabs');
+  if (!tabsContainer) return;
+
+  try {
+    const response = await getCategories({ page: 1, pageSize: 20 });
+    const categories = response.data || [];
+
+    // Создаём таб "Все" + табы категорий
+    const allTab = `<a href="/catalog" class="catalog__tab${!catalogState.categorySlug ? ' active' : ''}">Todos</a>`;
+    
+    const categoryTabs = categories.map(cat => {
+      const isActive = catalogState.categorySlug === cat.slug;
+      return `<a href="/catalog/${cat.slug}" class="catalog__tab${isActive ? ' active' : ''}">${cat.Title}</a>`;
+    }).join('');
+
+    tabsContainer.innerHTML = allTab + categoryTabs;
+  } catch (error) {
+    console.error('Error loading category tabs:', error);
+  }
+}
+
+/**
+ * Обновление заголовка каталога
+ */
+function updateCatalogTitle() {
+  const titleEl = document.querySelector('.catalog__header .catalog__title');
+  if (titleEl) {
+    titleEl.textContent = catalogState.categoryTitle || 'CATÁLOGO';
+  }
+}
 
 // Загрузка и рендер товаров
 async function loadProducts() {
@@ -16,10 +68,21 @@ async function loadProducts() {
   catalogState.isLoading = true;
 
   try {
-    const response = await getProducts({
-      page: catalogState.page,
-      pageSize: catalogState.pageSize,
-    });
+    let response;
+    
+    if (catalogState.categorySlug) {
+      // Загружаем товары конкретной категории
+      response = await getProductsByCategory(catalogState.categorySlug, {
+        page: catalogState.page,
+        pageSize: catalogState.pageSize,
+      });
+    } else {
+      // Загружаем все товары
+      response = await getProducts({
+        page: catalogState.page,
+        pageSize: catalogState.pageSize,
+      });
+    }
 
     const products = response.data || [];
     console.log("Loaded products:", products);
@@ -37,27 +100,38 @@ async function loadProducts() {
   }
 }
 
+/**
+ * Инициализация каталога
+ */
+async function initCatalog() {
+  // Определяем текущую категорию из URL
+  catalogState.categorySlug = getCategorySlugFromUrl();
+
+  // Если есть slug категории, получаем её название
+  if (catalogState.categorySlug) {
+    try {
+      const category = await getCategoryBySlug(catalogState.categorySlug);
+      if (category) {
+        catalogState.categoryTitle = category.Title;
+      }
+    } catch (error) {
+      console.error('Error loading category:', error);
+    }
+  }
+
+  // Обновляем заголовок
+  updateCatalogTitle();
+
+  // Загружаем табы категорий
+  await loadCategoryTabs();
+
+  // Загружаем товары
+  await loadProducts();
+}
+
 // Инициализация при загрузке страницы
 document.addEventListener("DOMContentLoaded", () => {
-  loadProducts();
-});
-
-const tabsSwiper = new Swiper("#catalog__navigation-swiper", {
-  slidesPerView: "auto",
-  spaceBetween: 20,
-  initialSlide: 0,
-
-  navigation: {
-    nextEl: ".catalog__navigation-button_next",
-    prevEl: ".catalog__navigation-button_prev",
-  },
-
-  breakpoints: {
-    992: {
-      allowTouchMove: false,
-      freeMode: false,
-    },
-  },
+  initCatalog();
 });
 
 //filterModal

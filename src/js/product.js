@@ -1,5 +1,6 @@
-import { getProductBySlug } from "./api/products.js";
+import { getProductBySlug, getProducts } from "./api/products.js";
 import { API_BASE_URL } from "./api/index.js";
+import { renderNewItemCards } from "../components/NewItemCard.js";
 
 /**
  * Получение slug из URL
@@ -220,12 +221,47 @@ async function loadProduct() {
     if (product) {
       console.log("Loaded product:", product);
       renderProduct(product);
+      // Загружаем связанные товары
+      loadRelatedProducts(product.documentId);
     } else {
       showError();
     }
   } catch (error) {
     console.error("Error loading product:", error);
     showError();
+  }
+}
+
+/**
+ * Загрузка и рендер связанных товаров (исключая текущий)
+ * @param {string} excludeDocumentId - documentId товара для исключения
+ */
+async function loadRelatedProducts(excludeDocumentId) {
+  const container = document.querySelector('#new-items-slider .swiper-wrapper');
+  if (!container) return;
+
+  try {
+    const response = await getProducts({
+      page: 1,
+      pageSize: 11, // Запрашиваем 11, чтобы после исключения осталось 10
+    });
+
+    let products = response.data || [];
+    
+    // Исключаем текущий товар
+    products = products.filter(p => p.documentId !== excludeDocumentId);
+    
+    // Ограничиваем до 10
+    products = products.slice(0, 10);
+
+    renderNewItemCards(container, products);
+
+    // Обновляем swiper
+    if (window.newItemsSwiper) {
+      window.newItemsSwiper.update();
+    }
+  } catch (error) {
+    console.error('Error loading related products:', error);
   }
 }
 

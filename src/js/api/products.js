@@ -43,8 +43,26 @@ export const getProductBySlug = async (slug) => {
   return products.length > 0 ? products[0] : null;
 };
 
+/**
+ * Получение товаров по slug категории
+ * @param {string} categorySlug - Slug категории
+ * @param {Object} params - Параметры пагинации
+ * @returns {Promise} - Промис с данными товаров
+ */
+export const getProductsByCategory = async (categorySlug, { page = 1, pageSize = 20 } = {}) => {
+  const response = await api.get('/api/products', {
+    params: {
+      'filters[categories][slug][$eq]': categorySlug,
+      'pagination[page]': page,
+      'pagination[pageSize]': pageSize,
+    },
+  });
+  return response.data;
+};
+
 export default {
   getProducts,
   getProductById,
   getProductBySlug,
+  getProductsByCategory,
 };
