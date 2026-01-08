@@ -60,9 +60,54 @@ export const getProductsByCategory = async (categorySlug, { page = 1, pageSize =
   return response.data;
 };
 
+/**
+ * Получение товаров с фильтрами по характеристикам
+ * @param {Object} options - Опции запроса
+ * @param {string|null} options.categorySlug - Slug категории (опционально)
+ * @param {Object} options.characteristics - Объект характеристик {documentId: [values]}
+ * @param {number} options.page - Номер страницы
+ * @param {number} options.pageSize - Размер страницы
+ * @returns {Promise} - Промис с данными товаров
+ */
+export const getProductsWithFilters = async ({ 
+  categorySlug = null, 
+  characteristics = {}, 
+  page = 1, 
+  pageSize = 20 
+} = {}) => {
+  const params = {
+    'pagination[page]': page,
+    'pagination[pageSize]': pageSize,
+  };
+
+  // Добавляем фильтр по категории
+  if (categorySlug) {
+    params['filters[categories][slug][$eq]'] = categorySlug;
+  }
+
+  // Добавляем фильтры по характеристикам
+  Object.entries(characteristics).forEach(([documentId, values]) => {
+    if (values && values.length > 0) {
+      if (values.length === 1) {
+        // Одно значение
+        params[`characteristics[${documentId}]`] = values[0];
+      } else {
+        // Несколько значений (ИЛИ)
+        values.forEach((value, index) => {
+          params[`characteristics[${documentId}][${index}]`] = value;
+        });
+      }
+    }
+  });
+
+  const response = await api.get('/api/products', { params });
+  return response.data;
+};
+
 export default {
   getProducts,
   getProductById,
   getProductBySlug,
   getProductsByCategory,
+  getProductsWithFilters,
 };

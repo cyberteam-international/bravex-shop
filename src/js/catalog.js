@@ -1,5 +1,6 @@
-import { getProducts, getProductsByCategory } from "./api/products.js";
+import { getProducts, getProductsByCategory, getProductsWithFilters } from "./api/products.js";
 import { getCategories, getCategoryBySlug } from "./api/categories.js";
+import { getAllFilters, getFiltersByCategory } from "./api/filters.js";
 import { renderCatalogCards } from "../components/CatalogCard.js";
 
 // Состояние каталога
@@ -9,6 +10,8 @@ const catalogState = {
   isLoading: false,
   categorySlug: null,
   categoryTitle: null,
+  filters: [],
+  selectedFilters: {},
 };
 
 /**
@@ -60,6 +63,90 @@ function updateCatalogTitle() {
   }
 }
 
+/**
+ * Создание HTML для одного фильтра
+ * @param {Object} filter - Данные фильтра
+ * @param {number} index - Индекс фильтра
+ * @returns {string} - HTML разметка
+ */
+function createFilterHTML(filter, index) {
+  const filterId = `filter-${filter.documentId}`;
+  const filterSlug = filter.Name.toLowerCase().replace(/\s+/g, '-');
+  
+  const valuesHTML = filter.values.map(value => `
+    <label class="filter__checkbox">
+      <input type="checkbox" name="${filterSlug}" value="${value}" data-filter-id="${filter.documentId}" />
+      <span class="filter__checkbox-mark"></span>
+      <span class="filter__checkbox-label">${value}</span>
+    </label>
+  `).join('');
+
+  return `
+    <div class="filter__section" data-filter-id="${filter.documentId}">
+      <input
+        class="filter-accordion__toggle"
+        type="checkbox"
+        id="${filterId}"
+        ${index === 0 ? 'checked' : ''}
+      />
+      <label class="filter__header" for="${filterId}">
+        <span>${filter.Name}</span>
+        <span class="filter__icon"></span>
+      </label>
+      <div class="filter__content">
+        <div class="filter__content-inner">
+          <div class="filter__content-data">
+            ${valuesHTML}
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+/**
+ * Загрузка и рендер фильтров
+ */
+async function loadFilters() {
+  const container = document.getElementById('filters-container');
+  if (!container) return;
+
+  // Сохраняем ценовой фильтр
+  const priceFilter = container.querySelector('.filter__section--price');
+
+  try {
+    let response;
+    
+    if (catalogState.categorySlug) {
+      // Загружаем фильтры для конкретной категории
+      response = await getFiltersByCategory(catalogState.categorySlug);
+    } else {
+      // Загружаем все фильтры
+      response = await getAllFilters();
+    }
+
+    const filters = response.data || [];
+    catalogState.filters = filters;
+
+    // Генерируем HTML для динамических фильтров
+    const filtersHTML = filters.map((filter, index) => createFilterHTML(filter, index)).join('');
+
+    // Вставляем динамические фильтры перед ценовым
+    if (priceFilter) {
+      // Удаляем старые динамические фильтры
+      container.querySelectorAll('.filter__section:not(.filter__section--price)').forEach(el => el.remove());
+      // Вставляем новые перед ценовым фильтром
+      priceFilter.insertAdjacentHTML('beforebegin', filtersHTML);
+    } else {
+      container.innerHTML = filtersHTML;
+    }
+
+    console.log('Loaded filters:', filters);
+  } catch (error) {
+    console.error('Error loading filters:', error);
+  }
+}
+
 // Загрузка и рендер товаров
 async function loadProducts() {
   const container = document.getElementById("catalog-products");
@@ -67,12 +154,18 @@ async function loadProducts() {
 
   catalogState.isLoading = true;
 
+  // Показываем лоадер
+  container.innerHTML = '<div class="catalog__loader"><span class="loader"></span></div>';
+
   try {
     let response;
+    const hasFilters = Object.keys(catalogState.selectedFilters).length > 0;
     
-    if (catalogState.categorySlug) {
-      // Загружаем товары конкретной категории
-      response = await getProductsByCategory(catalogState.categorySlug, {
+    if (hasFilters || catalogState.categorySlug) {
+      // Загружаем товары с фильтрами
+      response = await getProductsWithFilters({
+        categorySlug: catalogState.categorySlug,
+        characteristics: catalogState.selectedFilters,
         page: catalogState.page,
         pageSize: catalogState.pageSize,
       });
@@ -86,7 +179,16 @@ async function loadProducts() {
 
     const products = response.data || [];
     console.log("Loaded products:", products);
-    renderCatalogCards(container, products);
+    
+    if (products.length === 0) {
+      container.innerHTML = `
+        <div class="catalog__empty">
+          <p>No se encontraron productos</p>
+        </div>
+      `;
+    } else {
+      renderCatalogCards(container, products);
+    }
   } catch (error) {
     console.error("Error loading products:", error);
     container.innerHTML = `
@@ -125,8 +227,84 @@ async function initCatalog() {
   // Загружаем табы категорий
   await loadCategoryTabs();
 
+  // Загружаем фильтры
+  await loadFilters();
+
+  // Инициализируем обработчики фильтров
+  initFilterHandlers();
+
   // Загружаем товары
   await loadProducts();
+}
+
+/**
+ * Сбор выбранных фильтров из чекбоксов
+ * @returns {Object} - Объект с выбранными характеристиками {documentId: [values]}
+ */
+function collectSelectedFilters() {
+  const selectedFilters = {};
+  const checkboxes = document.querySelectorAll('#filters-container .filter__checkbox input:checked');
+  
+  checkboxes.forEach(checkbox => {
+    const filterId = checkbox.dataset.filterId;
+    const value = checkbox.value;
+    
+    if (!selectedFilters[filterId]) {
+      selectedFilters[filterId] = [];
+    }
+    selectedFilters[filterId].push(value);
+  });
+  
+  return selectedFilters;
+}
+
+/**
+ * Применение фильтров
+ */
+async function applyFilters() {
+  // Собираем выбранные фильтры
+  catalogState.selectedFilters = collectSelectedFilters();
+  catalogState.page = 1; // Сбрасываем на первую страницу
+  
+  console.log('Applying filters:', catalogState.selectedFilters);
+  
+  // Загружаем товары с фильтрами
+  await loadProducts();
+  
+  // Закрываем мобильное меню фильтров если открыто
+  document.body.classList.remove('filter-open');
+}
+
+/**
+ * Сброс фильтров
+ */
+async function resetFilters() {
+  // Снимаем все чекбоксы
+  const checkboxes = document.querySelectorAll('#filters-container .filter__checkbox input:checked');
+  checkboxes.forEach(checkbox => {
+    checkbox.checked = false;
+  });
+  
+  // Очищаем выбранные фильтры
+  catalogState.selectedFilters = {};
+  catalogState.page = 1;
+  
+  // Загружаем товары без фильтров
+  await loadProducts();
+}
+
+/**
+ * Инициализация обработчиков фильтров
+ */
+function initFilterHandlers() {
+  // Обработчик кнопки "Aplicar"
+  const applyButton = document.querySelector('.filter__apply');
+  if (applyButton) {
+    applyButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      applyFilters();
+    });
+  }
 }
 
 // Инициализация при загрузке страницы

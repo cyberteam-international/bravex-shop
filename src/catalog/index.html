@@ -30,93 +30,10 @@
         <aside class="filter catalog__filter">
           <p class="catalog__section-name">Inicio / Muebles / Sofá</p>
           <p class="filter__title catalog__title">Filtro</p>
-          <div class="filter__wrapper">
-            <div class="filter__section">
-              <input
-                class="filter-accordion__toggle"
-                type="checkbox"
-                id="price"
-              />
-              <label class="filter__header" for="price">
-                <span>Rango de precios</span>
-                <span class="filter__icon"></span>
-              </label>
-              <div class="filter__content">
-                <div class="filter__content-inner">
-                  <div class="filter__content-data">Filter Options</div>
-                </div>
-              </div>
-            </div>
+          <div class="filter__wrapper" id="filters-container">
+            <!-- Фильтры загружаются динамически -->
 
-            <div class="filter__section">
-              <input
-                class="filter-accordion__toggle"
-                type="checkbox"
-                id="color"
-              />
-              <label class="filter__header" for="color">
-                <span>Color de la tela</span>
-                <span class="filter__icon"></span>
-              </label>
-              <div class="filter__content">
-                <div class="filter__content-inner">
-                  <div class="filter__content-data">Filter Options</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="filter__section">
-              <input
-                class="filter-accordion__toggle"
-                type="checkbox"
-                id="seats"
-              />
-              <label class="filter__header" for="seats">
-                <span>Número de asientos</span>
-                <span class="filter__icon"></span>
-              </label>
-              <div class="filter__content">
-                <div class="filter__content-inner">
-                  <div class="filter__content-data">Filter Options</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="filter__section">
-              <input
-                class="filter-accordion__toggle"
-                type="checkbox"
-                id="estilo"
-              />
-              <label class="filter__header" for="estilo">
-                <span>Estilo</span>
-                <span class="filter__icon"></span>
-              </label>
-              <div class="filter__content">
-                <div class="filter__content-inner">
-                  <div class="filter__content-data">Filter Options</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="filter__section">
-              <input
-                class="filter-accordion__toggle"
-                type="checkbox"
-                id="tipo"
-              />
-              <label class="filter__header" for="tipo">
-                <span>Tipo</span>
-                <span class="filter__icon"></span>
-              </label>
-              <div class="filter__content">
-                <div class="filter__content-inner">
-                  <div class="filter__content-data">Filter Options</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="filter__section">
+            <div class="filter__section filter__section--price">
               <input
                 class="filter-accordion__toggle"
                 type="checkbox"
@@ -124,7 +41,7 @@
                 checked
               />
               <label class="filter__header" for="range">
-                <span>Número de asientos</span>
+                <span>Rango de precios</span>
                 <span class="filter__icon"></span>
               </label>
               <div class="filter__content">
