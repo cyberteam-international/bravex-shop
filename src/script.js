@@ -6,6 +6,37 @@ document.documentElement.style.setProperty(
   `${window.innerHeight}px`
 );
 
+// Инициализация badge корзины
+function initCartBadge() {
+  const badge = document.getElementById('cart-badge');
+  if (!badge) return;
+  
+  try {
+    const cart = JSON.parse(localStorage.getItem('bravex_cart') || '[]');
+    const count = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+    
+    if (count > 0) {
+      badge.textContent = count > 99 ? '99+' : count;
+      badge.classList.add('visible');
+    } else {
+      badge.textContent = '';
+      badge.classList.remove('visible');
+    }
+  } catch (e) {
+    console.error('Error reading cart:', e);
+  }
+}
+
+// Слушаем обновления корзины
+window.addEventListener('cartUpdated', () => {
+  initCartBadge();
+});
+
+// Инициализируем badge при загрузке
+document.addEventListener('DOMContentLoaded', () => {
+  initCartBadge();
+});
+
 document.body.style.overflow = "hidden";
 const loader = () => {
   document.body.style.overflow = "";

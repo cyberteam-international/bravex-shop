@@ -1,4 +1,4 @@
-@use '../abstract/index' as *;
+@use "../abstract/index" as *;
 
 .catalog {
   display: flex;
@@ -104,7 +104,7 @@
   transition: color 0.3s;
   text-decoration: none;
   @include font($size: 2.5rem, $height: 2.5rem, $weight: 400);
-  
+
   &:first-child {
     padding-left: 0;
   }
@@ -117,7 +117,7 @@
   &.active {
     color: #fff;
   }
-  
+
   @include media-laptop-xl {
     @include font($size: 2.2rem, $height: 2.2rem, $weight: 400);
     padding: 7px 18px;
@@ -312,7 +312,7 @@
   justify-content: center;
   align-items: center;
   min-height: 300px;
-  
+
   .loader {
     width: 80px;
     height: 80px;
@@ -328,7 +328,7 @@
   gap: 20px;
   min-height: 300px;
   text-align: center;
-  
+
   p {
     @include font($size: 2rem, $height: 2.4rem, $weight: 400);
     color: #858585;
@@ -351,6 +351,7 @@
 .catalog-card__image {
   display: block;
   position: relative;
+  z-index: 1;
   height: calc(100% - 62px);
   @include media-laptop-xl {
     height: calc(100% - 56px);
@@ -428,6 +429,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 2;
   img {
     width: 13px;
     height: 13px;
@@ -515,7 +517,7 @@
   // .catalog-card {
   .catalog-card__image {
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       z-index: 21;
       top: 0;
@@ -573,7 +575,7 @@
     transition: transform 0.3s ease;
     padding: 30px 20px;
     &:after {
-      content: '✕';
+      content: "✕";
       position: fixed;
       top: 40px;
       right: 30px;
@@ -596,7 +598,7 @@
 
   /* overlay */
   body.filter-open::before {
-    content: '';
+    content: "";
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.6);

@@ -23,74 +23,9 @@
       <p class="cart__title">Bolsa de compras</p>
       <div class="cart__layout">
         <div class="cart__items">
-          <div class="cart-item">
-            <img
-              src="/assets/img/itemsSlider1.webp"
-              alt="cart-item"
-              class="cart-item__image"
-            />
-            <div class="cart-item__info">
-              <div class="cart-item__header">
-                <p class="cart-item__title">Sofa Boco 2025</p>
-                <button class="cart-item__button">
-                  <img src="/assets/icons/circleCross.svg" alt="remove" />
-                </button>
-              </div>
-              <p class="cart-item__details">
-                Es un hecho ampliamente conocido que un lector se distraerá con
-                el contenido legible de una página al observar su maquetación.
-              </p>
-              <div class="cart-item__footer">
-                <span class="cart-item__subtitle">XL 110x150</span>
-                <p class="cart-item__price">1 700€</p>
-              </div>
-            </div>
-          </div>
-          <div class="cart-item">
-            <img
-              src="/assets/img/itemsSlider1.webp"
-              alt="cart-item"
-              class="cart-item__image"
-            />
-            <div class="cart-item__info">
-              <div class="cart-item__header">
-                <p class="cart-item__title">Sofa Boco 2025</p>
-                <button class="cart-item__button">
-                  <img src="/assets/icons/circleCross.svg" alt="remove" />
-                </button>
-              </div>
-              <p class="cart-item__details">
-                It is a long established fact that a reader will be distracted
-                by the readable content of a page when looking at its layout.
-              </p>
-              <div class="cart-item__footer">
-                <span class="cart-item__subtitle">XL 110x150</span>
-                <p class="cart-item__price">1 700€</p>
-              </div>
-            </div>
-          </div>
-          <div class="cart-item">
-            <img
-              src="/assets/img/itemsSlider1.webp"
-              alt="cart-item"
-              class="cart-item__image"
-            />
-            <div class="cart-item__info">
-              <div class="cart-item__header">
-                <p class="cart-item__title">Sofa Boco 2025</p>
-                <button class="cart-item__button">
-                  <img src="/assets/icons/circleCross.svg" alt="remove" />
-                </button>
-              </div>
-              <p class="cart-item__details">
-                It is a long established fact that a reader will be distracted
-                by the readable content of a page when looking at its layout.
-              </p>
-              <div class="cart-item__footer">
-                <span class="cart-item__subtitle">XL 110x150</span>
-                <p class="cart-item__price">1 700€</p>
-              </div>
-            </div>
+          <!-- Товары загружаются динамически -->
+          <div class="cart__loader">
+            <span class="loader"></span>
           </div>
         </div>
         <div class="summary">
@@ -101,7 +36,7 @@
                 <div class="summary__position">
                   <p class="summary__subtitle">Total parcial</p>
                 </div>
-                <span class="summary__price">$44,704 USD</span>
+                <span class="summary__price">0€</span>
               </div>
               <div class="summary__row">
                 <div class="summary__position">
@@ -110,14 +45,14 @@
                     Entrega para el lunes 14/07
                   </p>
                 </div>
-                <span class="summary__price">$0 USD</span>
+                <span class="summary__price">0€</span>
               </div>
             </div>
             <div class="summary__row">
               <div class="summary__position">
                 <p class="summary__subtitle">Total</p>
               </div>
-              <span class="summary__price">$44,704 USD</span>
+              <span class="summary__price">0€</span>
             </div>
           </div>
           <a class="summary__button" href="/cart/checkout">
@@ -147,5 +82,6 @@
       defer
     ></script>
     <script src="/script.js" defer></script>
+    <script type="module" src="/js/cart.js" defer></script>
   </body>
 </html>

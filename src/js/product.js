@@ -1,6 +1,10 @@
 import { getProductBySlug, getProducts } from "./api/products.js";
 import { API_BASE_URL } from "./api/index.js";
+import { addToCart } from "./api/cart.js";
 import { renderNewItemCards } from "../components/NewItemCard.js";
+
+// Текущий товар (для добавления в корзину)
+let currentProduct = null;
 
 /**
  * Получение slug из URL
@@ -153,6 +157,9 @@ function renderProduct(product) {
     return;
   }
 
+  // Сохраняем товар для добавления в корзину
+  currentProduct = product;
+
   const { Title, Price, Media, Sizes, SKU, Description, Characteristics } =
     product;
 
@@ -265,7 +272,89 @@ async function loadRelatedProducts(excludeDocumentId) {
   }
 }
 
+/**
+ * Получение выбранного размера
+ * @returns {string} - Выбранный размер
+ */
+function getSelectedSize() {
+  const activeSize = document.querySelector('.select-sizes__item.active');
+  return activeSize ? activeSize.textContent : '';
+}
+
+/**
+ * Получение выбранного количества
+ * @returns {number} - Количество
+ */
+function getSelectedQuantity() {
+  const qtyInput = document.getElementById('qty');
+  return qtyInput ? parseInt(qtyInput.value, 10) || 1 : 1;
+}
+
+/**
+ * Получение URL первого изображения товара
+ * @param {Array} media - Массив медиа
+ * @returns {string} - URL изображения
+ */
+function getFirstImageUrl(media) {
+  if (!media || media.length === 0) return '/assets/img/product.webp';
+  const firstImage = media[0];
+  const imageUrl = firstImage.formats?.small?.url || firstImage.url;
+  return imageUrl.startsWith('http') ? imageUrl : `${API_BASE_URL}${imageUrl}`;
+}
+
+/**
+ * Обработчик добавления товара в корзину
+ */
+function handleAddToCart() {
+  if (!currentProduct) {
+    console.error('No product loaded');
+    return;
+  }
+
+  const size = getSelectedSize();
+  const quantity = getSelectedQuantity();
+
+  const productData = {
+    documentId: currentProduct.documentId,
+    title: currentProduct.Title,
+    price: currentProduct.Price,
+    image: getFirstImageUrl(currentProduct.Media),
+    slug: currentProduct.slug,
+    description: currentProduct.Description || '',
+    size: size,
+  };
+
+  addToCart(productData, quantity);
+
+  // Визуальная обратная связь
+  const button = document.querySelector('.product__button');
+  if (button) {
+    const originalText = button.querySelector('span').textContent;
+    button.querySelector('span').textContent = '¡Añadido!';
+    button.classList.add('added');
+    
+    setTimeout(() => {
+      button.querySelector('span').textContent = originalText;
+      button.classList.remove('added');
+    }, 1500);
+  }
+}
+
+/**
+ * Инициализация обработчика кнопки добавления в корзину
+ */
+function initAddToCartButton() {
+  const addButton = document.querySelector('.product__button');
+  if (addButton) {
+    addButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      handleAddToCart();
+    });
+  }
+}
+
 // Инициализация при загрузке страницы
 document.addEventListener("DOMContentLoaded", () => {
   loadProduct();
+  initAddToCartButton();
 });

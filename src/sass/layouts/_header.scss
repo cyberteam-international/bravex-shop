@@ -1,4 +1,4 @@
-@use '../abstract/index' as *;
+@use "../abstract/index" as *;
 
 .header {
   width: 100%;
@@ -87,5 +87,31 @@
     @include media-tablet {
       display: flex;
     }
+  }
+}
+
+// Cart icon with badge
+.cart-icon {
+  position: relative;
+}
+
+.cart-badge {
+  position: absolute;
+  bottom: 7px;
+  right: 7px;
+  min-width: 16px;
+  height: 16px;
+  background-color: #e53935;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 50%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+
+  &.visible {
+    display: flex;
   }
 }
