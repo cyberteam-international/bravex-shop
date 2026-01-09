@@ -65,14 +65,21 @@ function formatPrice(price) {
  * Рендер карточек товаров в контейнер
  * @param {HTMLElement} container - DOM-элемент контейнера
  * @param {Array} products - Массив товаров
+ * @param {boolean} append - Добавлять к существующим (true) или заменить (false)
  */
-export function renderCatalogCards(container, products) {
+export function renderCatalogCards(container, products, append = false) {
   if (!container) {
     console.error("CatalogCard: Container not found");
     return;
   }
 
-  container.innerHTML = products.map(createCatalogCard).join("");
+  const cardsHTML = products.map(createCatalogCard).join("");
+  
+  if (append) {
+    container.insertAdjacentHTML("beforeend", cardsHTML);
+  } else {
+    container.innerHTML = cardsHTML;
+  }
 }
 
 export default {

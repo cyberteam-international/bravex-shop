@@ -23,22 +23,24 @@ function getCategoryImage(thumbnail) {
  * @param {number|string} category.id - ID категории
  * @param {string} category.documentId - Document ID категории (Strapi)
  * @param {string} category.Title - Название категории
+ * @param {string} category.slug - Slug категории
  * @param {Object} category.Thumbnail - Изображение категории
  * @returns {string} - HTML-разметка карточки
  */
 export function createCategoryCard(category) {
-  const { id, documentId, Title, Thumbnail } = category;
+  const { id, documentId, Title, Thumbnail, slug } = category;
   const image = getCategoryImage(Thumbnail);
+  const categoryUrl = `/catalog/${slug || documentId}`;
 
   return `
-    <div class="popular-categories__card" data-category-id="${id}" data-document-id="${documentId}">
+    <a href="${categoryUrl}" class="popular-categories__card" data-category-id="${id}" data-document-id="${documentId}">
       <img
         src="${image}"
         alt="${Title || 'Category'}"
         class="popular-categories__image"
       />
       <p class="popular-categories__subtitle">${Title || ''}</p>
-    </div>
+    </a>
   `;
 }
 

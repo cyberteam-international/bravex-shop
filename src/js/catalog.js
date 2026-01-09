@@ -1,4 +1,8 @@
-import { getProducts, getProductsByCategory, getProductsWithFilters } from "./api/products.js";
+import {
+  getProducts,
+  getProductsByCategory,
+  getProductsWithFilters,
+} from "./api/products.js";
 import { getCategories, getCategoryBySlug } from "./api/categories.js";
 import { getAllFilters, getFiltersByCategory } from "./api/filters.js";
 import { renderCatalogCards } from "../components/CatalogCard.js";
@@ -6,8 +10,9 @@ import { renderCatalogCards } from "../components/CatalogCard.js";
 // Состояние каталога
 const catalogState = {
   page: 1,
-  pageSize: 20,
+  pageSize: 8, // Количество товаров на странице
   isLoading: false,
+  hasMore: true, // Есть ли ещё товары для загрузки
   categorySlug: null,
   categoryTitle: null,
   filters: [],
@@ -19,10 +24,14 @@ const catalogState = {
  * @returns {string|null} - slug категории или null
  */
 function getCategorySlugFromUrl() {
-  const pathParts = window.location.pathname.split('/').filter(Boolean);
+  const pathParts = window.location.pathname.split("/").filter(Boolean);
   // URL: /catalog/{category-slug} → ["catalog", "{category-slug}"]
   // Исключаем /catalog/product/{slug}
-  if (pathParts.length === 2 && pathParts[0] === 'catalog' && pathParts[1] !== 'product') {
+  if (
+    pathParts.length === 2 &&
+    pathParts[0] === "catalog" &&
+    pathParts[1] !== "product"
+  ) {
     return pathParts[1];
   }
   return null;
@@ -32,7 +41,7 @@ function getCategorySlugFromUrl() {
  * Загрузка и рендер категорий в навигацию
  */
 async function loadCategoryTabs() {
-  const tabsContainer = document.querySelector('.catalog__tabs');
+  const tabsContainer = document.querySelector(".catalog__tabs");
   if (!tabsContainer) return;
 
   try {
@@ -40,16 +49,22 @@ async function loadCategoryTabs() {
     const categories = response.data || [];
 
     // Создаём таб "Все" + табы категорий
-    const allTab = `<a href="/catalog" class="catalog__tab${!catalogState.categorySlug ? ' active' : ''}">Todos</a>`;
-    
-    const categoryTabs = categories.map(cat => {
-      const isActive = catalogState.categorySlug === cat.slug;
-      return `<a href="/catalog/${cat.slug}" class="catalog__tab${isActive ? ' active' : ''}">${cat.Title}</a>`;
-    }).join('');
+    const allTab = `<a href="/catalog" class="catalog__tab${
+      !catalogState.categorySlug ? " active" : ""
+    }">Todos</a>`;
+
+    const categoryTabs = categories
+      .map((cat) => {
+        const isActive = catalogState.categorySlug === cat.slug;
+        return `<a href="/catalog/${cat.slug}" class="catalog__tab${
+          isActive ? " active" : ""
+        }">${cat.Title}</a>`;
+      })
+      .join("");
 
     tabsContainer.innerHTML = allTab + categoryTabs;
   } catch (error) {
-    console.error('Error loading category tabs:', error);
+    console.error("Error loading category tabs:", error);
   }
 }
 
@@ -57,9 +72,9 @@ async function loadCategoryTabs() {
  * Обновление заголовка каталога
  */
 function updateCatalogTitle() {
-  const titleEl = document.querySelector('.catalog__header .catalog__title');
+  const titleEl = document.querySelector(".catalog__header .catalog__title");
   if (titleEl) {
-    titleEl.textContent = catalogState.categoryTitle || 'CATÁLOGO';
+    titleEl.textContent = catalogState.categoryTitle || "Todos los productos";
   }
 }
 
@@ -71,15 +86,19 @@ function updateCatalogTitle() {
  */
 function createFilterHTML(filter, index) {
   const filterId = `filter-${filter.documentId}`;
-  const filterSlug = filter.Name.toLowerCase().replace(/\s+/g, '-');
-  
-  const valuesHTML = filter.values.map(value => `
+  const filterSlug = filter.Name.toLowerCase().replace(/\s+/g, "-");
+
+  const valuesHTML = filter.values
+    .map(
+      (value) => `
     <label class="filter__checkbox">
       <input type="checkbox" name="${filterSlug}" value="${value}" data-filter-id="${filter.documentId}" />
       <span class="filter__checkbox-mark"></span>
       <span class="filter__checkbox-label">${value}</span>
     </label>
-  `).join('');
+  `
+    )
+    .join("");
 
   return `
     <div class="filter__section" data-filter-id="${filter.documentId}">
@@ -87,7 +106,7 @@ function createFilterHTML(filter, index) {
         class="filter-accordion__toggle"
         type="checkbox"
         id="${filterId}"
-        ${index === 0 ? 'checked' : ''}
+        ${index === 0 ? "checked" : ""}
       />
       <label class="filter__header" for="${filterId}">
         <span>${filter.Name}</span>
@@ -108,15 +127,15 @@ function createFilterHTML(filter, index) {
  * Загрузка и рендер фильтров
  */
 async function loadFilters() {
-  const container = document.getElementById('filters-container');
+  const container = document.getElementById("filters-container");
   if (!container) return;
 
   // Сохраняем ценовой фильтр
-  const priceFilter = container.querySelector('.filter__section--price');
+  const priceFilter = container.querySelector(".filter__section--price");
 
   try {
     let response;
-    
+
     if (catalogState.categorySlug) {
       // Загружаем фильтры для конкретной категории
       response = await getFiltersByCategory(catalogState.categorySlug);
@@ -129,38 +148,52 @@ async function loadFilters() {
     catalogState.filters = filters;
 
     // Генерируем HTML для динамических фильтров
-    const filtersHTML = filters.map((filter, index) => createFilterHTML(filter, index)).join('');
+    const filtersHTML = filters
+      .map((filter, index) => createFilterHTML(filter, index))
+      .join("");
 
     // Вставляем динамические фильтры перед ценовым
     if (priceFilter) {
       // Удаляем старые динамические фильтры
-      container.querySelectorAll('.filter__section:not(.filter__section--price)').forEach(el => el.remove());
+      container
+        .querySelectorAll(".filter__section:not(.filter__section--price)")
+        .forEach((el) => el.remove());
       // Вставляем новые перед ценовым фильтром
-      priceFilter.insertAdjacentHTML('beforebegin', filtersHTML);
+      priceFilter.insertAdjacentHTML("beforebegin", filtersHTML);
     } else {
       container.innerHTML = filtersHTML;
     }
 
-    console.log('Loaded filters:', filters);
+    console.log("Loaded filters:", filters);
   } catch (error) {
-    console.error('Error loading filters:', error);
+    console.error("Error loading filters:", error);
   }
 }
 
 // Загрузка и рендер товаров
-async function loadProducts() {
+async function loadProducts(append = false) {
   const container = document.getElementById("catalog-products");
   if (!container || catalogState.isLoading) return;
+  if (append && !catalogState.hasMore) return;
 
   catalogState.isLoading = true;
 
   // Показываем лоадер
-  container.innerHTML = '<div class="catalog__loader"><span class="loader"></span></div>';
+  if (append) {
+    // Добавляем лоадер в конец
+    const loader = document.createElement('div');
+    loader.className = 'catalog__loader catalog__loader--more';
+    loader.innerHTML = '<span class="loader"></span>';
+    container.appendChild(loader);
+  } else {
+    container.innerHTML =
+      '<div class="catalog__loader"><span class="loader"></span></div>';
+  }
 
   try {
     let response;
     const hasFilters = Object.keys(catalogState.selectedFilters).length > 0;
-    
+
     if (hasFilters || catalogState.categorySlug) {
       // Загружаем товары с фильтрами
       response = await getProductsWithFilters({
@@ -178,28 +211,96 @@ async function loadProducts() {
     }
 
     const products = response.data || [];
-    console.log("Loaded products:", products);
+    const pagination = response.meta?.pagination;
     
-    if (products.length === 0) {
+    // Проверяем, есть ли ещё товары
+    if (pagination) {
+      catalogState.hasMore = catalogState.page < pagination.pageCount;
+    } else {
+      catalogState.hasMore = products.length === catalogState.pageSize;
+    }
+
+    console.log(`Loaded page ${catalogState.page}, products:`, products.length, 'hasMore:', catalogState.hasMore);
+
+    // Удаляем лоадер
+    const loaders = container.querySelectorAll('.catalog__loader');
+    loaders.forEach(l => l.remove());
+
+    if (products.length === 0 && !append) {
       container.innerHTML = `
         <div class="catalog__empty">
           <p>No se encontraron productos</p>
         </div>
       `;
-    } else {
-      renderCatalogCards(container, products);
+    } else if (products.length > 0) {
+      if (append) {
+        // Добавляем новые карточки к существующим
+        renderCatalogCards(container, products, true);
+      } else {
+        renderCatalogCards(container, products);
+      }
     }
   } catch (error) {
     console.error("Error loading products:", error);
-    container.innerHTML = `
-      <div class="catalog__error">
-        <p>Error al cargar los productos</p>
-        <button class="button" onclick="location.reload()">Reintentar</button>
-      </div>
-    `;
+    // Удаляем лоадер при ошибке
+    const loaders = container.querySelectorAll('.catalog__loader');
+    loaders.forEach(l => l.remove());
+    
+    if (!append) {
+      container.innerHTML = `
+        <div class="catalog__error">
+          <p>Error al cargar los productos</p>
+          <button class="button" onclick="location.reload()">Reintentar</button>
+        </div>
+      `;
+    }
   } finally {
     catalogState.isLoading = false;
   }
+}
+
+/**
+ * Загрузка следующей страницы товаров
+ */
+async function loadMoreProducts() {
+  if (catalogState.isLoading || !catalogState.hasMore) return;
+  
+  catalogState.page += 1;
+  await loadProducts(true);
+}
+
+/**
+ * Инициализация бесконечного скролла
+ * Использует Intersection Observer для отслеживания появления секции .advantages
+ */
+function initInfiniteScroll() {
+  const advantagesSection = document.querySelector('.advantages');
+  
+  if (!advantagesSection) {
+    console.warn('Infinite scroll: .advantages section not found');
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        // Когда секция .advantages появляется на экране — подгружаем товары
+        if (entry.isIntersecting && !catalogState.isLoading && catalogState.hasMore) {
+          loadMoreProducts();
+        }
+      });
+    },
+    {
+      // Срабатывает когда секция появляется на 1px в viewport
+      rootMargin: '100px', // Немного заранее, для плавности
+      threshold: 0,
+    }
+  );
+
+  observer.observe(advantagesSection);
+  
+  // Сохраняем observer в состояние для возможности отключения
+  catalogState.infiniteScrollObserver = observer;
 }
 
 /**
@@ -217,7 +318,7 @@ async function initCatalog() {
         catalogState.categoryTitle = category.Title;
       }
     } catch (error) {
-      console.error('Error loading category:', error);
+      console.error("Error loading category:", error);
     }
   }
 
@@ -233,6 +334,9 @@ async function initCatalog() {
   // Инициализируем обработчики фильтров
   initFilterHandlers();
 
+  // Инициализируем бесконечный скролл
+  initInfiniteScroll();
+
   // Загружаем товары
   await loadProducts();
 }
@@ -243,18 +347,20 @@ async function initCatalog() {
  */
 function collectSelectedFilters() {
   const selectedFilters = {};
-  const checkboxes = document.querySelectorAll('#filters-container .filter__checkbox input:checked');
-  
-  checkboxes.forEach(checkbox => {
+  const checkboxes = document.querySelectorAll(
+    "#filters-container .filter__checkbox input:checked"
+  );
+
+  checkboxes.forEach((checkbox) => {
     const filterId = checkbox.dataset.filterId;
     const value = checkbox.value;
-    
+
     if (!selectedFilters[filterId]) {
       selectedFilters[filterId] = [];
     }
     selectedFilters[filterId].push(value);
   });
-  
+
   return selectedFilters;
 }
 
@@ -265,14 +371,15 @@ async function applyFilters() {
   // Собираем выбранные фильтры
   catalogState.selectedFilters = collectSelectedFilters();
   catalogState.page = 1; // Сбрасываем на первую страницу
-  
-  console.log('Applying filters:', catalogState.selectedFilters);
-  
+  catalogState.hasMore = true; // Сбрасываем флаг пагинации
+
+  console.log("Applying filters:", catalogState.selectedFilters);
+
   // Загружаем товары с фильтрами
   await loadProducts();
-  
+
   // Закрываем мобильное меню фильтров если открыто
-  document.body.classList.remove('filter-open');
+  document.body.classList.remove("filter-open");
 }
 
 /**
@@ -280,15 +387,18 @@ async function applyFilters() {
  */
 async function resetFilters() {
   // Снимаем все чекбоксы
-  const checkboxes = document.querySelectorAll('#filters-container .filter__checkbox input:checked');
-  checkboxes.forEach(checkbox => {
+  const checkboxes = document.querySelectorAll(
+    "#filters-container .filter__checkbox input:checked"
+  );
+  checkboxes.forEach((checkbox) => {
     checkbox.checked = false;
   });
-  
+
   // Очищаем выбранные фильтры
   catalogState.selectedFilters = {};
   catalogState.page = 1;
-  
+  catalogState.hasMore = true; // Сбрасываем флаг пагинации
+
   // Загружаем товары без фильтров
   await loadProducts();
 }
@@ -298,9 +408,9 @@ async function resetFilters() {
  */
 function initFilterHandlers() {
   // Обработчик кнопки "Aplicar"
-  const applyButton = document.querySelector('.filter__apply');
+  const applyButton = document.querySelector(".filter__apply");
   if (applyButton) {
-    applyButton.addEventListener('click', (e) => {
+    applyButton.addEventListener("click", (e) => {
       e.preventDefault();
       applyFilters();
     });
