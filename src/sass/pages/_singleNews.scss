@@ -111,6 +111,7 @@
 
 .single-news__article-text {
   color: #858585;
+  margin-bottom: 20px;
   @include font($size: 3rem, $height: 5.4rem, $weight: 500);
   letter-spacing: -0.9px;
   @include media-laptop-xl {
@@ -133,10 +134,17 @@
 
 .single-news__image {
   border-radius: 12px;
+  aspect-ratio: 1881 / 672;
+  object-fit: cover;
+  width: 100%;
+  margin-bottom: 100px;
 }
 
 .single-news__image_mobile {
   display: none;
+  aspect-ratio: 323 / 432;
+  object-fit: cover;
+  margin-bottom: 50px;
   @include media-mobile {
     display: block !important;
   }
@@ -300,5 +308,85 @@
     .single-news__title {
       @include font($size: 3.5rem, $height: 3.5rem, $weight: 400);
     }
+  }
+}
+
+// Стили для динамически генерируемого контента
+.single-news__section-title {
+  color: $color-white;
+  @include font($size: 4.5rem, $height: 5rem, $weight: 400);
+  letter-spacing: -1px;
+  margin: 60px 0 30px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  @include media-laptop-xl {
+    font-size: 4rem;
+    line-height: 4.5rem;
+    margin: 50px 0 25px;
+  }
+  @include media-laptop-lg {
+    font-size: 3.5rem;
+    line-height: 4rem;
+    margin: 40px 0 20px;
+  }
+  @include media-laptop {
+    font-size: 3rem;
+    line-height: 3.5rem;
+    margin: 35px 0 18px;
+  }
+  @include media-tablet {
+    font-size: 2.4rem;
+    line-height: 3rem;
+    margin: 30px 0 15px;
+  }
+}
+
+.single-news__content-image {
+  width: 100%;
+  border-radius: 12px;
+  margin: 40px 0;
+
+  @include media-laptop-xl {
+    margin: 35px 0;
+  }
+  @include media-laptop-lg {
+    margin: 30px 0;
+  }
+  @include media-laptop {
+    margin: 25px 0;
+  }
+  @include media-tablet {
+    margin: 20px 0;
+    border-radius: 8px;
+  }
+}
+
+.single-news__loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+.single-news__error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  text-align: center;
+  gap: 20px;
+
+  h2 {
+    color: $color-white;
+    @include font($size: 4rem, $height: 4.5rem, $weight: 400);
+  }
+
+  p {
+    color: #858585;
+    @include font($size: 1.8rem, $height: 2.5rem, $weight: 400);
   }
 }

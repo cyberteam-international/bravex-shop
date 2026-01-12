@@ -40,7 +40,7 @@
               <li data-value="option3">Precio: de mayor a menor</li>
             </ul>
           </div> -->
-          <div class="select select_black news__select">
+          <!-- <div class="select select_black news__select">
             <div class="select-trigger select-trigger">
               <span>Por fecha</span>
               <img src="/assets/icons/selectArrow.svg" alt="arrow" />
@@ -50,134 +50,21 @@
               <li data-value="option2">Precio: de menor a mayor</li>
               <li data-value="option3">Precio: de mayor a menor</li>
             </ul>
-          </div>
+          </div> -->
         </div>
       </div>
       <div class="news__main-section fade-in">
-        <a class="news__card">
-          <img
-            src="/assets/img/news/newsMain1.webp"
-            alt="news-image"
-            class="news__image"
-          />
-          <p>Nueva colección <span> de sofás de una marca global </span></p>
-          <button class="news__card-button">
-            <img src="/assets/icons/blackArrow.svg" alt="" />
-          </button>
-        </a>
-        <a class="news__card">
-          <img
-            src="/assets/img/news/newsMain2.webp"
-            alt="news-image"
-            class="news__image"
-          />
-          <p>Nueva colección <span> de sofás de una marca global </span></p>
-          <button class="news__card-button">
-            <img src="/assets/icons/blackArrow.svg" alt="" />
-          </button>
-        </a>
+        <!-- Главные новости загружаются динамически -->
+        <div class="news__loader">
+          <span class="loader"></span>
+        </div>
       </div>
 
       <div class="all-news fade-in">
         <div class="all-news__wrapper">
-          <a class="news__card">
-            <img
-              src="/assets/img/news/news1.webp"
-              alt="news-image"
-              class="news__image"
-            />
-            <p>Nueva colección <span> de sofás de una marca global </span></p>
-            <button class="news__card-button">
-              <img src="/assets/icons/blackArrow.svg" alt="" />
-            </button>
-          </a>
-          <a class="news__card">
-            <img
-              src="/assets/img/news/news2.webp"
-              alt="news-image"
-              class="news__image"
-            />
-            <p>Nueva colección <span> de sofás de una marca global </span></p>
-            <button class="news__card-button">
-              <img src="/assets/icons/blackArrow.svg" alt="" />
-            </button>
-          </a>
-          <a class="news__card">
-            <img
-              src="/assets/img/news/news3.webp"
-              alt="news-image"
-              class="news__image"
-            />
-            <p>Nueva colección <span> de sofás de una marca global </span></p>
-            <button class="news__card-button">
-              <img src="/assets/icons/blackArrow.svg" alt="" />
-            </button>
-          </a>
-          <a class="news__card">
-            <img
-              src="/assets/img/news/news4.webp"
-              alt="news-image"
-              class="news__image"
-            />
-            <p>Nueva colección <span> de sofás de una marca global </span></p>
-            <button class="news__card-button">
-              <img src="/assets/icons/blackArrow.svg" alt="" />
-            </button>
-          </a>
-          <a class="news__card">
-            <img
-              src="/assets/img/news/news1.webp"
-              alt="news-image"
-              class="news__image"
-            />
-            <p>Nueva colección <span> de sofás de una marca global </span></p>
-            <button class="news__card-button">
-              <img src="/assets/icons/blackArrow.svg" alt="" />
-            </button>
-          </a>
-          <a class="news__card">
-            <img
-              src="/assets/img/news/news2.webp"
-              alt="news-image"
-              class="news__image"
-            />
-            <p>Nueva colección <span> de sofás de una marca global </span></p>
-            <button class="news__card-button">
-              <img src="/assets/icons/blackArrow.svg" alt="" />
-            </button>
-          </a>
-          <a class="news__card">
-            <img
-              src="/assets/img/news/news3.webp"
-              alt="news-image"
-              class="news__image"
-            />
-            <p>Nueva colección <span> de sofás de una marca global </span></p>
-            <button class="news__card-button">
-              <img src="/assets/icons/blackArrow.svg" alt="" />
-            </button>
-          </a>
-          <a class="news__card">
-            <img
-              src="/assets/img/news/news4.webp"
-              alt="news-image"
-              class="news__image"
-            />
-            <p>Nueva colección <span> de sofás de una marca global </span></p>
-            <button class="news__card-button">
-              <img src="/assets/icons/blackArrow.svg" alt="" />
-            </button>
-          </a>
-        </div>
-        <div class="pagination news__pagination">
-          <div class="pagination__item pagination__item_active">1</div>
-          <div class="pagination__item">2</div>
-          <div class="pagination__item">3</div>
-          <div class="pagination__item">4</div>
-          <div
-            class="pagination__item pagination__item_active pagination__item_next"
-          >
-            <img src="/assets/icons/selectArrow.svg" alt="" />
+          <!-- Остальные новости загружаются динамически -->
+          <div class="news__loader">
+            <span class="loader"></span>
           </div>
         </div>
       </div>
@@ -250,5 +137,6 @@
     ></script>
     <script src="/script.js" defer></script>
     <script src="/js/select.js" defer></script>
+    <script type="module" src="/js/blog.js" defer></script>
   </body>
 </html>
