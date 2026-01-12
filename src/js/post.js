@@ -1,5 +1,48 @@
 import { getPostBySlug, getPosts } from "./api/posts.js";
 import { API_BASE_URL } from "./api/index.js";
+import { renderNewsCards } from "../components/NewsCard.js";
+/**
+ * Загрузка и рендер последних новостей (кроме текущей)
+ * @param {string} currentSlug - slug текущей новости
+ */
+async function loadRelatedNews(currentSlug) {
+  const sliderWrapper = document.querySelector(".insights__swiper-wrapper");
+  if (!sliderWrapper) return;
+
+  try {
+    // Получаем 9 новостей (на случай если текущая попала в топ-8)
+    const response = await getPosts({ page: 1, pageSize: 9 });
+    let posts = response.data || [];
+    // Исключаем текущий пост по slug
+    posts = posts.filter(post => post.slug !== currentSlug);
+    // Оставляем только 8
+    posts = posts.slice(0, 8);
+
+    // Очищаем слайдер
+    sliderWrapper.innerHTML = "";
+    // Рендерим карточки как слайды
+    posts.forEach(post => {
+      const cardHTML = `
+        <div class="swiper-slide insights__swiper-slide">
+          <a href="/blog/post/${post.slug}" class="insights__card-link">
+            <img src="${post.Thumbnail?.formats?.medium?.url ? (post.Thumbnail.formats.medium.url.startsWith('http') ? post.Thumbnail.formats.medium.url : API_BASE_URL + post.Thumbnail.formats.medium.url) : '/assets/img/news/news1.webp'}" alt="${post.Title}" class="insights__image" />
+            <div class="insights__info">
+              <p>${post.Title}${post.SubTitle ? `<span> — ${post.SubTitle.slice(0, 40)}...</span>` : ""}</p>
+              <span>${post.publishedAt ? new Date(post.publishedAt).toLocaleDateString("es-ES", { day: "numeric", month: "long", year: "numeric" }) : ""}</span>
+            </div>
+            <button class="insights__button">
+              <img src="/assets/icons/blackArrow.svg" alt="" class="insights__image" />
+            </button>
+          </a>
+        </div>
+      `;
+      sliderWrapper.insertAdjacentHTML("beforeend", cardHTML);
+    });
+  } catch (error) {
+    console.error("Error loading related news for slider:", error);
+    sliderWrapper.innerHTML = '<p class="insights__error">Error al cargar noticias</p>';
+  }
+}
 
 /**
  * Получение slug из URL
@@ -174,6 +217,8 @@ async function loadPost() {
     if (post) {
       console.log("Loaded post:", post);
       renderPost(post);
+      // Загружаем связанные новости в слайдер
+      loadRelatedNews(slug);
     } else {
       showError();
     }
