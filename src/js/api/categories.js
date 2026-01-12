@@ -1,4 +1,4 @@
-import api from './index.js';
+import api from "./index.js";
 
 /**
  * Получение списка категорий с пагинацией
@@ -8,12 +8,13 @@ import api from './index.js';
  * @returns {Promise} - Промис с данными категорий
  */
 export const getCategories = async ({ page = 1, pageSize = 8 } = {}) => {
-  const response = await api.get('/api/categories', {
+  const response = await api.get("/api/categories", {
     params: {
-      'pagination[page]': page,
-      'pagination[pageSize]': pageSize,
+      "pagination[page]": page,
+      "pagination[pageSize]": pageSize,
     },
   });
+
   return response.data;
 };
 
@@ -33,9 +34,9 @@ export const getCategoryById = async (id) => {
  * @returns {Promise} - Промис с данными категории
  */
 export const getCategoryBySlug = async (slug) => {
-  const response = await api.get('/api/categories', {
+  const response = await api.get("/api/categories", {
     params: {
-      'filters[slug][$eq]': slug,
+      "filters[slug][$eq]": slug,
     },
   });
   const categories = response.data?.data || [];
