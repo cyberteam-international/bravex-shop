@@ -24,22 +24,32 @@
       <div class="checkout__wrapper">
         <div class="checkout__layout">
           <div class="checkout__tabs">
-            <a href="/cart/checkout" class="checkout__tab"
-              >ENVÍO Y FACTURACIÓN</a
-            >
-            <a href="/cart/checkout2" class="checkout__tab_active">PAGO</a>
+            <span class="checkout__tab">ENVÍO Y FACTURACIÓN</span>
+            <span class="checkout__tab_active">PAGO</span>
           </div>
 
           <form action="" class="checkout__form">
             <div class="checkout__payment">
               <label class="radio-button checkout__radio-button">
-                <input type="radio" name="shipping" checked />
+                <input
+                  type="radio"
+                  name="shipping-method"
+                  value="PayPal"
+                  checked
+                />
                 <span class="radio-button__custom"></span>
                 <div class="radio-button__info">
                   <p class="radio-button__title">PayPal</p>
                 </div>
               </label>
-              <div class="checkout__payment-type">
+              <label class="radio-button checkout__radio-button">
+                <input type="radio" name="shipping-method" value="Stripe" />
+                <span class="radio-button__custom"></span>
+                <div class="radio-button__info">
+                  <p class="radio-button__title">Stripe</p>
+                </div>
+              </label>
+              <!-- <div class="checkout__payment-type">
                 <label class="radio-button checkout__radio-button">
                   <input type="radio" name="shipping" />
                   <span class="radio-button__custom"></span>
@@ -55,10 +65,10 @@
                   />
                   <img src="/assets/icons/MaestroColor.svg" alt="maestro" />
                 </div>
-              </div>
+              </div> -->
             </div>
 
-            <div class="checkout__form-block">
+            <!-- <div class="checkout__form-block">
               <input
                 type="text"
                 class="input"
@@ -85,7 +95,7 @@
                 placeholder="Nombre en la tarjeta"
                 name="nameOnCard"
               />
-            </div>
+            </div> -->
 
             <label class="checkbox checkout__checkbox">
               <input type="checkbox" name="shipping" />

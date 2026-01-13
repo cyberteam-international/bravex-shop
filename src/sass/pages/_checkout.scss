@@ -1,4 +1,4 @@
-@use '../abstract/index' as *;
+@use "../abstract/index" as *;
 
 .checkout {
   color: $color-white;
@@ -74,14 +74,12 @@
 .checkout__tab {
   color: rgba($color: #ffffff, $alpha: 0.5);
   @include font($size: 1.6rem, $height: 4rem, $weight: 400);
-  cursor: pointer;
   &_active {
     color: $color-white;
-    cursor: pointer;
   }
-  &:hover {
-    color: $color-white;
-  }
+  // &:hover {
+  //   color: $color-white;
+  // }
 }
 
 .checkout__form {
