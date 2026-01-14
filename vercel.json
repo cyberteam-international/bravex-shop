@@ -1,0 +1,16 @@
+{
+  "rewrites": [
+    {
+      "source": "/catalog/product/:slug",
+      "destination": "/catalog/product/index.html"
+    },
+    {
+      "source": "/catalog/:category",
+      "destination": "/catalog/index.html"
+    },
+    {
+      "source": "/blog/post/:slug",
+      "destination": "/blog/post/index.html"
+    }
+  ]
+}
