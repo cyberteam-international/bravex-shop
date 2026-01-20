@@ -21,6 +21,7 @@ const catalogState = {
     min: null,
     max: null,
   },
+  sortBy: null, // 'price-asc', 'price-desc' или null
 };
 
 /**
@@ -100,7 +101,7 @@ function createFilterHTML(filter, index) {
       <span class="filter__checkbox-mark"></span>
       <span class="filter__checkbox-label">${value}</span>
     </label>
-  `
+  `,
     )
     .join("");
 
@@ -134,26 +135,66 @@ function createFilterHTML(filter, index) {
  */
 function filterProductsByPrice(products) {
   const { min, max } = catalogState.priceRange;
-  
+
   // Если диапазон не установлен, возвращаем все товары
   if (min === null && max === null) {
     return products;
   }
-  
-  return products.filter(product => {
+
+  return products.filter((product) => {
     const price = product.Price;
-    
+
     // Если цена не указана, исключаем товар
     if (price === undefined || price === null) {
       return false;
     }
-    
+
     // Проверяем соответствие диапазону
     const minCheck = min === null || price >= min;
     const maxCheck = max === null || price <= max;
-    
+
     return minCheck && maxCheck;
   });
+}
+
+/**
+ * Сортировка товаров по цене
+ * @param {Array} products - Массив товаров
+ * @returns {Array} - Отсортированные товары
+ */
+function sortProducts(products) {
+  if (!catalogState.sortBy) {
+    return products;
+  }
+  
+  // Создаем копию массива, чтобы не мутировать оригинал
+  const sortedProducts = [...products];
+  
+  switch (catalogState.sortBy) {
+    case 'price-asc':
+      // От низкой к высокой
+      sortedProducts.sort((a, b) => {
+        const priceA = a.Price || 0;
+        const priceB = b.Price || 0;
+        return priceA - priceB;
+      });
+      break;
+    
+    case 'price-desc':
+      // От высокой к низкой
+      sortedProducts.sort((a, b) => {
+        const priceA = a.Price || 0;
+        const priceB = b.Price || 0;
+        return priceB - priceA;
+      });
+      break;
+    
+    default:
+      // Без сортировки
+      break;
+  }
+  
+  return sortedProducts;
 }
 
 /**
@@ -214,8 +255,8 @@ async function loadProducts(append = false) {
   // Показываем лоадер
   if (append) {
     // Добавляем лоадер в конец
-    const loader = document.createElement('div');
-    loader.className = 'catalog__loader catalog__loader--more';
+    const loader = document.createElement("div");
+    loader.className = "catalog__loader catalog__loader--more";
     loader.innerHTML = '<span class="loader"></span>';
     container.appendChild(loader);
   } else {
@@ -245,9 +286,12 @@ async function loadProducts(append = false) {
 
     const products = response.data || [];
     const pagination = response.meta?.pagination;
-    
+
     // Применяем фильтрацию по цене на клиенте
-    const filteredProducts = filterProductsByPrice(products);
+    let filteredProducts = filterProductsByPrice(products);
+    
+    // Применяем сортировку
+    filteredProducts = sortProducts(filteredProducts);
     
     // Проверяем, есть ли ещё товары
     if (pagination) {
@@ -256,11 +300,18 @@ async function loadProducts(append = false) {
       catalogState.hasMore = products.length === catalogState.pageSize;
     }
 
-    console.log(`Loaded page ${catalogState.page}, products:`, products.length, 'filtered:', filteredProducts.length, 'hasMore:', catalogState.hasMore);
+    console.log(
+      `Loaded page ${catalogState.page}, products:`,
+      products.length,
+      "filtered:",
+      filteredProducts.length,
+      "hasMore:",
+      catalogState.hasMore,
+    );
 
     // Удаляем лоадер
-    const loaders = container.querySelectorAll('.catalog__loader');
-    loaders.forEach(l => l.remove());
+    const loaders = container.querySelectorAll(".catalog__loader");
+    loaders.forEach((l) => l.remove());
 
     if (filteredProducts.length === 0 && !append) {
       container.innerHTML = `
@@ -279,9 +330,9 @@ async function loadProducts(append = false) {
   } catch (error) {
     console.error("Error loading products:", error);
     // Удаляем лоадер при ошибке
-    const loaders = container.querySelectorAll('.catalog__loader');
-    loaders.forEach(l => l.remove());
-    
+    const loaders = container.querySelectorAll(".catalog__loader");
+    loaders.forEach((l) => l.remove());
+
     if (!append) {
       container.innerHTML = `
         <div class="catalog__error">
@@ -300,7 +351,7 @@ async function loadProducts(append = false) {
  */
 async function loadMoreProducts() {
   if (catalogState.isLoading || !catalogState.hasMore) return;
-  
+
   catalogState.page += 1;
   await loadProducts(true);
 }
@@ -310,10 +361,10 @@ async function loadMoreProducts() {
  * Использует Intersection Observer для отслеживания появления секции .advantages
  */
 function initInfiniteScroll() {
-  const advantagesSection = document.querySelector('.advantages');
-  
+  const advantagesSection = document.querySelector(".advantages");
+
   if (!advantagesSection) {
-    console.warn('Infinite scroll: .advantages section not found');
+    console.warn("Infinite scroll: .advantages section not found");
     return;
   }
 
@@ -321,20 +372,24 @@ function initInfiniteScroll() {
     (entries) => {
       entries.forEach((entry) => {
         // Когда секция .advantages появляется на экране — подгружаем товары
-        if (entry.isIntersecting && !catalogState.isLoading && catalogState.hasMore) {
+        if (
+          entry.isIntersecting &&
+          !catalogState.isLoading &&
+          catalogState.hasMore
+        ) {
           loadMoreProducts();
         }
       });
     },
     {
       // Срабатывает когда секция появляется на 1px в viewport
-      rootMargin: '100px', // Немного заранее, для плавности
+      rootMargin: "100px", // Немного заранее, для плавности
       threshold: 0,
-    }
+    },
   );
 
   observer.observe(advantagesSection);
-  
+
   // Сохраняем observer в состояние для возможности отключения
   catalogState.infiniteScrollObserver = observer;
 }
@@ -384,7 +439,7 @@ async function initCatalog() {
 function collectSelectedFilters() {
   const selectedFilters = {};
   const checkboxes = document.querySelectorAll(
-    "#filters-container .filter__checkbox input:checked"
+    "#filters-container .filter__checkbox input:checked",
   );
 
   checkboxes.forEach((checkbox) => {
@@ -424,7 +479,7 @@ async function applyFilters() {
 async function resetFilters() {
   // Снимаем все чекбоксы
   const checkboxes = document.querySelectorAll(
-    "#filters-container .filter__checkbox input:checked"
+    "#filters-container .filter__checkbox input:checked",
   );
   checkboxes.forEach((checkbox) => {
     checkbox.checked = false;
@@ -433,29 +488,30 @@ async function resetFilters() {
   // Сбрасываем ценовой фильтр
   catalogState.priceRange.min = null;
   catalogState.priceRange.max = null;
-  
+
   // Сбрасываем значения ценовых инпутов
-  const minInput = document.getElementById('minInput');
-  const maxInput = document.getElementById('maxInput');
-  const minRange = document.getElementById('minRange');
-  const maxRange = document.getElementById('maxRange');
-  
+  const minInput = document.getElementById("minInput");
+  const maxInput = document.getElementById("maxInput");
+  const minRange = document.getElementById("minRange");
+  const maxRange = document.getElementById("maxRange");
+
   if (minInput && maxInput && minRange && maxRange) {
     minInput.value = minRange.min;
     maxInput.value = maxRange.max;
     minRange.value = minRange.min;
     maxRange.value = maxRange.max;
-    
+
     // Обновляем визуальную дорожку
-    const track = document.querySelector('.range-track');
+    const track = document.querySelector(".range-track");
     if (track) {
-      track.style.setProperty('--left-range', '0%');
-      track.style.setProperty('--right-range', '0%');
+      track.style.setProperty("--left-range", "0%");
+      track.style.setProperty("--right-range", "0%");
     }
   }
 
   // Очищаем выбранные фильтры
   catalogState.selectedFilters = {};
+  catalogState.sortBy = null; // Сбрасываем сортировку
   catalogState.page = 1;
   catalogState.hasMore = true; // Сбрасываем флаг пагинации
 
@@ -467,32 +523,32 @@ async function resetFilters() {
  * Применение ценового фильтра
  */
 async function applyPriceFilter() {
-  const minInput = document.getElementById('minInput');
-  const maxInput = document.getElementById('maxInput');
-  
+  const minInput = document.getElementById("minInput");
+  const maxInput = document.getElementById("maxInput");
+
   if (minInput && maxInput) {
     const minValue = parseFloat(minInput.value);
     const maxValue = parseFloat(maxInput.value);
-    
+
     // Валидация
     if (!isNaN(minValue) && !isNaN(maxValue) && minValue <= maxValue) {
       catalogState.priceRange.min = minValue;
       catalogState.priceRange.max = maxValue;
     } else {
-      console.warn('Invalid price range:', minValue, maxValue);
+      console.warn("Invalid price range:", minValue, maxValue);
       return;
     }
   }
-  
+
   // Сбрасываем на первую страницу
   catalogState.page = 1;
   catalogState.hasMore = true;
-  
-  console.log('Applying price filter:', catalogState.priceRange);
-  
+
+  console.log("Applying price filter:", catalogState.priceRange);
+
   // Перезагружаем товары
   await loadProducts();
-  
+
   // Закрываем мобильное меню фильтров если открыто
   document.body.classList.remove("filter-open");
 }
@@ -509,6 +565,45 @@ function initFilterHandlers() {
       applyPriceFilter();
     });
   }
+  
+  // Обработчик селекта сортировки
+  initSortHandler();
+}
+
+/**
+ * Инициализация обработчика сортировки
+ */
+function initSortHandler() {
+  const sortSelect = document.querySelector('.catalog__select');
+  if (!sortSelect) return;
+  
+  const sortOptions = sortSelect.querySelectorAll('.select-options li');
+  
+  sortOptions.forEach(option => {
+    option.addEventListener('click', async () => {
+      const value = option.dataset.value;
+      
+      // Устанавливаем тип сортировки
+      switch (value) {
+        case 'option2':
+          catalogState.sortBy = 'price-asc';
+          break;
+        case 'option3':
+          catalogState.sortBy = 'price-desc';
+          break;
+        default:
+          catalogState.sortBy = null;
+          break;
+      }
+      
+      console.log('Sorting by:', catalogState.sortBy);
+      
+      // Сбрасываем на первую страницу и перезагружаем товары
+      catalogState.page = 1;
+      catalogState.hasMore = true;
+      await loadProducts();
+    });
+  });
 }
 
 // Инициализация при загрузке страницы
