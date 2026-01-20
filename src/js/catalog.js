@@ -17,6 +17,10 @@ const catalogState = {
   categoryTitle: null,
   filters: [],
   selectedFilters: {},
+  priceRange: {
+    min: null,
+    max: null,
+  },
 };
 
 /**
@@ -124,6 +128,35 @@ function createFilterHTML(filter, index) {
 }
 
 /**
+ * Фильтрация товаров по ценовому диапазону
+ * @param {Array} products - Массив товаров
+ * @returns {Array} - Отфильтрованные товары
+ */
+function filterProductsByPrice(products) {
+  const { min, max } = catalogState.priceRange;
+  
+  // Если диапазон не установлен, возвращаем все товары
+  if (min === null && max === null) {
+    return products;
+  }
+  
+  return products.filter(product => {
+    const price = product.Price;
+    
+    // Если цена не указана, исключаем товар
+    if (price === undefined || price === null) {
+      return false;
+    }
+    
+    // Проверяем соответствие диапазону
+    const minCheck = min === null || price >= min;
+    const maxCheck = max === null || price <= max;
+    
+    return minCheck && maxCheck;
+  });
+}
+
+/**
  * Загрузка и рендер фильтров
  */
 async function loadFilters() {
@@ -213,6 +246,9 @@ async function loadProducts(append = false) {
     const products = response.data || [];
     const pagination = response.meta?.pagination;
     
+    // Применяем фильтрацию по цене на клиенте
+    const filteredProducts = filterProductsByPrice(products);
+    
     // Проверяем, есть ли ещё товары
     if (pagination) {
       catalogState.hasMore = catalogState.page < pagination.pageCount;
@@ -220,24 +256,24 @@ async function loadProducts(append = false) {
       catalogState.hasMore = products.length === catalogState.pageSize;
     }
 
-    console.log(`Loaded page ${catalogState.page}, products:`, products.length, 'hasMore:', catalogState.hasMore);
+    console.log(`Loaded page ${catalogState.page}, products:`, products.length, 'filtered:', filteredProducts.length, 'hasMore:', catalogState.hasMore);
 
     // Удаляем лоадер
     const loaders = container.querySelectorAll('.catalog__loader');
     loaders.forEach(l => l.remove());
 
-    if (products.length === 0 && !append) {
+    if (filteredProducts.length === 0 && !append) {
       container.innerHTML = `
         <div class="catalog__empty">
           <p>No se encontraron productos</p>
         </div>
       `;
-    } else if (products.length > 0) {
+    } else if (filteredProducts.length > 0) {
       if (append) {
         // Добавляем новые карточки к существующим
-        renderCatalogCards(container, products, true);
+        renderCatalogCards(container, filteredProducts, true);
       } else {
-        renderCatalogCards(container, products);
+        renderCatalogCards(container, filteredProducts);
       }
     }
   } catch (error) {
@@ -394,6 +430,30 @@ async function resetFilters() {
     checkbox.checked = false;
   });
 
+  // Сбрасываем ценовой фильтр
+  catalogState.priceRange.min = null;
+  catalogState.priceRange.max = null;
+  
+  // Сбрасываем значения ценовых инпутов
+  const minInput = document.getElementById('minInput');
+  const maxInput = document.getElementById('maxInput');
+  const minRange = document.getElementById('minRange');
+  const maxRange = document.getElementById('maxRange');
+  
+  if (minInput && maxInput && minRange && maxRange) {
+    minInput.value = minRange.min;
+    maxInput.value = maxRange.max;
+    minRange.value = minRange.min;
+    maxRange.value = maxRange.max;
+    
+    // Обновляем визуальную дорожку
+    const track = document.querySelector('.range-track');
+    if (track) {
+      track.style.setProperty('--left-range', '0%');
+      track.style.setProperty('--right-range', '0%');
+    }
+  }
+
   // Очищаем выбранные фильтры
   catalogState.selectedFilters = {};
   catalogState.page = 1;
@@ -404,15 +464,49 @@ async function resetFilters() {
 }
 
 /**
+ * Применение ценового фильтра
+ */
+async function applyPriceFilter() {
+  const minInput = document.getElementById('minInput');
+  const maxInput = document.getElementById('maxInput');
+  
+  if (minInput && maxInput) {
+    const minValue = parseFloat(minInput.value);
+    const maxValue = parseFloat(maxInput.value);
+    
+    // Валидация
+    if (!isNaN(minValue) && !isNaN(maxValue) && minValue <= maxValue) {
+      catalogState.priceRange.min = minValue;
+      catalogState.priceRange.max = maxValue;
+    } else {
+      console.warn('Invalid price range:', minValue, maxValue);
+      return;
+    }
+  }
+  
+  // Сбрасываем на первую страницу
+  catalogState.page = 1;
+  catalogState.hasMore = true;
+  
+  console.log('Applying price filter:', catalogState.priceRange);
+  
+  // Перезагружаем товары
+  await loadProducts();
+  
+  // Закрываем мобильное меню фильтров если открыто
+  document.body.classList.remove("filter-open");
+}
+
+/**
  * Инициализация обработчиков фильтров
  */
 function initFilterHandlers() {
-  // Обработчик кнопки "Aplicar"
+  // Обработчик кнопки "Aplicar" для ценового фильтра
   const applyButton = document.querySelector(".filter__apply");
   if (applyButton) {
     applyButton.addEventListener("click", (e) => {
       e.preventDefault();
-      applyFilters();
+      applyPriceFilter();
     });
   }
 }

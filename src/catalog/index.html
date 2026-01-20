@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -18,7 +18,7 @@
     <script>
       document.documentElement.style.setProperty(
         "--fixed-vh",
-        `${window.innerHeight}px`
+        `${window.innerHeight}px`,
       );
     </script>
   </head>
@@ -50,11 +50,11 @@
                     <div class="range-values">
                       <div class="range-field">
                         <span>de</span>
-                        <input type="number" id="minInput" value="10" />
+                        <input type="number" id="minInput" value="0" />
                       </div>
                       <div class="range-field">
                         <span>a</span>
-                        <input type="number" id="maxInput" value="200" />
+                        <input type="number" id="maxInput" value="99999" />
                       </div>
                     </div>
                     <div class="range-slider">
@@ -62,16 +62,16 @@
                       <input
                         type="range"
                         id="minRange"
-                        min="10"
-                        max="200"
-                        value="10"
+                        min="0"
+                        max="99999"
+                        value="0"
                       />
                       <input
                         type="range"
                         id="maxRange"
-                        min="10"
-                        max="200"
-                        value="200"
+                        min="0"
+                        max="99999"
+                        value="99999"
                       />
                     </div>
                     <button class="button filter__apply">Aplicar</button>
