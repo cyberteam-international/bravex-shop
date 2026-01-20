@@ -84,6 +84,22 @@ function updateCatalogTitle() {
 }
 
 /**
+ * Обновление хлебных крошек
+ */
+function updateBreadcrumbs() {
+  const breadcrumbsEl = document.getElementById("catalog-breadcrumbs");
+  if (!breadcrumbsEl) return;
+
+  if (catalogState.categoryTitle) {
+    // Если выбрана категория: Catálogo (ссылка) / Название категории
+    breadcrumbsEl.innerHTML = `<a href="/catalog">Catálogo</a> / ${catalogState.categoryTitle}`;
+  } else {
+    // Если на главной странице каталога: только Catálogo (без ссылки)
+    breadcrumbsEl.textContent = "Catálogo";
+  }
+}
+
+/**
  * Создание HTML для одного фильтра
  * @param {Object} filter - Данные фильтра
  * @param {number} index - Индекс фильтра
@@ -166,12 +182,12 @@ function sortProducts(products) {
   if (!catalogState.sortBy) {
     return products;
   }
-  
+
   // Создаем копию массива, чтобы не мутировать оригинал
   const sortedProducts = [...products];
-  
+
   switch (catalogState.sortBy) {
-    case 'price-asc':
+    case "price-asc":
       // От низкой к высокой
       sortedProducts.sort((a, b) => {
         const priceA = a.Price || 0;
@@ -179,8 +195,8 @@ function sortProducts(products) {
         return priceA - priceB;
       });
       break;
-    
-    case 'price-desc':
+
+    case "price-desc":
       // От высокой к низкой
       sortedProducts.sort((a, b) => {
         const priceA = a.Price || 0;
@@ -188,12 +204,12 @@ function sortProducts(products) {
         return priceB - priceA;
       });
       break;
-    
+
     default:
       // Без сортировки
       break;
   }
-  
+
   return sortedProducts;
 }
 
@@ -289,10 +305,10 @@ async function loadProducts(append = false) {
 
     // Применяем фильтрацию по цене на клиенте
     let filteredProducts = filterProductsByPrice(products);
-    
+
     // Применяем сортировку
     filteredProducts = sortProducts(filteredProducts);
-    
+
     // Проверяем, есть ли ещё товары
     if (pagination) {
       catalogState.hasMore = catalogState.page < pagination.pageCount;
@@ -415,6 +431,9 @@ async function initCatalog() {
 
   // Обновляем заголовок
   updateCatalogTitle();
+
+  // Обновляем хлебные крошки
+  updateBreadcrumbs();
 
   // Загружаем табы категорий
   await loadCategoryTabs();
@@ -565,7 +584,7 @@ function initFilterHandlers() {
       applyPriceFilter();
     });
   }
-  
+
   // Обработчик селекта сортировки
   initSortHandler();
 }
@@ -574,30 +593,30 @@ function initFilterHandlers() {
  * Инициализация обработчика сортировки
  */
 function initSortHandler() {
-  const sortSelect = document.querySelector('.catalog__select');
+  const sortSelect = document.querySelector(".catalog__select");
   if (!sortSelect) return;
-  
-  const sortOptions = sortSelect.querySelectorAll('.select-options li');
-  
-  sortOptions.forEach(option => {
-    option.addEventListener('click', async () => {
+
+  const sortOptions = sortSelect.querySelectorAll(".select-options li");
+
+  sortOptions.forEach((option) => {
+    option.addEventListener("click", async () => {
       const value = option.dataset.value;
-      
+
       // Устанавливаем тип сортировки
       switch (value) {
-        case 'option2':
-          catalogState.sortBy = 'price-asc';
+        case "option2":
+          catalogState.sortBy = "price-asc";
           break;
-        case 'option3':
-          catalogState.sortBy = 'price-desc';
+        case "option3":
+          catalogState.sortBy = "price-desc";
           break;
         default:
           catalogState.sortBy = null;
           break;
       }
-      
-      console.log('Sorting by:', catalogState.sortBy);
-      
+
+      console.log("Sorting by:", catalogState.sortBy);
+
       // Сбрасываем на первую страницу и перезагружаем товары
       catalogState.page = 1;
       catalogState.hasMore = true;

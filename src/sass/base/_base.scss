@@ -1,13 +1,14 @@
-@use '../abstract/index' as *;
+@use "../abstract/index" as *;
 
 html {
-    font-size: 10px;
+  font-size: 10px;
+  overflow-y: scroll;
 }
 
 body {
-    @extend %font-prim;
-    @include font($size: 1.6rem, $height: 1, $weight: normal);
-    background-color: black;
+  @extend %font-prim;
+  @include font($size: 1.6rem, $height: 1, $weight: normal);
+  background-color: black;
 }
 
 // h1 {
