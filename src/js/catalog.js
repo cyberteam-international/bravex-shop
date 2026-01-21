@@ -3,7 +3,11 @@ import {
   getProductsByCategory,
   getProductsWithFilters,
 } from "./api/products.js";
-import { getCategories, getCategoryBySlug, getTopLevelCategories } from "./api/categories.js";
+import {
+  getCategories,
+  getCategoryBySlug,
+  getTopLevelCategories,
+} from "./api/categories.js";
 import { getAllFilters, getFiltersByCategory } from "./api/filters.js";
 import { renderCatalogCards } from "../components/CatalogCard.js";
 
@@ -52,38 +56,42 @@ async function loadCategoryTabs() {
 
   try {
     let categories = [];
-    
+
     // Если мы находимся в категории и у неё есть подкатегории
-    if (catalogState.currentCategory && catalogState.currentCategory.categories && catalogState.currentCategory.categories.length > 0) {
+    if (
+      catalogState.currentCategory &&
+      catalogState.currentCategory.categories &&
+      catalogState.currentCategory.categories.length > 0
+    ) {
       // Показываем подкатегории текущей категории
       categories = catalogState.currentCategory.categories;
-      
+
       // Создаём таб "Все" (ссылка на родительскую категорию) + табы подкатегорий
       const allTab = `<a href="/catalog/${catalogState.currentCategory.slug}" class="catalog__tab${!catalogState.categorySlug || catalogState.categorySlug === catalogState.currentCategory.slug ? " active" : ""}">Todos</a>`;
-      
+
       const categoryTabs = categories
         .map((cat) => {
           const isActive = catalogState.categorySlug === cat.slug;
           return `<a href="/catalog/${cat.slug}" class="catalog__tab${isActive ? " active" : ""}">${cat.Title}</a>`;
         })
         .join("");
-      
+
       tabsContainer.innerHTML = allTab + categoryTabs;
     } else {
       // Показываем категории верхнего уровня
       const response = await getTopLevelCategories({ page: 1, pageSize: 20 });
       categories = response.data || [];
-      
+
       // Создаём таб "Все" + табы категорий верхнего уровня
       const allTab = `<a href="/catalog" class="catalog__tab${!catalogState.categorySlug ? " active" : ""}">Todos</a>`;
-      
+
       const categoryTabs = categories
         .map((cat) => {
           const isActive = catalogState.categorySlug === cat.slug;
           return `<a href="/catalog/${cat.slug}" class="catalog__tab${isActive ? " active" : ""}">${cat.Title}</a>`;
         })
         .join("");
-      
+
       tabsContainer.innerHTML = allTab + categoryTabs;
     }
   } catch (error) {

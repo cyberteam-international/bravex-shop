@@ -25,7 +25,10 @@ export const getCategories = async ({ page = 1, pageSize = 8 } = {}) => {
  * @param {number} params.pageSize - Количество категорий на странице (по умолчанию 20)
  * @returns {Promise} - Промис с данными категорий
  */
-export const getTopLevelCategories = async ({ page = 1, pageSize = 20 } = {}) => {
+export const getTopLevelCategories = async ({
+  page = 1,
+  pageSize = 20,
+} = {}) => {
   const response = await api.get("/api/categories", {
     params: {
       "pagination[page]": page,
