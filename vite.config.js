@@ -5,7 +5,7 @@ import fs from "fs";
 
 export default defineConfig({
   root: "src",
-  publicDir: "../public",
+  publicDir: "assets",
   resolve: {
     alias: {
       "@": resolve(__dirname, "src"),
