@@ -3,7 +3,7 @@ import {
   getProductsByCategory,
   getProductsWithFilters,
 } from "./api/products.js";
-import { getCategories, getCategoryBySlug } from "./api/categories.js";
+import { getCategories, getCategoryBySlug, getTopLevelCategories } from "./api/categories.js";
 import { getAllFilters, getFiltersByCategory } from "./api/filters.js";
 import { renderCatalogCards } from "../components/CatalogCard.js";
 
@@ -15,6 +15,7 @@ const catalogState = {
   hasMore: true, // Есть ли ещё товары для загрузки
   categorySlug: null,
   categoryTitle: null,
+  currentCategory: null, // Текущая категория (с подкатегориями)
   filters: [],
   selectedFilters: {},
   priceRange: {
@@ -50,24 +51,41 @@ async function loadCategoryTabs() {
   if (!tabsContainer) return;
 
   try {
-    const response = await getCategories({ page: 1, pageSize: 20 });
-    const categories = response.data || [];
-
-    // Создаём таб "Все" + табы категорий
-    const allTab = `<a href="/catalog" class="catalog__tab${
-      !catalogState.categorySlug ? " active" : ""
-    }">Todos</a>`;
-
-    const categoryTabs = categories
-      .map((cat) => {
-        const isActive = catalogState.categorySlug === cat.slug;
-        return `<a href="/catalog/${cat.slug}" class="catalog__tab${
-          isActive ? " active" : ""
-        }">${cat.Title}</a>`;
-      })
-      .join("");
-
-    tabsContainer.innerHTML = allTab + categoryTabs;
+    let categories = [];
+    
+    // Если мы находимся в категории и у неё есть подкатегории
+    if (catalogState.currentCategory && catalogState.currentCategory.categories && catalogState.currentCategory.categories.length > 0) {
+      // Показываем подкатегории текущей категории
+      categories = catalogState.currentCategory.categories;
+      
+      // Создаём таб "Все" (ссылка на родительскую категорию) + табы подкатегорий
+      const allTab = `<a href="/catalog/${catalogState.currentCategory.slug}" class="catalog__tab${!catalogState.categorySlug || catalogState.categorySlug === catalogState.currentCategory.slug ? " active" : ""}">Todos</a>`;
+      
+      const categoryTabs = categories
+        .map((cat) => {
+          const isActive = catalogState.categorySlug === cat.slug;
+          return `<a href="/catalog/${cat.slug}" class="catalog__tab${isActive ? " active" : ""}">${cat.Title}</a>`;
+        })
+        .join("");
+      
+      tabsContainer.innerHTML = allTab + categoryTabs;
+    } else {
+      // Показываем категории верхнего уровня
+      const response = await getTopLevelCategories({ page: 1, pageSize: 20 });
+      categories = response.data || [];
+      
+      // Создаём таб "Все" + табы категорий верхнего уровня
+      const allTab = `<a href="/catalog" class="catalog__tab${!catalogState.categorySlug ? " active" : ""}">Todos</a>`;
+      
+      const categoryTabs = categories
+        .map((cat) => {
+          const isActive = catalogState.categorySlug === cat.slug;
+          return `<a href="/catalog/${cat.slug}" class="catalog__tab${isActive ? " active" : ""}">${cat.Title}</a>`;
+        })
+        .join("");
+      
+      tabsContainer.innerHTML = allTab + categoryTabs;
+    }
   } catch (error) {
     console.error("Error loading category tabs:", error);
   }
@@ -90,9 +108,15 @@ function updateBreadcrumbs() {
   const breadcrumbsEl = document.getElementById("catalog-breadcrumbs");
   if (!breadcrumbsEl) return;
 
-  if (catalogState.categoryTitle) {
-    // Если выбрана категория: Catálogo (ссылка) / Название категории
-    breadcrumbsEl.innerHTML = `<a href="/catalog">Catálogo</a> / ${catalogState.categoryTitle}`;
+  if (catalogState.currentCategory) {
+    // Если это подкатегория (есть родительская категория)
+    if (catalogState.currentCategory.category) {
+      const parentCategory = catalogState.currentCategory.category;
+      breadcrumbsEl.innerHTML = `<a href="/catalog">Catálogo</a> / <a href="/catalog/${parentCategory.slug}">${parentCategory.Title}</a> / ${catalogState.categoryTitle}`;
+    } else {
+      // Если это категория верхнего уровня
+      breadcrumbsEl.innerHTML = `<a href="/catalog">Catálogo</a> / ${catalogState.categoryTitle}`;
+    }
   } else {
     // Если на главной странице каталога: только Catálogo (без ссылки)
     breadcrumbsEl.textContent = "Catálogo";
@@ -423,10 +447,14 @@ async function initCatalog() {
       const category = await getCategoryBySlug(catalogState.categorySlug);
       if (category) {
         catalogState.categoryTitle = category.Title;
+        catalogState.currentCategory = category; // Сохраняем полную информацию о категории
       }
     } catch (error) {
       console.error("Error loading category:", error);
     }
+  } else {
+    // Если на главной странице каталога, сбрасываем текущую категорию
+    catalogState.currentCategory = null;
   }
 
   // Обновляем заголовок

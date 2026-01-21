@@ -19,6 +19,25 @@ export const getCategories = async ({ page = 1, pageSize = 8 } = {}) => {
 };
 
 /**
+ * Получение списка категорий верхнего уровня (где category = null)
+ * @param {Object} params - Параметры запроса
+ * @param {number} params.page - Номер страницы (по умолчанию 1)
+ * @param {number} params.pageSize - Количество категорий на странице (по умолчанию 20)
+ * @returns {Promise} - Промис с данными категорий
+ */
+export const getTopLevelCategories = async ({ page = 1, pageSize = 20 } = {}) => {
+  const response = await api.get("/api/categories", {
+    params: {
+      "pagination[page]": page,
+      "pagination[pageSize]": pageSize,
+      "filters[category][$null]": true, // Фильтр для категорий верхнего уровня
+    },
+  });
+
+  return response.data;
+};
+
+/**
  * Получение одной категории по ID
  * @param {string|number} id - ID категории
  * @returns {Promise} - Промис с данными категории
@@ -37,6 +56,8 @@ export const getCategoryBySlug = async (slug) => {
   const response = await api.get("/api/categories", {
     params: {
       "filters[slug][$eq]": slug,
+      "populate[categories]": "*", // Загружаем подкатегории
+      "populate[category]": "*", // Загружаем родительскую категорию
     },
   });
   const categories = response.data?.data || [];
@@ -45,6 +66,7 @@ export const getCategoryBySlug = async (slug) => {
 
 export default {
   getCategories,
+  getTopLevelCategories,
   getCategoryById,
   getCategoryBySlug,
 };
