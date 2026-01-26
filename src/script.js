@@ -231,18 +231,6 @@ const insightsSlider = new Swiper("#insights-slider", {
   },
 });
 
-// Загружаем товары из API и обновляем слайдер
-async function initProducts() {
-  const container = document.querySelector("#insights-slider .swiper-wrapper");
-  if (container) {
-    await window.ProductCard.renderProducts("#insights-slider .swiper-wrapper");
-    // Обновляем Swiper после загрузки товаров
-    insightsSlider.update();
-  }
-}
-
-initProducts();
-
 // burger-menu
 
 // const burgerBtn = document.querySelector('.burger-btn');

@@ -1,0 +1,26 @@
+# Apache configuration for SPA routing
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Правило для динамических роутов товаров: /catalog/product/{slug}
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^catalog/product/[^/]+/?$ /catalog/product/index.html [L]
+
+  # Правило для динамических роутов категорий: /catalog/{category-slug}
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^catalog/[^/]+/?$ /catalog/index.html [L]
+
+  # Правило для динамических роутов постов: /blog/post/{slug}
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^blog/post/[^/]+/?$ /blog/post/index.html [L]
+
+  # Отключаем листинг директорий
+  Options -Indexes
+
+  # Включаем отслеживание символических ссылок
+  Options +FollowSymLinks
+</IfModule>

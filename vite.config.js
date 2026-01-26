@@ -52,6 +52,46 @@ export default defineConfig({
           next();
         });
       },
+      configurePreviewServer(server) {
+        server.middlewares.use((req, res, next) => {
+          const url = req.url;
+          
+          // Fallback для динамических маршрутов товаров: /catalog/product/{slug}
+          if (url && url.match(/^\/catalog\/product\/[\w-]+\/?$/)) {
+            req.url = "/catalog/product/index.html";
+          }
+          // Fallback для каталога: /catalog
+          else if (url && url.match(/^\/catalog\/?$/)) {
+            req.url = "/catalog/index.html";
+          }
+          // Fallback для динамических маршрутов категорий: /catalog/{category-slug}
+          else if (url && url.match(/^\/catalog\/[\w-]+\/?$/) && !url.startsWith("/catalog/product")) {
+            req.url = "/catalog/index.html";
+          }
+          // Fallback для динамических маршрутов постов: /blog/post/{slug}
+          else if (url && url.match(/^\/blog\/post\/[\w-]+\/?$/)) {
+            req.url = "/blog/post/index.html";
+          }
+          // Fallback для blog: /blog
+          else if (url && url.match(/^\/blog\/?$/)) {
+            req.url = "/blog/index.html";
+          }
+          // Fallback для contacts: /contacts
+          else if (url && url.match(/^\/contacts\/?$/)) {
+            req.url = "/contacts/index.html";
+          }
+          // Fallback для cart: /cart
+          else if (url && url.match(/^\/cart\/?$/)) {
+            req.url = "/cart/index.html";
+          }
+          // Fallback для returns: /returns
+          else if (url && url.match(/^\/returns\/?$/)) {
+            req.url = "/returns/index.html";
+          }
+          
+          next();
+        });
+      },
     },
   ],
   build: {
