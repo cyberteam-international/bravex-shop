@@ -101,6 +101,7 @@ export default defineConfig({
   build: {
     outDir: "../dist",
     emptyOutDir: true,
+    assetsDir: '',
     rollupOptions: {
       input: {
         main: resolve(__dirname, "src/index.html"),
@@ -118,6 +119,50 @@ export default defineConfig({
         blog: resolve(__dirname, "src/blog/index.html"),
         blogPost: resolve(__dirname, "src/blog/post/index.html"),
         returns: resolve(__dirname, "src/returns/index.html"),
+      },
+      output: {
+        entryFileNames: (chunkInfo) => {
+          // Сохраняем структуру src/js/... для entry
+          if (chunkInfo.facadeModuleId) {
+            const relPath = chunkInfo.facadeModuleId.split('src/')[1];
+            if (relPath && relPath.startsWith('js/')) {
+              return relPath.replace(/\\/g, '/');
+            }
+          }
+          return 'js/[name].js';
+        },
+        chunkFileNames: (chunkInfo) => {
+          // Сохраняем структуру для чанков, если возможно
+          if (chunkInfo.moduleIds && chunkInfo.moduleIds.length > 0) {
+            const rel = chunkInfo.moduleIds[0].split('src/')[1];
+            if (rel && rel.startsWith('js/')) {
+              const dir = rel.substring(0, rel.lastIndexOf('/'));
+              return dir + '/[name]-[hash].js';
+            }
+          }
+          return 'js/[name]-[hash].js';
+        },
+        assetFileNames: (assetInfo) => {
+          // Сохраняем структуру для ассетов из src
+          if (assetInfo.name && assetInfo.name.startsWith('js/')) {
+            return assetInfo.name.replace(/\\/g, '/');
+          }
+          if (assetInfo.name && assetInfo.name.startsWith('img/')) {
+            return assetInfo.name.replace(/\\/g, '/');
+          }
+          if (assetInfo.name && assetInfo.name.startsWith('fonts/')) {
+            return assetInfo.name.replace(/\\/g, '/');
+          }
+          if (assetInfo.name && assetInfo.name.startsWith('css/')) {
+            return assetInfo.name.replace(/\\/g, '/');
+          }
+          // fallback: сохраняем структуру, если файл лежит в подпапке src
+          if (assetInfo.name && assetInfo.name.includes('/')) {
+            const rel = assetInfo.name.replace(/^src\//, '');
+            return rel;
+          }
+          return '[name]-[hash][extname]';
+        },
       },
     },
   },
