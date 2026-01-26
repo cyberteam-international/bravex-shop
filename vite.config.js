@@ -55,7 +55,7 @@ export default defineConfig({
       configurePreviewServer(server) {
         server.middlewares.use((req, res, next) => {
           const url = req.url;
-          
+
           // Fallback для динамических маршрутов товаров: /catalog/product/{slug}
           if (url && url.match(/^\/catalog\/product\/[\w-]+\/?$/)) {
             req.url = "/catalog/product/index.html";
@@ -65,7 +65,11 @@ export default defineConfig({
             req.url = "/catalog/index.html";
           }
           // Fallback для динамических маршрутов категорий: /catalog/{category-slug}
-          else if (url && url.match(/^\/catalog\/[\w-]+\/?$/) && !url.startsWith("/catalog/product")) {
+          else if (
+            url &&
+            url.match(/^\/catalog\/[\w-]+\/?$/) &&
+            !url.startsWith("/catalog/product")
+          ) {
             req.url = "/catalog/index.html";
           }
           // Fallback для динамических маршрутов постов: /blog/post/{slug}
@@ -88,7 +92,7 @@ export default defineConfig({
           else if (url && url.match(/^\/returns\/?$/)) {
             req.url = "/returns/index.html";
           }
-          
+
           next();
         });
       },

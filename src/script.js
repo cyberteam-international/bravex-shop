@@ -3,37 +3,37 @@
 // Set viewport height for mobile
 document.documentElement.style.setProperty(
   "--fixed-vh",
-  `${window.innerHeight}px`
+  `${window.innerHeight}px`,
 );
 
 // Инициализация badge корзины
 function initCartBadge() {
-  const badge = document.getElementById('cart-badge');
+  const badge = document.getElementById("cart-badge");
   if (!badge) return;
-  
+
   try {
-    const cart = JSON.parse(localStorage.getItem('bravex_cart') || '[]');
+    const cart = JSON.parse(localStorage.getItem("bravex_cart") || "[]");
     const count = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
-    
+
     if (count > 0) {
-      badge.textContent = count > 99 ? '99+' : count;
-      badge.classList.add('visible');
+      badge.textContent = count > 99 ? "99+" : count;
+      badge.classList.add("visible");
     } else {
-      badge.textContent = '';
-      badge.classList.remove('visible');
+      badge.textContent = "";
+      badge.classList.remove("visible");
     }
   } catch (e) {
-    console.error('Error reading cart:', e);
+    console.error("Error reading cart:", e);
   }
 }
 
 // Слушаем обновления корзины
-window.addEventListener('cartUpdated', () => {
+window.addEventListener("cartUpdated", () => {
   initCartBadge();
 });
 
 // Инициализируем badge при загрузке
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   initCartBadge();
 });
 
@@ -91,7 +91,7 @@ const lenis = new Lenis({
   prevent: (node) => {
     return classesToExclude.some(
       (className) =>
-        node.classList.contains(className) || node.closest(`.${className}`)
+        node.classList.contains(className) || node.closest(`.${className}`),
     );
   },
 

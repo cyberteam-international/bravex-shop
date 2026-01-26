@@ -11,6 +11,11 @@
     {
       "source": "/blog/post/:slug",
       "destination": "/blog/post/index.html"
+    {
+      "rewrites": [
+        {
+          "source": "/((?!js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot|otf|json|assets|fonts|libs|sass|public).*)",
+          "destination": "/index.html"
+        }
+      ]
     }
-  ]
-}
