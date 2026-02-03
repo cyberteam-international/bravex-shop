@@ -135,8 +135,6 @@ function initSelectSizes() {
   update();
 }
 
-// Инициализация при загрузке DOM
-document.addEventListener("DOMContentLoaded", initSelectSizes);
-
-// Экспортируем для повторной инициализации после динамической загрузки данных
+// Экспортируем для инициализации после динамической загрузки данных
+// НЕ вызываем автоматически на DOMContentLoaded, т.к. размеры загружаются через API
 export { initSelectSizes };
