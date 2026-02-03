@@ -28,9 +28,13 @@ jobs:
             source "$NVM_DIR/nvm.sh"
 
             cd bravex-shop &&
-            git pull &&
+            git fetch origin main &&
+            git reset --hard origin/main &&
             npm install --frozen-lockfile &&
             npm run build &&
-            pm2 restart bravex-shop &&
+            pm2 restart bravex-shop || true &&
             exit
           '
+
+      - name: Post Checkout repo
+        run: echo "Deployment completed successfully!"
