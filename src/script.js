@@ -55,7 +55,7 @@ function getCurrentScale() {
 // Инициализация при готовности DOM
 document.addEventListener("DOMContentLoaded", () => {
   document.body.style.overflow = "hidden";
-  
+
   const loader = () => {
     document.body.style.overflow = "";
     const preloader = document.getElementById("preloader");
