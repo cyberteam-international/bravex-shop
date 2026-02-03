@@ -232,7 +232,7 @@ async function loadProduct() {
 
     if (product) {
       console.log("Loaded product:", product);
-      //renderProduct(product);
+      renderProduct(product);
       // Загружаем связанные товары
       loadRelatedProducts(product.documentId);
     } else {
