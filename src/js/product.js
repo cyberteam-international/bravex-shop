@@ -2,6 +2,7 @@ import { getProductBySlug, getProducts } from "./api/products.js";
 import { API_BASE_URL } from "./api/index.js";
 import { addToCart } from "./api/cart.js";
 import { renderNewItemCards } from "../components/NewItemCard.js";
+import { initSelectSizes } from "./seletSizes.js";
 
 // Текущий товар (для добавления в корзину)
 let currentProduct = null;
@@ -187,6 +188,9 @@ function renderProduct(product) {
 
   // Размеры
   renderSizes(Sizes);
+
+  // Переинициализируем select-sizes после рендера размеров
+  initSelectSizes();
 
   // Характеристики
   renderCharacteristics(Characteristics);
