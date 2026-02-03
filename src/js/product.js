@@ -51,10 +51,10 @@ function formatPrice(price) {
  */
 function renderGallery(media) {
   const mainSlider = document.querySelector(
-    ".product__main-slider .swiper-wrapper"
+    ".product__main-slider .swiper-wrapper",
   );
   const thumbsSlider = document.querySelector(
-    ".product__thumbs-slider .swiper-wrapper"
+    ".product__thumbs-slider .swiper-wrapper",
   );
 
   if (!mainSlider || !thumbsSlider || !media || media.length === 0) return;
@@ -69,7 +69,7 @@ function renderGallery(media) {
         class="product__image product__image-main"
       />
     </div>
-  `
+  `,
     )
     .join("");
 
@@ -83,7 +83,7 @@ function renderGallery(media) {
         class="product__image product__image-thumb"
       />
     </div>
-  `
+  `,
     )
     .join("");
 
@@ -111,9 +111,9 @@ function renderSizes(sizes) {
     .map(
       (size, index) => `
     <li class="select-sizes__item${index === 0 ? " active" : ""}">${
-        size.Value
-      }</li>
-  `
+      size.Value
+    }</li>
+  `,
     )
     .join("");
 }
@@ -248,7 +248,7 @@ async function loadProduct() {
  * @param {string} excludeDocumentId - documentId товара для исключения
  */
 async function loadRelatedProducts(excludeDocumentId) {
-  const container = document.querySelector('#new-items-slider .swiper-wrapper');
+  const container = document.querySelector("#new-items-slider .swiper-wrapper");
   if (!container) return;
 
   try {
@@ -258,10 +258,10 @@ async function loadRelatedProducts(excludeDocumentId) {
     });
 
     let products = response.data || [];
-    
+
     // Исключаем текущий товар
-    products = products.filter(p => p.documentId !== excludeDocumentId);
-    
+    products = products.filter((p) => p.documentId !== excludeDocumentId);
+
     // Ограничиваем до 10
     products = products.slice(0, 10);
 
@@ -272,7 +272,7 @@ async function loadRelatedProducts(excludeDocumentId) {
       window.newItemsSwiper.update();
     }
   } catch (error) {
-    console.error('Error loading related products:', error);
+    console.error("Error loading related products:", error);
   }
 }
 
@@ -281,8 +281,8 @@ async function loadRelatedProducts(excludeDocumentId) {
  * @returns {string} - Выбранный размер
  */
 function getSelectedSize() {
-  const activeSize = document.querySelector('.select-sizes__item.active');
-  return activeSize ? activeSize.textContent : '';
+  const activeSize = document.querySelector(".select-sizes__item.active");
+  return activeSize ? activeSize.textContent : "";
 }
 
 /**
@@ -290,7 +290,7 @@ function getSelectedSize() {
  * @returns {number} - Количество
  */
 function getSelectedQuantity() {
-  const qtyInput = document.getElementById('qty');
+  const qtyInput = document.getElementById("qty");
   return qtyInput ? parseInt(qtyInput.value, 10) || 1 : 1;
 }
 
@@ -300,10 +300,10 @@ function getSelectedQuantity() {
  * @returns {string} - URL изображения
  */
 function getFirstImageUrl(media) {
-  if (!media || media.length === 0) return '/assets/img/product.webp';
+  if (!media || media.length === 0) return "/assets/img/product.webp";
   const firstImage = media[0];
   const imageUrl = firstImage.formats?.small?.url || firstImage.url;
-  return imageUrl.startsWith('http') ? imageUrl : `${API_BASE_URL}${imageUrl}`;
+  return imageUrl.startsWith("http") ? imageUrl : `${API_BASE_URL}${imageUrl}`;
 }
 
 /**
@@ -311,7 +311,7 @@ function getFirstImageUrl(media) {
  */
 function handleAddToCart() {
   if (!currentProduct) {
-    console.error('No product loaded');
+    console.error("No product loaded");
     return;
   }
 
@@ -324,22 +324,22 @@ function handleAddToCart() {
     price: currentProduct.Price,
     image: getFirstImageUrl(currentProduct.Media),
     slug: currentProduct.slug,
-    description: currentProduct.Description || '',
+    description: currentProduct.Description || "",
     size: size,
   };
 
   addToCart(productData, quantity);
 
   // Визуальная обратная связь
-  const button = document.querySelector('.product__button');
+  const button = document.querySelector(".product__button");
   if (button) {
-    const originalText = button.querySelector('span').textContent;
-    button.querySelector('span').textContent = '¡Añadido!';
-    button.classList.add('added');
-    
+    const originalText = button.querySelector("span").textContent;
+    button.querySelector("span").textContent = "¡Añadido!";
+    button.classList.add("added");
+
     setTimeout(() => {
-      button.querySelector('span').textContent = originalText;
-      button.classList.remove('added');
+      button.querySelector("span").textContent = originalText;
+      button.classList.remove("added");
     }, 1500);
   }
 }
@@ -348,9 +348,9 @@ function handleAddToCart() {
  * Инициализация обработчика кнопки добавления в корзину
  */
 function initAddToCartButton() {
-  const addButton = document.querySelector('.product__button');
+  const addButton = document.querySelector(".product__button");
   if (addButton) {
-    addButton.addEventListener('click', (e) => {
+    addButton.addEventListener("click", (e) => {
       e.preventDefault();
       handleAddToCart();
     });

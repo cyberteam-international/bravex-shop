@@ -1,46 +1,47 @@
 function initSelectSizes() {
-  const select = document.querySelector('.select-sizes');
+  const select = document.querySelector(".select-sizes");
   if (!select) return; // Выход если элемент не найден
 
-  const head = select.querySelector('.select-sizes__head');
-  const value = select.querySelector('.select-sizes__value');
-  const list = select.querySelector('.select-sizes__list');
-  const items = [...select.querySelectorAll('.select-sizes__item')];
+  const head = select.querySelector(".select-sizes__head");
+  const value = select.querySelector(".select-sizes__value");
+  const list = select.querySelector(".select-sizes__list");
+  const items = [...select.querySelectorAll(".select-sizes__item")];
 
   if (!head || !list || items.length === 0) return; // Выход если нет необходимых элементов
 
-  const btnUp = select.querySelector('#btnUp');
-  const btnDown = select.querySelector('#btnDown');
+  const btnUp = select.querySelector("#btnUp");
+  const btnDown = select.querySelector("#btnDown");
 
-  let index = items.findIndex((i) => i.classList.contains('active'));
+  let index = items.findIndex((i) => i.classList.contains("active"));
   if (index === -1) index = 0; // Если нет активного, берём первый
 
   const itemHeight = 36;
   const visibleItems = 5;
   const hardcodedOffsetForCenteringList = 14;
-  const centerOffset = Math.floor(visibleItems / 2) * itemHeight - hardcodedOffsetForCenteringList;
+  const centerOffset =
+    Math.floor(visibleItems / 2) * itemHeight - hardcodedOffsetForCenteringList;
 
   let startY = 0;
   let startTranslate = 0;
   let isDragging = false;
 
   function update() {
-    items.forEach((i) => i.classList.remove('active'));
+    items.forEach((i) => i.classList.remove("active"));
     if (items[index]) {
-      items[index].classList.add('active');
+      items[index].classList.add("active");
     }
 
     const offset = index * itemHeight - centerOffset;
     list.style.transform = `translateY(${-offset}px)`;
   }
 
-  head.addEventListener('click', () => {
-    select.classList.toggle('open');
+  head.addEventListener("click", () => {
+    select.classList.toggle("open");
   });
 
   if (btnUp) {
-    btnUp.addEventListener('click', (e) => {
-      if (select.classList.contains('open') && index > 0) {
+    btnUp.addEventListener("click", (e) => {
+      if (select.classList.contains("open") && index > 0) {
         e.stopPropagation();
         index--;
         update();
@@ -49,8 +50,8 @@ function initSelectSizes() {
   }
 
   if (btnDown) {
-    btnDown.addEventListener('click', (e) => {
-      if (select.classList.contains('open') && index < items.length - 1) {
+    btnDown.addEventListener("click", (e) => {
+      if (select.classList.contains("open") && index < items.length - 1) {
         e.stopPropagation();
         index++;
         update();
@@ -59,28 +60,28 @@ function initSelectSizes() {
   }
 
   items.forEach((item, i) => {
-    item.addEventListener('click', (e) => {
-      if (select.classList.contains('open')) {
+    item.addEventListener("click", (e) => {
+      if (select.classList.contains("open")) {
         e.stopPropagation();
       }
       index = i;
       update();
-      select.classList.remove('open');
+      select.classList.remove("open");
     });
   });
 
-  document.addEventListener('click', (e) => {
+  document.addEventListener("click", (e) => {
     if (!select.contains(e.target)) {
-      select.classList.remove('open');
+      select.classList.remove("open");
     }
   });
 
   //TOUCH EVENTS
 
   list.addEventListener(
-    'touchstart',
+    "touchstart",
     (e) => {
-      if (!select.classList.contains('open')) return;
+      if (!select.classList.contains("open")) return;
 
       isDragging = true;
       startY = e.touches[0].clientY;
@@ -92,7 +93,7 @@ function initSelectSizes() {
   );
 
   list.addEventListener(
-    'touchmove',
+    "touchmove",
     (e) => {
       if (!isDragging) return;
 
@@ -105,7 +106,7 @@ function initSelectSizes() {
   );
 
   list.addEventListener(
-    'touchend',
+    "touchend",
     () => {
       if (!isDragging) return;
       isDragging = false;
@@ -123,11 +124,11 @@ function initSelectSizes() {
 
     index = Math.max(0, Math.min(index, items.length - 1));
 
-    list.style.transition = 'transform 0.3s ease';
+    list.style.transition = "transform 0.3s ease";
     update();
 
     setTimeout(() => {
-      list.style.transition = '';
+      list.style.transition = "";
     }, 300);
   }
 
@@ -135,7 +136,7 @@ function initSelectSizes() {
 }
 
 // Инициализация при загрузке DOM
-document.addEventListener('DOMContentLoaded', initSelectSizes);
+document.addEventListener("DOMContentLoaded", initSelectSizes);
 
 // Экспортируем для повторной инициализации после динамической загрузки данных
-export { initSelectSizes };;
+export { initSelectSizes };
