@@ -185,10 +185,10 @@ function renderProduct(product) {
   if (descEl && Description) descEl.textContent = Description;
 
   // Галерея изображений
-  //renderGallery(Media);
+  renderGallery(Media);
 
   // Размеры
-  // renderSizes(Sizes);
+  renderSizes(Sizes);
 
   // Переинициализируем select-sizes после рендера размеров
   // initSelectSizes(); // ВРЕМЕННО ОТКЛЮЧЕНО
@@ -232,7 +232,7 @@ async function loadProduct() {
 
     if (product) {
       console.log("Loaded product:", product);
-      renderProduct(product);
+      //renderProduct(product);
       // Загружаем связанные товары
       loadRelatedProducts(product.documentId);
     } else {
@@ -360,6 +360,7 @@ function getFirstImageUrl(media) {
 
 // Инициализация при загрузке страницы
 document.addEventListener("DOMContentLoaded", () => {
-  loadProduct();
+  console.log("Product page loaded");
+  //loadProduct();
   // initAddToCartButton();
 });
