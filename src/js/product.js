@@ -153,6 +153,7 @@ function renderCharacteristics(characteristics) {
  * @param {Object} product - Данные товара
  */
 function renderProduct(product) {
+  console.log("rendering product function");
   if (!product) {
     console.error("Product not found");
     return;
@@ -184,10 +185,10 @@ function renderProduct(product) {
   if (descEl && Description) descEl.textContent = Description;
 
   // Галерея изображений
-  renderGallery(Media);
+  //renderGallery(Media);
 
   // Размеры
-  renderSizes(Sizes);
+  // renderSizes(Sizes);
 
   // Переинициализируем select-sizes после рендера размеров
   // initSelectSizes(); // ВРЕМЕННО ОТКЛЮЧЕНО
