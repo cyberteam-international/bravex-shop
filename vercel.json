@@ -5,17 +5,24 @@
       "destination": "/catalog/product/index.html"
     },
     {
-      "source": "/catalog/:category",
-      "destination": "/catalog/index.html"
-    },
-    {
       "source": "/blog/post/:slug",
       "destination": "/blog/post/index.html"
+    },
     {
-      "rewrites": [
-        {
-          "source": "/((?!js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot|otf|json|assets|fonts|libs|sass|public).*)",
-          "destination": "/index.html"
-        }
-      ]
+      "source": "/cart/checkout",
+      "destination": "/cart/checkout/index.html"
+    },
+    {
+      "source": "/cart/checkout2",
+      "destination": "/cart/checkout2/index.html"
+    },
+    {
+      "source": "/cart/checkout-thanks",
+      "destination": "/cart/checkout-thanks/index.html"
+    },
+    {
+      "source": "/catalog/:category",
+      "destination": "/catalog/index.html"
     }
+  ]
+}
