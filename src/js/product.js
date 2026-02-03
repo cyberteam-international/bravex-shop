@@ -2,7 +2,7 @@ import { getProductBySlug, getProducts } from "./api/products.js";
 import { API_BASE_URL } from "./api/index.js";
 import { addToCart } from "./api/cart.js";
 import { renderNewItemCards } from "../components/NewItemCard.js";
-import { initSelectSizes } from "./seletSizes.js";
+// import { initSelectSizes } from "./seletSizes.js"; // ВРЕМЕННО ОТКЛЮЧЕНО
 
 // Текущий товар (для добавления в корзину)
 let currentProduct = null;
@@ -190,7 +190,7 @@ function renderProduct(product) {
   renderSizes(Sizes);
 
   // Переинициализируем select-sizes после рендера размеров
-  initSelectSizes();
+  // initSelectSizes(); // ВРЕМЕННО ОТКЛЮЧЕНО
 
   // Характеристики
   renderCharacteristics(Characteristics);
